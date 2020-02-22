@@ -35,6 +35,7 @@ namespace WebApi.Data
             lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
             lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
             lista.Add(new Usuario() { id = 5, ativo = true, login = "Igor" });
+            lista.Add(new Usuario() { id = 6, ativo = true, login = "Developer" });
 
             return lista;
         }
@@ -47,6 +48,7 @@ namespace WebApi.Data
             lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
             lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
             lista.Add(new Usuario() { id = 5, ativo = true, login = "Igor" });
+            lista.Add(new Usuario() { id = 6, ativo = true, login = "Developer" });
 
             return lista;
         }
