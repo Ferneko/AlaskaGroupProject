@@ -32,7 +32,7 @@ namespace WebApi.Data
             List<Usuario> lista = new List<Usuario>();
             lista.Add(new Usuario() { id = 1, ativo = true, login = "Fernando" });
             lista.Add(new Usuario() { id = 2, ativo = true, login = "Isabela" });
-            lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
+            lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo", senha = "branch" });
             lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
 
             return lista;
