@@ -18,6 +18,7 @@ namespace WebApi.Controllers
         {
             
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
+
             serviceUsuario = new ServiceUsuario();
         }
 
