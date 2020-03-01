@@ -31,28 +31,12 @@ namespace WebApi.Data
 
         public List<Usuario> ListaTodosAtivos()
         {
-            List<Usuario> lista = new List<Usuario>();
-            lista.Add(new Usuario() { id = 1, ativo = true, login = "Fernando" });
-            lista.Add(new Usuario() { id = 2, ativo = true, login = "Isabela" });
-            lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
-            lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
-            lista.Add(new Usuario() { id = 5, ativo = true, login = "Igor" });
-            lista.Add(new Usuario() { id = 6, ativo = true, login = "Developer" });
-
-            return lista;
+            return db.USUARIOS.Where(a => a.ativo == true).ToList();
         }
 
         public List<Usuario> ListaTodos()
         {
-            List<Usuario> lista = new List<Usuario>();
-            lista.Add(new Usuario() { id = 1, ativo = true, login = "Fernando" });
-            lista.Add(new Usuario() { id = 2, ativo = true, login = "Isabela" });
-            lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
-            lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
-            lista.Add(new Usuario() { id = 5, ativo = true, login = "Igor" });
-            lista.Add(new Usuario() { id = 6, ativo = true, login = "Developer" });
-
-            return lista;
+            return db.USUARIOS.ToList();
         }
 
         public List<Usuario> Pesquisar(string texto)

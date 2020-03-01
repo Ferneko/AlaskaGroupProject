@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fernando\\Source\\Repos\\Aula\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fernando\\Source\\Repos\\Aula\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fernando\\Source\\Repos\\Aula\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Fernando\\Source\\Repos\\Aula\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\Fernando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fernando\\Source\\Repos\\Aula\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
