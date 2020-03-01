@@ -8,22 +8,24 @@ namespace WebApi.Data
 {
     public class DaoUsuario
     {
-        public DaoUsuario()
+        private Contexto db;
+        public DaoUsuario(Contexto _db)
         {
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
+            db = _db;
         }
 
         public void Gravar(Usuario objeto)
         {
             if(objeto.id == 0)
             {
-                //contexto.USUARIOS.add(objeto)
-                //db.savechages();
+                db.USUARIOS.Add(objeto);
+                db.SaveChanges();
             }
             else
             {
-                //contexto.USUARIOS.Update(objeto)
-                //db.savechages();
+                db.USUARIOS.Update(objeto);
+                db.SaveChanges();
             }
         }
 
@@ -35,6 +37,7 @@ namespace WebApi.Data
             lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
             lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
             lista.Add(new Usuario() { id = 5, ativo = true, login = "Igor" });
+            lista.Add(new Usuario() { id = 6, ativo = true, login = "Developer" });
 
             return lista;
         }
@@ -47,6 +50,8 @@ namespace WebApi.Data
             lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
             lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
             lista.Add(new Usuario() { id = 5, ativo = true, login = "Igor" });
+            lista.Add(new Usuario() { id = 6, ativo = true, login = "Developer" });
+
             return lista;
         }
 
