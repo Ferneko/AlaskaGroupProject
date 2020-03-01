@@ -8,22 +8,24 @@ namespace WebApi.Data
 {
     public class DaoUsuario
     {
-        public DaoUsuario()
+        private Contexto db;
+        public DaoUsuario(Contexto _db)
         {
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
+            db = _db;
         }
 
         public void Gravar(Usuario objeto)
         {
             if(objeto.id == 0)
             {
-                //contexto.USUARIOS.add(objeto)
-                //db.savechages();
+                db.USUARIOS.Add(objeto);
+                db.SaveChanges();
             }
             else
             {
-                //contexto.USUARIOS.Update(objeto)
-                //db.savechages();
+                db.USUARIOS.Update(objeto);
+                db.SaveChanges();
             }
         }
 
