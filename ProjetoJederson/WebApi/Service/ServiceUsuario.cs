@@ -11,11 +11,11 @@ namespace WebApi.Service
     {
         private DaoUsuario dao;
 
-        public ServiceUsuario()
+        public ServiceUsuario(Contexto db)
         {
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
 
-            dao = new DaoUsuario(); 
+            dao = new DaoUsuario(db); 
         }
 
         public void Gravar(Usuario objeto)
