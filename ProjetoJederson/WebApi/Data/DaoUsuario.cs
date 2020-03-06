@@ -29,6 +29,11 @@ namespace WebApi.Data
             }
         }
 
+        internal void Gravar(Acompanhamentos objeto)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Usuario> ListaTodosAtivos()
         {
             return db.USUARIOS.Where(a => a.ativo == true).ToList();
@@ -49,5 +54,9 @@ namespace WebApi.Data
             return new Usuario();
         }
 
+        public static implicit operator DaoUsuario(DaoAcompanhamentos v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
