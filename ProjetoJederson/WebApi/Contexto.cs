@@ -14,5 +14,6 @@ namespace WebApi
         { }
 
         public DbSet<Usuario> USUARIOS { get; set; }
+        public DbSet<Sabores> SABORES { get; internal set; }
     }
 }
