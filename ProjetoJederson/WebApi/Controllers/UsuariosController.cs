@@ -14,12 +14,10 @@ namespace WebApi.Controllers
     public class UsuariosController : ControllerBase
     {
         private ServiceUsuario serviceUsuario;
-        public UsuariosController()
+        public UsuariosController(Contexto db)
         {
-            
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
-
-            serviceUsuario = new ServiceUsuario();
+            serviceUsuario = new ServiceUsuario(db);
         }
 
         // GET: api/Usuarios
