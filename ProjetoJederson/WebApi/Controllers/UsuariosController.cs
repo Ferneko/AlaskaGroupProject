@@ -37,7 +37,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetUsuario")]
         public Usuario Get(int id)
         {
             try
