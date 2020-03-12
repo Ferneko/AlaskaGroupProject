@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\0220481812021\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\0220481812021\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\0220481812021\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\0220481812021\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\0220481812021\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\0220481812021\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\Fernando\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\0220481812021\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
