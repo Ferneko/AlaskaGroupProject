@@ -5,3 +5,5 @@
 /.vs
 /.vs/AlaskaGroupProject
 /ProjetoJederson/.vs/ProjetoJederson
+/ProjetoJederson/WebApi/bin/Debug/netcoreapp3.1
+/ProjetoJederson/WebApi/obj/Release/netcoreapp3.1
