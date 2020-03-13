@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
 using WebApi.Service;
+
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -35,7 +36,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Acompanhamentos/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetAcompanhamento")]
         public Acompanhamentos Get(int id)
         {
             try
@@ -64,5 +65,6 @@ namespace WebApi.Controllers
             }
    
         }
+
     }
 }
