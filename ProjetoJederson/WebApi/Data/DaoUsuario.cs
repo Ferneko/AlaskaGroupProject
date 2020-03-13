@@ -17,7 +17,7 @@ namespace WebApi.Data
 
         public void Gravar(Usuario objeto)
         {
-            if(objeto.id == 0)
+            if(objeto.Id == 0)
             {
                 db.USUARIOS.Add(objeto);
                 db.SaveChanges();
@@ -31,7 +31,7 @@ namespace WebApi.Data
 
         public List<Usuario> ListaTodosAtivos()
         {
-            return db.USUARIOS.Where(a => a.ativo == true).ToList();
+            return db.USUARIOS.Where(a => a.Ativo == true).ToList();
         }
 
         public List<Usuario> ListaTodos()

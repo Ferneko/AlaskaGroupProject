@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\Fernando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fernando\\source\\repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\isabela.padilha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\isabela.padilha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
