@@ -11,63 +11,56 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosController : ControllerBase
+    public class SaboresController : ControllerBase
     {
-        private ServiceUsuario serviceUsuario;
-        public UsuariosController(Contexto db)
+
+        private ServiceSabores serviceSabores;
+        public SaboresController(Contexto db)
         {
-            
-            serviceUsuario = new ServiceUsuario(db);
+            serviceSabores = new ServiceSabores(db);
         }
 
-        // GET: api/Usuarios
         [HttpGet]
-        public IEnumerable<Usuario> Get()
+        public List<Sabores> Get()
         {
             try
             {
-                return serviceUsuario.ListaTodos();
+                return serviceSabores.ListaTodos();
             }
             catch (Exception ex)
             {
-
                 throw;
             }
-          
         }
-
-        // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "GetUsuario")]
-        public Usuario Get(int id)
+        [HttpGet("{id}", Name = "GetSabores")]
+        public Sabores Get(int id)
         {
+
             try
             {
-                return serviceUsuario.PesquisarId(id);
+                return serviceSabores.SearchId(id);
             }
             catch (Exception)
             {
 
                 throw;
             }
-          
+
         }
 
-        // POST: api/Usuarios
         [HttpPost]
-        public void Post([FromBody] Usuario objeto)
+
+        public void Post([FromBody] Sabores objeto)
         {
             try
             {
-                serviceUsuario.Gravar(objeto);
+                serviceSabores.Record(objeto);
             }
             catch (Exception)
             {
 
                 throw;
             }
-            
         }
-
-       
     }
 }

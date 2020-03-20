@@ -41,12 +41,18 @@ namespace WebApi.Data
 
         public List<Usuario> Pesquisar(string texto)
         {
-            return new List<Usuario>();
+            return db.USUARIOS.Where(a => texto.Contains(a.id.ToString()) || a.nome.Contains(texto) || a.login.Contains(texto)).ToList();
+
         }
 
         public Usuario PesquisarId(long id)
         {
-            return new Usuario();
+            return db.USUARIOS.Where(a => a.id == id).FirstOrDefault();
+        }
+
+        public Usuario PesquisarPorLoginSenha(string Login, string Senha)
+        {
+            return db.USUARIOS.Where(a => a.login == Login && a.senha == Senha).FirstOrDefault();
         }
 
     }
