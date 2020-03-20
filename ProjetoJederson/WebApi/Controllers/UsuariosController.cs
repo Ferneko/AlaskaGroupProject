@@ -16,7 +16,7 @@ namespace WebApi.Controllers
         private ServiceUsuario serviceUsuario;
         public UsuariosController(Contexto db)
         {
-            //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
+            
             serviceUsuario = new ServiceUsuario(db);
         }
 
@@ -37,7 +37,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetUsuario")]
         public Usuario Get(int id)
         {
             try
