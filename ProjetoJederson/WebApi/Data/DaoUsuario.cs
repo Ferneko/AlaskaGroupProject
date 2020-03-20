@@ -27,6 +27,11 @@ namespace WebApi.Data
             }
         }
 
+        internal void Gravar(Acompanhamentos objeto)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Usuario> ListaTodosAtivos()
         {
             List<Usuario> lista = new List<Usuario>();
@@ -65,5 +70,9 @@ namespace WebApi.Data
             return db.USUARIOS.Where(a => a.login == Login && a.senha == Senha).FirstOrDefault();
         }
 
+        public static implicit operator DaoUsuario(DaoAcompanhamentos v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
