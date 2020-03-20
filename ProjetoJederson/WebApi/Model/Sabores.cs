@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 
 namespace WebApi.Model
 {
-    public class Usuario
+    public class Sabores
     {
         public long Id { get; set; }
-        public string Nome { get; set; }
-        public string Login { get; set; }
-        public string Senha { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set;  }
         public bool Ativo { get; set; }
+
     }
 }
+
+

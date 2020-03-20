@@ -11,63 +11,57 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosController : ControllerBase
+    public class AdicionalController : ControllerBase
     {
-        private ServiceUsuario serviceUsuario;
-        public UsuariosController(Contexto db)
+
+        private ServiceAdicional serviceAdicional;
+        public AdicionalController(Contexto db)
         {
-            
-            serviceUsuario = new ServiceUsuario(db);
+            serviceAdicional = new ServiceAdicional(db);
         }
 
-        // GET: api/Usuarios
         [HttpGet]
-        public IEnumerable<Usuario> Get()
+
+        public IEnumerable<Adicional> Get()
         {
             try
             {
-                return serviceUsuario.ListaTodos();
+                return serviceAdicional.ListaTodos();
             }
             catch (Exception ex)
             {
-
                 throw;
             }
-          
         }
-
-        // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "GetUsuario")]
-        public Usuario Get(int id)
+        [HttpGet("{id}", Name = "Get")]
+        public Adicional Get(int id)
         {
+
             try
             {
-                return serviceUsuario.PesquisarId(id);
+                return serviceAdicional.PesquisarPorId(id);
             }
             catch (Exception)
             {
 
                 throw;
             }
-          
+
         }
 
-        // POST: api/Usuarios
         [HttpPost]
-        public void Post([FromBody] Usuario objeto)
+
+        public void Post([FromBody] Adicional objeto)
         {
             try
             {
-                serviceUsuario.Gravar(objeto);
+                serviceAdicional.Record(objeto);
             }
             catch (Exception)
             {
 
                 throw;
             }
-            
         }
-
-       
     }
 }

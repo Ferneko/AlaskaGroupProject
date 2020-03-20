@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Windows\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Windows\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Windows\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Windows\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Windows\\Source\\Repos\\Ferneko\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\isabela.padilha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\isabela.padilha\\Desktop\\JEDERSON\\AlaskaGroupProject\\ProjetoJederson\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\isabela.padilha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,6 +51,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[3.1.0-preview2.19525.4, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
