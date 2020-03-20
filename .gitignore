@@ -5,3 +5,7 @@
 /.vs
 /.vs/AlaskaGroupProject
 /ProjetoJederson/.vs/ProjetoJederson
+/ProjetoJederson/WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache
+/ProjetoJederson/WebApi/obj
+/ProjetoJederson/WebApi/bin
+
