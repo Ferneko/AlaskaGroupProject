@@ -21,8 +21,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-
-        public IEnumerable<Sabores> Get()
+        public List<Sabores> Get()
         {
             try
             {
@@ -33,7 +32,7 @@ namespace WebApi.Controllers
                 throw;
             }
         }
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetSabores")]
         public Sabores Get(int id)
         {
 
