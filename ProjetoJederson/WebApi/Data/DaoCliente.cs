@@ -15,18 +15,25 @@ namespace WebApi.Data
             db = _db;
         }
 
-        public void Gravar(Cliente objeto)
+        public Cliente Gravar(Cliente objeto)
         {
             if (objeto.id == 0)
             {
                 db.CLIENTES.Add(objeto);
-                db.SaveChanges();
             }
             else
             {
                 db.CLIENTES.Update(objeto);
-                db.SaveChanges();
             }
+            db.SaveChanges();
+            return objeto;
+        }
+
+        public string Delete(Cliente objeto)
+        {
+            db.CLIENTES.Remove(objeto);
+            db.SaveChanges();
+            return "Cliente excluído com sucesso";
         }
 
         public List<Cliente> ListaTodosAtivos()

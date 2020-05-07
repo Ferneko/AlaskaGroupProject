@@ -16,10 +16,39 @@ namespace WebApi.Service
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
             dao = new DaoAcompanhamentos(db);
         }
-
-        public void Gravar(Acompanhamentos objeto)
+        public string Delete(long id)
         {
-            dao.Gravar(objeto);
+            Acompanhamentos objeto = PesquisarId(id);
+
+            if (objeto != null)
+            {
+                return dao.Delete(objeto);
+            }
+            else
+            {
+                return "Cliente não encontrado";
+            }
+        }
+        public Acompanhamentos Gravar(Acompanhamentos objeto)
+        {
+            if (string.IsNullOrEmpty(objeto.nome))
+            {
+                throw new Exception("Nome não pode estar em branco");
+            }
+
+
+            if (string.IsNullOrEmpty(objeto.descricao))
+            {
+                throw new Exception("descricao não pode estar em branco");
+            }
+
+            if (Pesquisar(objeto.nome).Count > 0)
+            {
+                throw new Exception("Nome já cadastrado");
+            }
+
+           
+            return dao.Gravar(objeto);
         }
 
         public List<Acompanhamentos> ListaTodosAtivos()

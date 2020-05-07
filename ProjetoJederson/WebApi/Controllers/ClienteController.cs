@@ -11,7 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class ClienteController : Controller
     {
         private ServiceCliente serviceCliente;
         public ClienteController(Contexto db)
@@ -20,48 +20,61 @@ namespace WebApi.Controllers
         }
         // GET: api/Usuarios
         [HttpGet]
-        public IEnumerable<Cliente> Get()
+        public JsonResult Get()
         {
             try
             {
-                return serviceCliente.ListaTodos();
+                return Json(serviceCliente.ListaTodos());
             }
             catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
 
         // GET: api/Usuarios/5
         [HttpGet("{id}", Name = "GetCliente")]
-        public Cliente Get(int id)
+        public JsonResult Get(int id)
         {
             try
             {
-                return serviceCliente.PesquisarId(id);
+                return Json(serviceCliente.PesquisarId(id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
 
         // POST: api/Usuarios
         [HttpPost]
-        public void Post([FromBody] Cliente objeto)
+        public JsonResult Post([FromBody] Cliente objeto)
         {
             try
             {
-                serviceCliente.Gravar(objeto);
+                return Json(serviceCliente.Gravar(objeto));
             }
-            catch (Exception)
+            catch (Exception ex )
             {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
 
-                throw;
+        }
+
+        [HttpDelete]
+        public JsonResult Delete([FromBody] Cliente objeto)
+        {
+            try
+            {
+                return Json(serviceCliente.Delete(objeto.id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Data;
+using WebApi.Model;
 
 namespace WebApi.Service
 {
@@ -13,10 +15,32 @@ namespace WebApi.Service
         {
             dao = new DaoAdicional(db);
         }
-
-        public void Gravar(Adicional objeto)
+        public string Delete(long id)
         {
-            dao.Gravar(objeto);
+            Adicional objeto = PesquisarPorId(id);
+
+            if (objeto != null)
+            {
+                return dao.Delete(objeto);
+            }
+            else
+            {
+                return "Erro 404 - não encontrado";
+            }
+        }
+        public Adicional Gravar(Adicional objeto)
+        {
+            if (string.IsNullOrEmpty(objeto.nome))
+            {
+                throw new Exception("Nome não pode estar em branco");
+            }
+
+            if (Pesquisar(objeto.nome).Count > 0)
+            {
+                throw new Exception("Nome já cadastrado");
+            }
+
+            return dao.Gravar(objeto);
         }
 
         public List<Adicional> ListaTodosAtivos()

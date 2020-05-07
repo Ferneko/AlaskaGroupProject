@@ -8,50 +8,43 @@ namespace WebApi.Data
 {
     public class DaoUsuario
     {
-        public DaoUsuario()
+        private Contexto db;
+        public DaoUsuario(Contexto db)
         {
-            //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
+            this.db = db;
         }
 
-        public void Gravar(Usuario objeto)
+        public string Delete(Usuario objeto)
+        {
+            db.USUARIOS.Remove(objeto);
+            db.SaveChanges();
+            return "Usuário excluído com sucesso";
+        }
+        public Usuario Gravar(Usuario objeto)
         {
             if(objeto.id == 0)
             {
-                //contexto.USUARIOS.add(objeto)
-                //db.savechages();
+                db.USUARIOS.Add(objeto);
+                db.SaveChanges();
             }
             else
             {
-                //contexto.USUARIOS.Update(objeto)
-                //db.savechages();
+                db.USUARIOS.Add(objeto);
+               
             }
-        }
-
-        internal void Gravar(Acompanhamentos objeto)
-        {
-            throw new NotImplementedException();
+            db.SaveChanges();
+            return objeto;
         }
 
         public List<Usuario> ListaTodosAtivos()
         {
-            List<Usuario> lista = new List<Usuario>();
-            lista.Add(new Usuario() { id = 1, ativo = true, login = "Fernando" });
-            lista.Add(new Usuario() { id = 2, ativo = true, login = "Isabela" });
-            lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo", senha = "branch" });
-            lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
-
-            return lista;
+            return db.USUARIOS.Where(a => a.ativo == true).ToList();
         }
 
         public List<Usuario> ListaTodos()
         {
-            List<Usuario> lista = new List<Usuario>();
-            lista.Add(new Usuario() { id = 1, ativo = true, login = "Fernando" });
-            lista.Add(new Usuario() { id = 2, ativo = true, login = "Isabela" });
-            lista.Add(new Usuario() { id = 3, ativo = true, login = "Gustavo" });
-            lista.Add(new Usuario() { id = 4, ativo = true, login = "Rafael" });
+            return db.USUARIOS.ToList();
 
-            return lista;
         }
 
         public List<Usuario> Pesquisar(string texto)
@@ -70,9 +63,6 @@ namespace WebApi.Data
             return db.USUARIOS.Where(a => a.login == Login && a.senha == Senha).FirstOrDefault();
         }
 
-        public static implicit operator DaoUsuario(DaoAcompanhamentos v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

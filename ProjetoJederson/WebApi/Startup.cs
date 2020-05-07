@@ -28,6 +28,16 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("CONEXAO")) );
+            services.AddCors(option =>
+            {
+                option.AddPolicy("basico", builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                });
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +49,7 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("basico");
             app.UseRouting();
 
             app.UseAuthorization();

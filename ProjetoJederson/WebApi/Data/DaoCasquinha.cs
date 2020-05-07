@@ -15,53 +15,64 @@ namespace WebApi.Data
             db = _db;
         }
 
-        public void Record(Casquinha objeto) 
+        public string Delete(Casquinha objeto)
+        {
+            db.CASQUINHAS.Remove(objeto);
+            db.SaveChanges();
+            return "Casquinha excluído com sucesso";
+        }
+
+        public Casquinha Record(Casquinha objeto) 
         { 
            if(objeto.Id==0)
             {
-                db.CASQUINHA.Add(objeto);
-                db.SaveChanges();
+                db.CASQUINHAS.Add(objeto);
+               
             }
            else
             {
-                db.CASQUINHA.Update(objeto);
-                db.SaveChanges();
+                db.CASQUINHAS.Update(objeto);
+                
             }
+
+            db.SaveChanges();
+            return objeto;
         }
 
         public List<Casquinha> ListAllActives() 
         {
-            return db.CASQUINHA.Where(a => a.Actives == true).ToList();
+            return db.CASQUINHAS.Where(a => a.Actives == true).ToList();
         }
 
         public List<Casquinha> ListAll()
         {
-            return db.CASQUINHA.ToList();
+            return db.CASQUINHAS.ToList();
         }
 
-        internal List<Casquinha> SearchId(long Id)
+        public Casquinha SearchId(long Id)
         {
-            throw new NotImplementedException();
+            return db.CASQUINHAS.Where(a => a.Id == Id).FirstOrDefault();
+
+                
         }
 
-        internal List<Casquinha> Search(string Name)
+        public List<Casquinha> Search(string texto)
         {
-            throw new NotImplementedException();
+            return db.CASQUINHAS.Where(a => texto.Contains(a.Id.ToString()) || a.Name.Contains(texto) || a.Type.Contains(texto) ).ToList();
         }
 
-        public List<Casquinha> SearchId(int Id) 
-        {
-            return db.CASQUINHA.Where(a => a.Id==Id).ToList();
-
-        }
+     
 
         public List<Casquinha> SearchAll(int Id, string Name, string Type, decimal Price)
         {
-            return db.CASQUINHA.Where(a => a.Id== Id || a.Name.Contains(Name) || a.Type.Contains(Type) || a.Price == Price).ToList();
+            return db.CASQUINHAS.Where(a => a.Id== Id || a.Name.Contains(Name) || a.Type.Contains(Type) || a.Price == Price).ToList();
 
         }
 
-       
+        internal List<Casquinha> Pesquisar(string texto)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     

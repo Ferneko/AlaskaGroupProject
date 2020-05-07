@@ -11,7 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CasquinhaController : ControllerBase
+    public class CasquinhaController : Controller
     {
         private ServiceCasquinha serviceCasquinha;
         public CasquinhaController(Contexto db)
@@ -22,11 +22,11 @@ namespace WebApi.Controllers
 
         // GET: api/Casquinha
         [HttpGet]
-        public IEnumerable<Casquinha> Get()
+        public JsonResult Get()
         {
             try
             {
-                return serviceCasquinha.ListAll();
+                return Json(serviceCasquinha.ListAll());
             }
             catch (Exception ex)
             {
@@ -38,14 +38,14 @@ namespace WebApi.Controllers
 
         // GET: api/Casquinha/5
         [HttpGet("{id}", Name = "GetCasquinha")]
-        public List<Casquinha> Get(int Id, string Name, string Type, decimal Price)
+        public JsonResult Get(int Id)
         {
            
             try
             {
-                return serviceCasquinha.SearchAll(Id, Name, Type, Price);
+                return Json(serviceCasquinha.SearchId(Id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -55,11 +55,11 @@ namespace WebApi.Controllers
 
         // POST: api/Casquinha
         [HttpPost]
-        public void Post([FromBody] Casquinha objeto)
+        public JsonResult Post([FromBody] Casquinha objeto)
         {
             try
             {
-                serviceCasquinha.Record(objeto);
+                return Json(serviceCasquinha.Record(objeto));
             }
             catch (Exception)
             {
@@ -70,5 +70,18 @@ namespace WebApi.Controllers
         }
 
 
+        [HttpDelete]
+        public JsonResult Delete([FromBody] Cliente objeto)
+        {
+            try
+            {
+                return Json(serviceCasquinha.Delete(objeto.id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
     }
 }

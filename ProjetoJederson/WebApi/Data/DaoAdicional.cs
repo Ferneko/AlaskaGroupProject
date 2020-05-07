@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Model;
 
 namespace WebApi.Data
 {
@@ -15,38 +16,46 @@ namespace WebApi.Data
             db = _db;
         }
 
-        public void Gravar(Adicional objeto)
+        public string Delete(Adicional objeto)
         {
-            if (objeto.Id == 0)
+            db.ADICIONAIS.Remove(objeto);
+            db.SaveChanges();
+            return "Adicional excluído com sucesso";
+        }
+
+        public Adicional Gravar(Adicional objeto)
+        {
+            if (objeto.id == 0)
             {
-                db.ADICIONAL.Add(objeto);
-                db.SaveChanges();
+                db.ADICIONAIS.Add(objeto);
+               
             }
             else
             {
-                db.ADICIONAL.Update(objeto);
-                db.SaveChanges();
+                db.ADICIONAIS.Update(objeto);
+               
             }
-
+            db.SaveChanges();
+            return objeto;
         }
 
         public List<Adicional> ListaTodosAtivos()
         {
-            return db.ADICIONAL.Where(a => a.Ativo == true).ToList();
+            return db.ADICIONAIS.Where(a => a.ativo == true).ToList();
         }
 
         public List<Adicional> ListaTodos()
         {
-            return db.ADICIONAL.ToList();
+            return db.ADICIONAIS.ToList();
         }
 
         public List<Adicional> Pesquisar(string texto)
         {
-            return db.ADICIONAL.Where(a => a.Name.Contains(texto)).ToList();
+            return db.ADICIONAIS.Where(a => a.nome.Contains(texto)).ToList();
         }
-        public Adcional PesquisarPorId(long id)
+        public Adicional PesquisarPorId(long id)
         {
-            return db.ADICIONAL.Where(a => a.Id == id).FirstOrDefault();
+            return db.ADICIONAIS.Where(a => a.id == id).FirstOrDefault();
         }
 
     }

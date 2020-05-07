@@ -15,22 +15,28 @@ namespace WebApi.Data
             db = _db;
         }
 
-       public void Record(Sabores objeto)
-       {
-        if(objeto.Id == 0)
+        public string Delete(Sabores objeto)
         {
-            db.SABORES.Add(objeto);
-                db.SaveChanges();
-        }
-        else
-        {
-                db.SABORES.Update(objeto);
-                db.SaveChanges();
-            }
-        
+            db.SABORES.Remove(objeto);
+            db.SaveChanges();
+            return "SABORES excluído com sucesso";
         }
 
-       public List<Sabores> ListaTodosAtivos()
+        public Sabores Record(Sabores objeto)
+        {
+            if (objeto.Id == 0)
+            {
+                db.SABORES.Add(objeto);
+            }
+            else
+            {
+                db.SABORES.Update(objeto);
+            }
+            db.SaveChanges();
+            return objeto;
+        }
+
+        public List<Sabores> ListaTodosAtivos()
         {
             return db.SABORES.Where(a => a.Ativo == true).ToList();
         }

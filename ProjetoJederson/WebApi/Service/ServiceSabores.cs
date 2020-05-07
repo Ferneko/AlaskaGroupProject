@@ -16,9 +16,31 @@ namespace WebApi.Service
             dao = new DaoSabores(db);
         }
 
-        public void Record(Sabores objeto)
+        public string Delete(long id)
         {
-            dao.Record(objeto);
+            Sabores objeto = SearchId(id);
+
+            if (objeto != null)
+            {
+                return dao.Delete(objeto);
+            }
+            else
+            {
+                return "Cliente não encontrado";
+            }
+        }
+        public Sabores Record(Sabores objeto)
+        {
+            if (string.IsNullOrEmpty(objeto.Name))
+            {
+                throw new Exception("Nome não pode estar em branco");
+            }
+
+            if (Search(objeto.Name).Count > 0)
+            {
+                throw new Exception("Nome já cadastrado");
+            }
+            return dao.Record(objeto);
         }
 
         public List<Sabores> ListaTodosAtivos()

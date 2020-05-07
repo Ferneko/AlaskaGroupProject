@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Data;
+using WebApi.Exceptions;
 using WebApi.Model;
 
 namespace WebApi.Service
@@ -13,14 +14,50 @@ namespace WebApi.Service
 
         public ServiceUsuario(Contexto db)
         {
-            //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
-
-            dao = new DaoUsuario(db); 
+            dao = new DaoUsuario(db);
         }
-
-        public void Gravar(Usuario objeto)
+        public string Delete(long id)
         {
-            dao.Gravar(objeto);
+            Usuario usuario = PesquisarId(id);
+
+            if (usuario != null)
+            {
+                return dao.Delete(usuario);
+            }
+            else
+            {
+                return "Usuário não encontrado";
+            }
+        }
+        public Usuario Gravar(Usuario objeto)
+        {
+            if (string.IsNullOrEmpty(objeto.nome))
+            {
+                throw new Exception("Nome não pode estar em branco");
+            }
+
+            if (string.IsNullOrEmpty(objeto.login))
+            {
+                throw new Exception("login não pode estar em branco");
+
+            }
+
+            if (string.IsNullOrEmpty(objeto.senha))
+            {
+                throw new Exception("senha não pode estar em branco");
+            }
+
+            if (Pesquisar(objeto.login).Count > 0)
+            {
+                throw new RegistroRepetidoException("Login já cadastrado");
+            }
+
+            if(Pesquisar(objeto.nome).Count > 0)
+            {
+                throw new RegistroRepetidoException("Nome já cadastrado");
+            }
+
+            return dao.Gravar(objeto);
         }
 
         public List<Usuario> ListaTodosAtivos()
@@ -54,7 +91,7 @@ namespace WebApi.Service
             {
                 return false;
             }
-            
+
         }
     }
 }

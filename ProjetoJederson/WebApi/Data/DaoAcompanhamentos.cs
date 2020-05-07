@@ -15,18 +15,27 @@ namespace WebApi.Data
             db = _db;
         }
 
-        public void Gravar(Model.Acompanhamentos objeto)
+        public string Delete(Acompanhamentos objeto)
+        {
+            db.ACOMPANHAMENTOS.Remove(objeto);
+            db.SaveChanges();
+            return "Acompanhamentos excluído com sucesso";
+        }
+
+        public Acompanhamentos Gravar(Acompanhamentos objeto)
         {
             if (objeto.id == 0)
             {
                 db.ACOMPANHAMENTOS.Add(objeto);
-                db.SaveChanges();
+              
             }
             else
             {
                 db.ACOMPANHAMENTOS.Update(objeto);
-                db.SaveChanges();
+               
             }
+            db.SaveChanges();
+            return objeto;
         }
 
         public List<Model.Acompanhamentos> ListaTodosAtivos()

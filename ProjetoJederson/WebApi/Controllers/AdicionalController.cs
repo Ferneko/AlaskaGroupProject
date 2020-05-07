@@ -11,7 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdicionalController : ControllerBase
+    public class AdicionalController : Controller
     {
 
         private ServiceAdicional serviceAdicional;
@@ -22,11 +22,11 @@ namespace WebApi.Controllers
 
         [HttpGet]
 
-        public IEnumerable<Adicional> Get()
+        public JsonResult Get()
         {
             try
             {
-                return serviceAdicional.ListaTodos();
+                return Json(serviceAdicional.ListaTodos());
             }
             catch (Exception ex)
             {
@@ -34,16 +34,15 @@ namespace WebApi.Controllers
             }
         }
         [HttpGet("{id}", Name = "Get")]
-        public Adicional Get(int id)
+        public JsonResult Get(int id)
         {
 
             try
             {
-                return serviceAdicional.PesquisarPorId(id);
+                return Json(serviceAdicional.PesquisarPorId(id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 throw;
             }
 
@@ -51,17 +50,31 @@ namespace WebApi.Controllers
 
         [HttpPost]
 
-        public void Post([FromBody] Adicional objeto)
+        public JsonResult Post([FromBody] Adicional objeto)
         {
             try
             {
-                serviceAdicional.Record(objeto);
+                return Json(serviceAdicional.Gravar(objeto));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 throw;
             }
+        }
+
+
+        [HttpDelete]
+        public JsonResult Delete([FromBody] Cliente objeto)
+        {
+            try
+            {
+                return Json(serviceAdicional.Delete(objeto.id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
     }
 }

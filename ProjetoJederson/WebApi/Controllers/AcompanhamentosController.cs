@@ -11,7 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AcompanhamentosController : ControllerBase
+    public class AcompanhamentosController : Controller
     {
         private ServiceAcompanhamentos serviceAcompanhamentos;
         public AcompanhamentosController(Contexto db)
@@ -22,11 +22,11 @@ namespace WebApi.Controllers
 
         // GET: api/Acompanhamentos
         [HttpGet]
-        public IEnumerable<Acompanhamentos> Get()
+        public JsonResult Get()
         {
             try
             {
-                return serviceAcompanhamentos.ListaTodos();
+                return Json(serviceAcompanhamentos.ListaTodos());
             }
             catch (Exception ex)
             {
@@ -37,13 +37,13 @@ namespace WebApi.Controllers
 
         // GET: api/Acompanhamentos/5
         [HttpGet("{id}", Name = "GetAcompanhamento")]
-        public Acompanhamentos Get(int id)
+        public JsonResult Get(int id)
         {
             try
             {
-                return serviceAcompanhamentos.PesquisarId(id);
+                return Json(serviceAcompanhamentos.PesquisarId(id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -51,19 +51,36 @@ namespace WebApi.Controllers
           
         }
 
+      
+
         // POST: api/Acompanhamentos
         [HttpPost]
-        public void Post([FromBody] Acompanhamentos objeto)
+        public JsonResult Post([FromBody] Acompanhamentos objeto)
         {
             try
             {
-                serviceAcompanhamentos.Gravar(objeto);
+                return Json(serviceAcompanhamentos.Gravar(objeto));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
    
+        }
+
+
+        [HttpDelete]
+        public JsonResult Delete([FromBody] Cliente objeto)
+        {
+            try
+            {
+                return Json(serviceAcompanhamentos.Delete(objeto.id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
 
     }

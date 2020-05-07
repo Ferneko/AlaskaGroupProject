@@ -11,7 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SaboresController : ControllerBase
+    public class SaboresController : Controller
     {
 
         private ServiceSabores serviceSabores;
@@ -21,11 +21,11 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public List<Sabores> Get()
+        public JsonResult Get()
         {
             try
             {
-                return serviceSabores.ListaTodos();
+                return Json(serviceSabores.ListaTodos());
             }
             catch (Exception ex)
             {
@@ -33,14 +33,14 @@ namespace WebApi.Controllers
             }
         }
         [HttpGet("{id}", Name = "GetSabores")]
-        public Sabores Get(int id)
+        public JsonResult Get(int id)
         {
 
             try
             {
-                return serviceSabores.SearchId(id);
+                return Json(serviceSabores.SearchId(id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -50,17 +50,32 @@ namespace WebApi.Controllers
 
         [HttpPost]
 
-        public void Post([FromBody] Sabores objeto)
+        public JsonResult Post([FromBody] Sabores objeto)
         {
             try
             {
-                serviceSabores.Record(objeto);
+                return Json(serviceSabores.Record(objeto));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
             }
+        }
+
+
+        [HttpDelete]
+        public JsonResult Delete([FromBody] Cliente objeto)
+        {
+            try
+            {
+                return Json(serviceSabores.Delete(objeto.id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
     }
 }
