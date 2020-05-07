@@ -26,7 +26,7 @@ namespace WebApi.Service
             }
             else
             {
-                return "Cliente não encontrado";
+                return "Acompanhamento não encontrado";
             }
         }
         public Acompanhamentos Gravar(Acompanhamentos objeto)

@@ -70,7 +70,7 @@ namespace WebApi.Controllers
 
 
         [HttpDelete]
-        public JsonResult Delete([FromBody] Cliente objeto)
+        public JsonResult Delete([FromBody] Acompanhamentos objeto)
         {
             try
             {
