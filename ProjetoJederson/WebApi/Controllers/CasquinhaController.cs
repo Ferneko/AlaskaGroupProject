@@ -75,7 +75,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Json(serviceCasquinha.Delete(objeto.id));
+                return Json(serviceCasquinha.Delete(objeto.Id));
             }
             catch (Exception ex)
             {

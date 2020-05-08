@@ -69,7 +69,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Json(serviceSabores.Delete(objeto.id));
+                return Json(serviceSabores.Delete(objeto.Id));
             }
             catch (Exception ex)
             {
