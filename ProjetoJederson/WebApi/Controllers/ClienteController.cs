@@ -50,6 +50,21 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("PesquisarCliente/{query}", Name = "PesquisarCliente")]
+        public JsonResult PesquisarCliente(string query)
+        {
+            try
+            {
+                return Json(serviceCliente.Pesquisar(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
         // POST: api/Usuarios
         [HttpPost]
         public JsonResult Post([FromBody] Cliente objeto)
@@ -66,11 +81,11 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete]
-        public JsonResult Delete([FromBody] Cliente objeto)
+        public JsonResult Delete(int id)
         {
             try
             {
-                return Json(serviceCliente.Delete(objeto.id));
+                return Json(serviceCliente.Delete(id));
             }
             catch (Exception ex)
             {

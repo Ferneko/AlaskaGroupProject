@@ -1,11 +1,13 @@
 import React from 'react';
-import Layout from './Layout/Layout';
 
+import Rotas from './Rotas/Rotas'
 
 function App() {
   return (
     <div className="App">
-      <Layout></Layout>
+     
+        <Rotas>  </Rotas>
+      
     </div>
   );
 }

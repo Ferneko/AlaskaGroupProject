@@ -19,17 +19,18 @@ namespace WebApi.Service
             dao = new DaoCliente(db);
         }
 
-        public string Delete(long id)
+        public List<Cliente> Delete(long id)
         {
             Cliente cliente = PesquisarId(id);
 
             if (cliente != null)
             {
-                return dao.Delete(cliente);
+                dao.Delete(cliente);
+                return ListaTodos();
             }
             else
             {
-                return "Cliente não encontrado";
+                throw new Exception("Cliente não encontrado");
             }
         } 
 
@@ -40,16 +41,6 @@ namespace WebApi.Service
                
                     throw new Exception("Nome não pode estar em branco");
               
-            }
-
-            if (Pesquisar(objeto.cpf).Count > 0)
-            {
-                throw new RegistroRepetidoException("CPF já cadastrado");
-            }
-
-            if (Pesquisar(objeto.nome).Count > 0)
-            {
-                throw new RegistroRepetidoException("Nome já cadastrado");
             }
 
             return  dao.Gravar(objeto);

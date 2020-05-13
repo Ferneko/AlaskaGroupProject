@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Layout.css';
+import { Link } from "react-router-dom";
 export default class extends Component {
     constructor(props){
         super(props);
@@ -46,16 +47,15 @@ export default class extends Component {
                       </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <span data-feather="bar-chart-2"></span>
-                        Clientes
-                      </a>
+                                <Link to="/ListaClientes" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Clientes</Link>
                                 </li>
+                                
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <span data-feather="layers"></span>
-                        Usuários
-                      </a>
+                                <Link to="ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
+                                   
+                                       
+                        
+                      
                                 </li>
                             </ul>
 
