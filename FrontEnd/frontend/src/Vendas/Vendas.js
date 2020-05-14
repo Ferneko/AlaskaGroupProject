@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../Layout/Layout'
 
-export default class extends Component
+export default class Vendas extends Component
 {
     render(){
         return (
@@ -9,6 +9,10 @@ export default class extends Component
                 <h1>Tela de vendas</h1>
                 <h4>teste com a branch no code</h4>
                 <h4>agora vou atualizar a branch pois de publica-la</h4>
+
+                <p>
+                    Testando o git pull
+                </p>
             </Layout>
         )
     }
