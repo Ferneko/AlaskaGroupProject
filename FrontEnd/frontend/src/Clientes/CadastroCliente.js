@@ -118,52 +118,75 @@ export default class CadastroCliente extends Component {
                     </div>
                     : ""}
 
-                <div className="row">
+                
 
                     <div className="col-4"></div>
-                    <div className="col-4">
-                        <div className="form-group">
+                    <div className="col-4"></div>
+                   <div class="row">
+                        <div className="form-group"  class="col-md-4">
                             <label>Nome</label>
                             <input type="text" className="form-control" id="nome" name="nome" value={this.state.nome} onChange={this.setNome} />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group" class="col-md-4">
                             <label>CPF</label>
                             <input type="text" className="form-control" id="cpf" name="cpf" value={this.state.cpf} onChange={this.setCpf} />
-                        </div>
-                        <div className="form-group">
+                            </div>
+                        <div className="form-group" class="col-md-4">
                             <label>Telefone</label>
                             <input type="text" className="form-control" name="telefone" value={this.state.telefone} onChange={this.setTelefone} />
                         </div>
-                        <div className="form-group">
+                        </div>
+                        
+                        <div class="row">
+                        <div className="form-group" class="col-md-4">
                             <label>Endereço</label>
                             <input type="text" className="form-control" name="endereco" value={this.state.endereco} onChange={this.setEndereco} />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group" class="col-md-4">
                             <label>Bairro</label>
                             <input type="text" className="form-control" name="bairro" value={this.state.bairro} onChange={this.setBairro} />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group" class="col-md-4">
                             <label>CEP</label>
                             <input type="text" className="form-control" name="cep" value={this.state.cep} onChange={this.setCep} />
                         </div>
-                        <div className="form-group">
+                        </div>
+
+                        <div class="row">
+                        <div className="form-group" class="col-md-4">
                             <label>Cidade</label>
                             <input type="text" className="form-control" name="cidade" value={this.state.cidade} onChange={this.setCidade} />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group" class="col-md-4">
                             <label>Estado</label>
                             <input type="text" className="form-control" name="estado" value={this.state.estado} onChange={this.setEstado} />
                         </div>
-                        <div className="form-group">
-                            <label>Ativo</label>
-                            <input type="checkbox" className="form-control" name="ativo" value={this.state.ativo} onChange={this.setAtivo} />
-                        </div>
-                        <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
-                    </div>
-                    <div className="col-4"></div>
 
-                </div>
-            </Layout>);
+                      
+
+                        <div className="form-group col-md-4">
+                        <label> Ativo: </label>
+                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
+                             <option value="">Selecione...</option>
+                             <option value="1">Sim</option>
+                             <option value="2">Não</option>
+                            </select>
+                        </div>
+
+                        </div>
+                        <br></br>
+                            
+                      
+                        
+                      
+                        <div class="row">
+                        <button className="btn btn-success"  onClick={this.enviarParaBackEnd}>Salvar</button>
+                        </div>
+                   
+                
+           
+                
+             </Layout>);
     }
 }
 

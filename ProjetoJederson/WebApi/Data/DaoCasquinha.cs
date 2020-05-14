@@ -22,59 +22,56 @@ namespace WebApi.Data
             return "Casquinha excluído com sucesso";
         }
 
-        public Casquinha Record(Casquinha objeto) 
-        { 
-           if(objeto.Id==0)
+        public Casquinha Gravar(Casquinha objeto)
+        {
+            if (objeto.Id == 0)
             {
                 db.CASQUINHAS.Add(objeto);
-               
+
             }
-           else
+            else
             {
                 db.CASQUINHAS.Update(objeto);
-                
+
             }
 
             db.SaveChanges();
             return objeto;
         }
 
-        public List<Casquinha> ListAllActives() 
+        public List<Casquinha> ListaTodosAtivos()
         {
-            return db.CASQUINHAS.Where(a => a.Actives == true).ToList();
+            return db.CASQUINHAS.Where(a => a.Ativo == true).ToList();
         }
 
-        public List<Casquinha> ListAll()
+        public List<Casquinha> ListaTodos()
         {
             return db.CASQUINHAS.ToList();
         }
 
-        public Casquinha SearchId(long Id)
+        public Casquinha PesquisarId(long Id)
         {
             return db.CASQUINHAS.Where(a => a.Id == Id).FirstOrDefault();
 
-                
+
         }
 
-        public List<Casquinha> Search(string texto)
+        public List<Casquinha> Pesquisar(string texto)
         {
-            return db.CASQUINHAS.Where(a => texto.Contains(a.Id.ToString()) || a.Name.Contains(texto) || a.Type.Contains(texto) ).ToList();
+            return db.CASQUINHAS.Where(a => texto.Contains(a.Id.ToString()) || a.Nome.Contains(texto) || a.Tipo.Contains(texto)).ToList();
         }
 
-     
 
-        public List<Casquinha> SearchAll(int Id, string Name, string Type, decimal Price)
+
+        public List<Casquinha> PesquisarTodos(int Id, string Nome, string Tipo, decimal Preco)
         {
-            return db.CASQUINHAS.Where(a => a.Id== Id || a.Name.Contains(Name) || a.Type.Contains(Type) || a.Price == Price).ToList();
+            return db.CASQUINHAS.Where(a => a.Id == Id || a.Nome.Contains(Nome) || a.Tipo.Contains(Tipo) || a.Preco == Preco).ToList();
 
         }
 
-        internal List<Casquinha> Pesquisar(string texto)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 
-    
-   
+
+
 }

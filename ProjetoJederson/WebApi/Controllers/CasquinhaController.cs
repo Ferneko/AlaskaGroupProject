@@ -26,32 +26,52 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Json(serviceCasquinha.ListAll());
+                return Json(serviceCasquinha.ListaTodos());
             }
             catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
-
         }
+
+
+
+
 
         // GET: api/Casquinha/5
         [HttpGet("{id}", Name = "GetCasquinha")]
         public JsonResult Get(int Id)
         {
-           
+
             try
             {
-                return Json(serviceCasquinha.SearchId(Id));
+                return Json(serviceCasquinha.PesquisarId(Id));
             }
             catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
+
+        [HttpGet("PesquisarCasquinha/{query}", Name = "PesquisarCasquinha")]
+        public JsonResult PesquisarCasquinha(string query)
+        {
+            try
+            {
+                return Json(serviceCasquinha.Pesquisar(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+
 
         // POST: api/Casquinha
         [HttpPost]
@@ -59,15 +79,17 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Json(serviceCasquinha.Record(objeto));
+                return Json(serviceCasquinha.Gravar(objeto));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
+
+
 
 
         [HttpDelete]
