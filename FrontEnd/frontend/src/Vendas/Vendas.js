@@ -8,6 +8,7 @@ export default class extends Component
             <Layout>
                 <h1>Tela de vendas</h1>
                 <h4>teste com a branch no code</h4>
+                <h4>agora vou atualizar a branch pois de publica-la</h4>
             </Layout>
         )
     }
