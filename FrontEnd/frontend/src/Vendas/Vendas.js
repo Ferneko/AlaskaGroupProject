@@ -13,6 +13,10 @@ export default class Vendas extends Component
                 <p>
                     Testando o git pull
                 </p>
+
+                <p>
+                   teste na branch teste-aula
+                </p>
             </Layout>
         )
     }
