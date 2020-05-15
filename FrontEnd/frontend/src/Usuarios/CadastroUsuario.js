@@ -8,25 +8,15 @@ export default class CadastroUsuario extends Component {
         this.state = {
 
             nome: "",
-            cpf: "",
-            telefone: "",
-            endereco: "",
-            bairro: "",
-            cep: "",
-            cidade: "",
-            estado: "",
+            login: "",
+            senha: "",
             ativo: true,
             erro: null
         }
 
         this.setNome = this.setNome.bind(this)
-        this.setCpf = this.setCpf.bind(this)
-        this.setTelefone = this.setTelefone.bind(this)
-        this.setEndereco = this.setEndereco.bind(this)
-        this.setBairro = this.setBairro.bind(this)
-        this.setCep = this.setCep.bind(this)
-        this.setCidade = this.setCidade.bind(this)
-        this.setEstado = this.setEstado.bind(this)
+        this.setLogin = this.setCpf.bind(this)
+        this.setSenha = this.setTelefone.bind(this)
         this.setAtivo = this.setAtivo.bind(this)
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
     }
@@ -37,42 +27,15 @@ export default class CadastroUsuario extends Component {
         this.setState({
             nome: e.target.value,
         })
-
     }
-
-    setCpf(e) {
+    setLogin(e) {
         this.setState({
-            cpf: e.target.value,
+            login: e.target.value,
         })
     }
-    setTelefone(e) {
+    setSenha(e) {
         this.setState({
-            telefone: e.target.value,
-        })
-    }
-    setEndereco(e) {
-        this.setState({
-            endereco: e.target.value,
-        })
-    }
-    setBairro(e) {
-        this.setState({
-            bairro: e.target.value,
-        })
-    }
-    setCep(e) {
-        this.setState({
-            cep: e.target.value,
-        })
-    }
-    setCidade(e) {
-        this.setState({
-            cidade: e.target.value,
-        })
-    }
-    setEstado(e) {
-        this.setState({
-            estado: e.target.value,
+            senha: e.target.value,
         })
     }
     setAtivo(e) {
@@ -84,13 +47,8 @@ export default class CadastroUsuario extends Component {
         console.log(this.state)
         Conexao.post("/Usuario", { 
             nome: this.state.nome,
-            cpf: this.state.cpf,
-            telefone: this.state.telefone,
-            endereco: this.state.endereco,
-            bairro: this.state.bairro,
-            cep: this.state.cep,
-            cidade: this.state.cidade,
-            estado: this.state.estado,
+            login: this.state.login,
+            senha: this.state.senha,
             ativo: this.state.ativo
 
          }).then(resposta => {
@@ -128,23 +86,11 @@ export default class CadastroUsuario extends Component {
                         </div>
                         <div className="form-group">
                             <label>Login</label>
-                            <input type="text" className="form-control" id="login" name="login" value={this.state.cpf} onChange={this.setCpf} />
+                            <input type="text" className="form-control" id="login" name="login" value={this.state.login} onChange={this.setlogin} />
                         </div>
                         <div className="form-group">
-                            <label>Telefone</label>
-                            <input type="text" className="form-control" name="telefone" value={this.state.telefone} onChange={this.setTelefone} />
-                        </div>
-                        <div className="form-group">
-                            <label>Endereço</label>
-                            <input type="text" className="form-control" name="endereco" value={this.state.endereco} onChange={this.setEndereco} />
-                        </div>
-                        <div className="form-group">
-                            <label>Bairro</label>
-                            <input type="text" className="form-control" name="bairro" value={this.state.bairro} onChange={this.setBairro} />
-                        </div>
-                        <div className="form-group">
-                            <label>CEP</label>
-                            <input type="text" className="form-control" name="cep" value={this.state.cep} onChange={this.setCep} />
+                            <label>Senha</label>
+                            <input type="text" className="form-control" name="senha" value={this.state.senha} onChange={this.setsenha} />
                         </div>
                         <div className="form-group">
                             <label>Ativo</label>
