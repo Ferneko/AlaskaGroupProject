@@ -8,9 +8,9 @@ namespace WebApi.Model
     public class Casquinha
     {
         public long Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public decimal Price  { get; set; }
-         public bool Actives { get; set; }
+        public string Nome { get; set; }
+        public string Tipo { get; set; }
+        public decimal Preco { get; set; }
+        public bool Ativo { get; set; }
     }
 }

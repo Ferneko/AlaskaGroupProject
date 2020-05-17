@@ -22,12 +22,7 @@ export default class extends Component {
                     <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                         <div className="sidebar-sticky">
                             <ul className="nav flex-column">
-                                <li className="nav-item">
-                                    <a className="nav-link active" href="#">
-                                        <span data-feather="home"></span>
-                        Casquinhas <span className="sr-only">(current)</span>
-                                    </a>
-                                </li>
+                                
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
                                         <span data-feather="file"></span>
@@ -51,9 +46,10 @@ export default class extends Component {
                                 
                                 <li className="nav-item">
                                 <Link to="ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
-                                   
-                                       
-                        
+
+                                 <li className="nav-item">   
+                                <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinha</Link>      
+                                </li>
                       
                                 </li>
                             </ul>

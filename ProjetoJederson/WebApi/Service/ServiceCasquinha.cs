@@ -17,57 +17,58 @@ namespace WebApi.Service
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
             dao = new DaoCasquinha(db);
         }
-        public string Delete(long id)
+        public List<Casquinha> Delete(long id)
         {
-            Casquinha objeto = SearchId(id);
+            Casquinha casquinha = PesquisarId(id);
 
-            if (objeto != null)
+            if (casquinha != null)
             {
-                return dao.Delete(objeto);
+                dao.Delete(casquinha);
+                return ListaTodos();
             }
             else
             {
-                return "erro 404 não encontrado";
+                throw new Exception("Casquinha não encontrada");
             }
         }
-        public Casquinha Record(Casquinha objeto)
+        public Casquinha Gravar(Casquinha objeto)
         {
 
-            if (string.IsNullOrEmpty(objeto.Name))
+            if (string.IsNullOrEmpty(objeto.Nome))
             {
                 throw new Exception("Nome não pode estar em branco");
             }
 
-            if (Pesquisar(objeto.Name).Count > 0)
+            if (Pesquisar(objeto.Nome).Count > 0)
             {
                 throw new Exception("Nome já cadastrado");
             }
-            return dao.Record(objeto);
+            return dao.Gravar(objeto);
         }
 
-        public List<Casquinha>ListAllActives()
+        public List<Casquinha> ListaTodosAtivos()
         {
-            return dao.ListAllActives();
+            return dao.ListaTodosAtivos();
         }
 
-        public List<Casquinha> ListAll()
+        public List<Casquinha> ListaTodos()
         {
-            return dao.ListAll();
+            return dao.ListaTodos();
         }
 
-        public List<Casquinha> SearchAll(int Id, string Name, string Type, decimal Price)
+        public List<Casquinha> PesquisarTodos(int Id, string Name, string Type, decimal Price)
         {
-            return dao.SearchAll(Id, Name, Type, Price);
+            return dao.PesquisarTodos(Id, Name, Type, Price);
         }
 
-        public Casquinha SearchId(long id)
+        public Casquinha PesquisarId(long id)
         {
-            return dao.SearchId(id);
+            return dao.PesquisarId(id);
         }
 
         public List<Casquinha> Pesquisar(string texto)
         {
-            return dao.Search(texto);
+            return dao.Pesquisar(texto);
         }
     }
 }
