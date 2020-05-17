@@ -8,6 +8,8 @@ import NaoEncontrado from '../404/NaoEncontrado';
 import Layout from '../Layout/Layout';
 import ListaCasquinha from "../Casquinha/ListaCasquinha";
 import CadastroCasquinha from "../Casquinha/CadastroCasquinha";
+import CadastroUsuario from "../Usuarios/CadastroUsuario";
+import ListaUsuario from "../Usuarios/ListaUsuarios";
 const Routes = () => (
     <BrowserRouter>
         <Switch>
@@ -17,6 +19,8 @@ const Routes = () => (
                 <Route path="/ListaSabores"component={ListaSabores}/>
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
+                <Route path="/CadastroUsuario" component={CadastroUsuario} />
+                <Route path="/ListaUsuarios" component={ListaUsuario} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
         </Switch>
