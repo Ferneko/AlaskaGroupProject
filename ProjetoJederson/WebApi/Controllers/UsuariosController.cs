@@ -55,7 +55,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                throw new RegistroRepetidoException("Erro de proposito");
+               
                 return Json(serviceUsuario.Pesquisar(texto));
             }
             catch (Exception ex)
