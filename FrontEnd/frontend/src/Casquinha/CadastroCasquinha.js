@@ -42,8 +42,9 @@ export default class CadastroCasquinha extends Component {
     }
   
     setAtivo(e) {
+        let valor = e.target.value == 1 ? true: false;
         this.setState({
-            ativo: e.target.value,
+            ativo: valor,
         })
     }
     enviarParaBackEnd() {
@@ -55,12 +56,13 @@ export default class CadastroCasquinha extends Component {
             ativo: this.state.ativo,
 
          }).then(resposta => {
+             console.log('entrou aqui');
             const dados = resposta.data;
             console.log(dados.erro)
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                alert("deu");
+               
                 this.props.history.push('/ListaCasquinha')
             }
         }).catch(error => {
@@ -103,10 +105,9 @@ export default class CadastroCasquinha extends Component {
 
                        <div className="form-group ">
                         <label> Ativo: </label>
-                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
-                             <option value="">Selecione...</option>
+                            <select className="form-control" onChange={this.setAtivo}>
                              <option value="1">Sim</option>
-                             <option value="2">Não</option>
+                             <option value="0">Não</option>
                             </select>
                         </div>
                         </div>
@@ -115,7 +116,7 @@ export default class CadastroCasquinha extends Component {
                         
                     </div><br></br>
                    
-                    <div class="row">
+                    <div className="row">
                         <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
                      </div>
                      

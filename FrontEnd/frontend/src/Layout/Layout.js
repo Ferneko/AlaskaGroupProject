@@ -24,38 +24,30 @@ export default class extends Component {
                             <ul className="nav flex-column">
                                 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <span data-feather="file"></span>
-                        Acompanhamentos
-                      </a>
+                                    <a className="nav-link" href="#"><span data-feather="file"></span>Acompanhamentos </a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
-                                        <span data-feather="shopping-cart"></span>
-                        Adicionais
-                      </a>
+                                        <span data-feather="shopping-cart"></span>Adicionais </a>
                                 </li>
+
                                 <li className="nav-item">
-                                <Link to="/ListaSabores" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Sabores</Link>
-                                        
-                        
+                                    <Link to="/ListaSabores" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Sabores</Link>
                                 </li>
+
                                 <li className="nav-item">
-                                <Link to="/ListaClientes" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Clientes</Link>
+                                    <Link to="/ListaClientes" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Clientes</Link>
                                 </li>
                                 
                                 <li className="nav-item">
-                                <Link to="ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
+                                    <Link to="/ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
+                                </li>
 
-                                 <li className="nav-item">   
-                                <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinha</Link>      
+                                <li className="nav-item">   
+                                    <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinha</Link>      
                                 </li>
-                                <Link to="/ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
-                                   
-                                       
-                        
-                      
-                                </li>
+
+                             
                             </ul>
 
                          

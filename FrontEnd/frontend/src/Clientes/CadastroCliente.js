@@ -76,8 +76,9 @@ export default class CadastroCliente extends Component {
         })
     }
     setAtivo(e) {
+      
         this.setState({
-            ativo: e.target.value,
+            ativo: e.target.value == 1 ? true : false
         })
     }
     enviarParaBackEnd() {
@@ -166,10 +167,9 @@ export default class CadastroCliente extends Component {
 
                         <div className="form-group col-md-4">
                         <label> Ativo: </label>
-                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
-                             <option value="">Selecione...</option>
+                            <select className="form-control" onChange={this.setAtivo}>
                              <option value="1">Sim</option>
-                             <option value="2">Não</option>
+                             <option value="0">Não</option>
                             </select>
                         </div>
 
