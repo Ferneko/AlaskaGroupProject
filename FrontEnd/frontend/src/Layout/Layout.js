@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './Layout.css';
 import { Link } from "react-router-dom";
+import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
+
+
 export default class extends Component {
     constructor(props){
         super(props);
@@ -22,44 +25,34 @@ export default class extends Component {
                     <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                         <div className="sidebar-sticky">
                             <ul className="nav flex-column">
+
                                 <li className="nav-item">
                                     <a className="nav-link active" href="#">
-                                        <span data-feather="home"></span>
-                        Casquinhas <span className="sr-only">(current)</span>
+                                        <span data-feather="home"></span> Casquinhas <span className="sr-only">(current)</span>
                                     </a>
                                 </li>
+
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <span data-feather="file"></span>
-                        Acompanhamentos
-                      </a>
+                                    <Link to="/ListaAcompanhamentos" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Acompanhamentos</Link>
                                 </li>
+
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <span data-feather="shopping-cart"></span>
-                        Adicionais
-                      </a>
+                                    <a className="nav-link" href="#">  <span data-feather="file"></span> Adicionais </a> 
                                 </li>
+
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <span data-feather="users"></span>
-                        Sabores
-                      </a>
+                                    <a className="nav-link" href="#"> <span data-feather="users"></span> Sabores </a>
                                 </li>
+
                                 <li className="nav-item">
-                                <Link to="/ListaClientes" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Clientes</Link>
+                                    <Link to="/ListaClientes" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Clientes</Link>
                                 </li>
                                 
                                 <li className="nav-item">
-                                <Link to="ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
-                                   
-                                       
-                        
-                      
+                                    <Link to="ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
                                 </li>
                             </ul>
 
-                         
                         </div>
                     </nav>
 
