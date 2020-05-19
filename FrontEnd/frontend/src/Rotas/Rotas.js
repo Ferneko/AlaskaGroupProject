@@ -10,6 +10,9 @@ import ListaCasquinha from "../Casquinha/ListaCasquinha";
 import CadastroCasquinha from "../Casquinha/CadastroCasquinha";
 import CadastroUsuario from "../Usuarios/CadastroUsuario";
 import ListaUsuario from "../Usuarios/ListaUsuarios";
+import ListaAcompanhamentos from "../Acompanhamentos/ListaAcompanhamentos";
+import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
+
 const Routes = () => (
     <BrowserRouter>
         <Switch>
@@ -21,10 +24,12 @@ const Routes = () => (
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
                 <Route path="/ListaUsuarios" component={ListaUsuario} />
+                <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
+                <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
         </Switch>
     </BrowserRouter>
 );
-
+ 
 export default Routes;

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './Layout.css';
 import { Link } from "react-router-dom";
+import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
+
+
 export default class extends Component {
     constructor(props){
         super(props);
@@ -26,6 +29,7 @@ export default class extends Component {
                                 <li className="nav-item">
                                     <a className="nav-link" href="#"><span data-feather="file"></span>Acompanhamentos </a>
                                 </li>
+
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
                                         <span data-feather="shopping-cart"></span>Adicionais </a>
@@ -50,7 +54,6 @@ export default class extends Component {
                              
                             </ul>
 
-                         
                         </div>
                     </nav>
 
