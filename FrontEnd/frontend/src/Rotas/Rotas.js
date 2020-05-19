@@ -12,6 +12,10 @@ import CadastroUsuario from "../Usuarios/CadastroUsuario";
 import ListaUsuario from "../Usuarios/ListaUsuarios";
 import ListaAcompanhamentos from "../Acompanhamentos/ListaAcompanhamentos";
 import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
+import ListaAcompanhamentos from "../Adicional/ListaAdicional";
+import CadastroAcompanhamento from "../Adicional/CadastroAdicional";
+import CadastroAdicional from "../Adicional/CadastroAdicional";
+import ListaAdicional from "../Adicional/ListaAdicional";
 
 const Routes = () => (
     <BrowserRouter>
@@ -26,6 +30,8 @@ const Routes = () => (
                 <Route path="/ListaUsuarios" component={ListaUsuario} />
                 <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
+                <Route path="/CadastroAdicional" component={CadastroAdicional} />
+                <Route path="/ListaAdicional" component={ListaAdicional} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
         </Switch>
