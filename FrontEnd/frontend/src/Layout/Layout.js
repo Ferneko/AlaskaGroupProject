@@ -27,7 +27,7 @@ export default class extends Component {
                             <ul className="nav flex-column">
                                 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#"><span data-feather="file"></span>Acompanhamentos </a>
+                                <Link to="/ListaAcompanhamentos" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Acompanhamentos</Link>
                                 </li>
 
                                 <li className="nav-item">
