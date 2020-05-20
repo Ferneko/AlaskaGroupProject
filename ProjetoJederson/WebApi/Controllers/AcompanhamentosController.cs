@@ -30,7 +30,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
@@ -46,7 +46,7 @@ namespace WebApi.Controllers
             catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
           
         }
@@ -74,18 +74,18 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
    
         }
 
 
         [HttpDelete]
-        public JsonResult Delete([FromBody] Acompanhamentos objeto)
+        public JsonResult Delete(int id)
         {
             try
             {
-                return Json(serviceAcompanhamentos.Delete(objeto.id));
+                return Json(serviceAcompanhamentos.Delete(id));
             }
             catch (Exception ex)
             {
@@ -93,6 +93,8 @@ namespace WebApi.Controllers
             }
 
         }
+
+       
 
     }
 }

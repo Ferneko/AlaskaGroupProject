@@ -16,17 +16,18 @@ namespace WebApi.Service
             dao = new DaoSabores(db);
         }
 
-        public string Delete(long id)
+        public List<Sabores> Delete(long id)
         {
             Sabores objeto = SearchId(id);
 
             if (objeto != null)
             {
-                return dao.Delete(objeto);
+                dao.Delete(objeto);
+                return ListaTodos();
             }
             else
             {
-                return "Cliente não encontrado";
+                throw new Exception("Erro ao deleter. Id já deletado");
             }
         }
         public Sabores Record(Sabores objeto)
