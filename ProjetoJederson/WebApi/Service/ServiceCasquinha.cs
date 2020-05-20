@@ -28,21 +28,12 @@ namespace WebApi.Service
             }
             else
             {
-                throw new Exception("Casquinha não encontrada");
+                throw new Exception("Erro ao deleter. Id já deletado");
             }
         }
         public Casquinha Gravar(Casquinha objeto)
         {
-
-            if (string.IsNullOrEmpty(objeto.Nome))
-            {
-                throw new Exception("Nome não pode estar em branco");
-            }
-
-            if (Pesquisar(objeto.Nome).Count > 0)
-            {
-                throw new Exception("Nome já cadastrado");
-            }
+          
             return dao.Gravar(objeto);
         }
 
