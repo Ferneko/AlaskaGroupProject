@@ -55,7 +55,8 @@ namespace WebApi.Data
 
         public Acompanhamentos PesquisarId(long id)
         {
-            return new Acompanhamentos();
+            return db.ACOMPANHAMENTOS.Where(a => a.id == id).FirstOrDefault();
+
         }
 
         public List<Acompanhamentos> PesquisarTodos(string imagem, long id, string nome, string descricao, decimal valor, bool ativo)
