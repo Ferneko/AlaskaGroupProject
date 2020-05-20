@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Layout.css';
 import { Link } from "react-router-dom";
-import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
+import CadastroAcompanhamento from "../Adicional/CadastroAdicional";
 
 
 export default class extends Component {
