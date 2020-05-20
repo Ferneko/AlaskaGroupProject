@@ -2,7 +2,7 @@
 
 namespace WebApi.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Inicial11 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,10 +45,10 @@ namespace WebApi.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    Actives = table.Column<bool>(nullable: false)
+                    Nome = table.Column<string>(nullable: true),
+                    Tipo = table.Column<string>(nullable: true),
+                    Preco = table.Column<decimal>(nullable: false),
+                    Ativo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -16,17 +16,18 @@ namespace WebApi.Service
         {
             dao = new DaoUsuario(db);
         }
-        public string Delete(long id)
+        public List<Usuario> Delete(long id)
         {
             Usuario usuario = PesquisarId(id);
 
             if (usuario != null)
             {
-                return dao.Delete(usuario);
+                dao.Delete(usuario);
+                return ListaTodos();
             }
             else
             {
-                return "Usuário não encontrado";
+                throw new Exception("Erro ao deleter. Id já deletado");
             }
         }
         public Usuario Gravar(Usuario objeto)
@@ -47,16 +48,7 @@ namespace WebApi.Service
                 throw new Exception("senha não pode estar em branco");
             }
 
-            if (Pesquisar(objeto.login).Count > 0)
-            {
-                throw new RegistroRepetidoException("Login já cadastrado");
-            }
-
-            if(Pesquisar(objeto.nome).Count > 0)
-            {
-                throw new RegistroRepetidoException("Nome já cadastrado");
-            }
-
+          
             return dao.Gravar(objeto);
         }
 

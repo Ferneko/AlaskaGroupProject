@@ -9,8 +9,8 @@ using WebApi;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200515031845_Initial")]
-    partial class Initial
+    [Migration("20200518001821_Inicial1.1")]
+    partial class Inicial11
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -78,16 +78,16 @@ namespace WebApi.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Actives")
+                    b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("Tipo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

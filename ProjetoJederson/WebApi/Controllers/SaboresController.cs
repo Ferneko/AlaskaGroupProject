@@ -29,7 +29,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
         [HttpGet("{id}", Name = "GetSabores")]
@@ -43,14 +43,14 @@ namespace WebApi.Controllers
             catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
  
         [HttpPost]
 
-        public JsonResult Post([FromBody] Sabores objeto)
+        public JsonResult Post([FromBody]Sabores objeto)
         {
             try
             {
@@ -59,20 +59,36 @@ namespace WebApi.Controllers
             catch (Exception ex)
             {
 
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
 
 
         [HttpDelete]
-        public JsonResult Delete([FromBody] Sabores objeto)
+        public JsonResult Delete(int id)
         {
             try
             {
-                return Json(serviceSabores.Delete(objeto.Id));
+                return Json(serviceSabores.Delete(id));
             }
             catch (Exception ex)
             {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpGet("PesquisarSabores/{query}", Name = "PesquisarSabores")]
+        public JsonResult PesquisarSabores(string query)
+        {
+            try
+            {
+
+                return Json(serviceSabores.Search(query));
+            }
+            catch (Exception ex)
+            {
+
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
