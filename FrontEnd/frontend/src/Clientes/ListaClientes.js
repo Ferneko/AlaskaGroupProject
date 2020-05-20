@@ -108,16 +108,16 @@ export default class ListaClientes extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th> Codigo</th>
-                                            <th> nome</th>
-                                            <th>cpf</th>
-                                            <th>telefone</th>
-                                            <th>endereco</th>
-                                            <th>bairro</th>
-                                            <th>cep</th>
-                                            <th>cidade</th>
-                                            <th>estado</th>
-                                            <th>ativo</th>
+                                            <th> Código</th>
+                                            <th> Nome</th>
+                                            <th>CPF</th>
+                                            <th>Telefone</th>
+                                            <th>Endereço</th>
+                                            <th>Bairro</th>
+                                            <th>CEP</th>
+                                            <th>Cidade</th>
+                                            <th>Estado</th>
+                                            <th>Ativo</th>
                                             <th></th>
                                             <th></th>
 

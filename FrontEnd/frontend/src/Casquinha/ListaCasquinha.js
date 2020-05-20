@@ -108,7 +108,7 @@ export default class listaCasquinha extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>Codigo</th>
+                                            <th>Código</th>
                                             <th>Nome</th>
                                             <th>Tipo</th>
                                             <th>Preço</th>
