@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CadastroCliente from "../Clientes/CadastroCliente";
 import ListaClientes from "../Clientes/ListaClientes";
 import ListaSabores from "../Sabores/ListaSabores";
@@ -12,10 +12,9 @@ import CadastroUsuario from "../Usuarios/CadastroUsuario";
 import ListaUsuario from "../Usuarios/ListaUsuarios";
 import ListaAcompanhamentos from "../Acompanhamentos/ListaAcompanhamentos";
 import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
-import ListaAcompanhamentos from "../Adicional/ListaAdicional";
-import CadastroAcompanhamento from "../Adicional/CadastroAdicional";
-import CadastroAdicional from "../Adicional/CadastroAdicional";
 import ListaAdicional from "../Adicional/ListaAdicional";
+import CadastroAdicional from "../Adicional/CadastroAdicional";
+
 
 const Routes = () => (
     <BrowserRouter>

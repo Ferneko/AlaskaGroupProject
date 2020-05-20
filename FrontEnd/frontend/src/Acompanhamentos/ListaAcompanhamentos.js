@@ -114,6 +114,8 @@ export default class ListaAcompanhamentos extends Component {
                                             <th>Descrição</th>
                                             <th>Valor</th>
                                             <th>Ativo</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                 <tbody>
@@ -123,7 +125,7 @@ export default class ListaAcompanhamentos extends Component {
                                             <td>{item.nome}</td>
                                             <td>{item.descricao}</td>
                                             <td>{item.valor}</td>
-                                            <td>{item.ativo}</td>
+                                            <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
                                             <td><button className="btn btn-warning">Editar</button></td>
                                             <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
                                         </tr>

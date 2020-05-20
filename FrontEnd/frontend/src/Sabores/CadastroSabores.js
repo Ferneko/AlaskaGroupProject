@@ -6,7 +6,7 @@ export default class CadastroSabores extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: "",
+           
             name: "",
             description: "",
             price: "",
@@ -14,18 +14,14 @@ export default class CadastroSabores extends Component {
 
         }
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this)
-        this.setId = this.setId.bind(this)
+    
         this.setName = this.setName.bind(this)
         this.setDescription = this.setDescription.bind(this)
         this.setPrice = this.setPrice.bind(this)
+        this.setAtivo = this.setAtivo.bind(this)
     }
 
-    setId(e) {
-        this.setState({
-            id: e.target.value,
-        })
-    }
-
+  
     setName(e) {
         this.setState({
             name: e.target.value,
@@ -43,13 +39,19 @@ export default class CadastroSabores extends Component {
             price: e.target.value,
         })
     }
+
+    setAtivo(e) {
+        this.setState( {
+            ativo: e.target.value === 'true' ? true : false
+        });
+    }
     enviarParaBackEnd() {
         console.log(this.state)
         Conexao.post("/Sabores", { 
-            name: this.state.name,
-            description: this.state.description,
-            price: this.state.price,
-            ativo: this.state.ativo
+            Name: this.state.name,
+            Description: this.state.description,
+            Price:  Number(this.state.price),
+            Ativo: this.state.ativo
 
          }).then(resposta => {
             const dados = resposta.data;
@@ -57,7 +59,7 @@ export default class CadastroSabores extends Component {
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                alert("deu");
+                //alert("deu");
                 this.props.history.push('/ListaSabores')
             }
         }).catch(error => {
@@ -74,10 +76,7 @@ export default class CadastroSabores extends Component {
         return (<Layout><div className="row">
             <div className="col-4"></div>
             <div className="col-4">
-                <div className="form-group">
-                    <label>Id</label>
-                    <input type="text" className="form-control" name="id" value={this.state.id} onChange={this.setId} />
-                </div>
+              
                 <div className="form-group">
                     <label>Name</label>
                     <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.setName} />
@@ -88,8 +87,15 @@ export default class CadastroSabores extends Component {
                 </div>
                 <div className="form-group">
                     <label>Price</label>
-                    <input type="text" className="form-control" name="price" value={this.state.price} onChange={this.setPrice} />
+                    <input type="number" className="form-control" name="price" value={this.state.price} onChange={this.setPrice} />
                 </div>
+                <div className="form-group ">
+                            <label> Ativo: </label>
+                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
+                                <option value="true">Sim</option>
+                                <option value="false">Não</option>
+                            </select>
+                        </div>
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
             </div>
             <div className="col-4"></div>
