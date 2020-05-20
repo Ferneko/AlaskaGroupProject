@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../Layout/Layout';
 import Conexao from '../Conexao/Conexao';
-import { browserHistory } from 'react-router'
+
 export default class CadastroCasquinha extends Component {
     constructor(props) {
         super(props)
@@ -42,21 +42,20 @@ export default class CadastroCasquinha extends Component {
     }
   
     setAtivo(e) {
-        let valor = e.target.value == 1 ? true: false;
-        this.setState({
-            ativo: valor,
-        })
+        this.setState( {
+            ativo: e.target.value === 'true' ? true : false
+        });
     }
     enviarParaBackEnd() {
         console.log(this.state)
         Conexao.post("/Casquinha", { 
             nome: this.state.nome,
             tipo: this.state.tipo,
-            preco: this.state.preco,
+            preco: Number(this.state.preco),
             ativo: this.state.ativo,
 
          }).then(resposta => {
-             console.log('entrou aqui');
+            // console.log('entrou aqui');
             const dados = resposta.data;
             console.log(dados.erro)
             if (dados.erro != null) {
@@ -100,14 +99,14 @@ export default class CadastroCasquinha extends Component {
                         
                         <div className="form-group" >
                             <label>Preço</label>
-                            <input type="text" className="form-control" name="preco" value={this.state.preco} onChange={this.setPreco} />
+                            <input type="number" className="form-control" name="preco" value={this.state.preco} onChange={this.setPreco} />
                        </div>
 
                        <div className="form-group ">
-                        <label> Ativo: </label>
-                            <select className="form-control" onChange={this.setAtivo}>
-                             <option value="1">Sim</option>
-                             <option value="0">Não</option>
+                            <label> Ativo: </label>
+                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
+                                <option value="true">Sim</option>
+                                <option value="false">Não</option>
                             </select>
                         </div>
                         </div>

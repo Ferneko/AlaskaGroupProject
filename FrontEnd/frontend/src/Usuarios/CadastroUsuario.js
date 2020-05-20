@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../Layout/Layout';
 import Conexao from '../Conexao/Conexao';
-import { browserHistory } from 'react-router'
+
 export default class CadastroUsuario extends Component {
     constructor(props) {
         super(props)
@@ -15,8 +15,8 @@ export default class CadastroUsuario extends Component {
         }
 
         this.setNome = this.setNome.bind(this)
-        this.setLogin = this.setCpf.bind(this)
-        this.setSenha = this.setTelefone.bind(this)
+        this.setLogin = this.setLogin.bind(this)
+        this.setSenha = this.setSenha.bind(this)
         this.setAtivo = this.setAtivo.bind(this)
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
     }
@@ -39,13 +39,13 @@ export default class CadastroUsuario extends Component {
         })
     }
     setAtivo(e) {
-        this.setState({
-            ativo: e.target.value,
-        })
+        this.setState( {
+            ativo: e.target.value === 'true' ? true : false
+        });
     }
     enviarParaBackEnd() {
         console.log(this.state)
-        Conexao.post("/Usuario", { 
+        Conexao.post("/Usuarios", { 
             nome: this.state.nome,
             login: this.state.login,
             senha: this.state.senha,
@@ -57,7 +57,7 @@ export default class CadastroUsuario extends Component {
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                alert("deu");
+                //alert("deu");
                 this.props.history.push('/ListaUsuarios')
             }
         }).catch(error => {
@@ -86,15 +86,19 @@ export default class CadastroUsuario extends Component {
                         </div>
                         <div className="form-group">
                             <label>Login</label>
-                            <input type="text" className="form-control" id="login" name="login" value={this.state.login} onChange={this.setlogin} />
+                            <input type="text" className="form-control" id="login" name="login" value={this.state.login} onChange={this.setLogin} />
                         </div>
                         <div className="form-group">
                             <label>Senha</label>
-                            <input type="text" className="form-control" name="senha" value={this.state.senha} onChange={this.setsenha} />
+                            <input type="password" className="form-control" name="senha" value={this.state.senha} onChange={this.setSenha} />
                         </div>
-                        <div className="form-group">
-                            <label>Ativo</label>
-                            <input type="checkbox" className="form-control" name="ativo" value={this.state.ativo} onChange={this.setAtivo} />
+                       
+                        <div className="form-group ">
+                        <label> Ativo: </label>
+                            <select value={this.state.ativo} className="form-control" onChange={this.setAtivo}>
+                             <option value="true">Sim</option>
+                             <option value="false">Não</option>
+                            </select>
                         </div>
                         <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
                     </div>

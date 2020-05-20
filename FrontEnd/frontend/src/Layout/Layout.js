@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import './Layout.css';
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import CadastroAcompanhamento from "../Adicional/CadastroAdicional";
+=======
+
+>>>>>>> fdefe3935661e88e77a5bbb5be92c9eaf679e560
 
 
 export default class extends Component {
-    constructor(props){
-        super(props);
-    }
+    
     render() {
         return (<div>
             <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-                <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Sorveteria Alaska</a>
+                <div className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Sorveteria Alaska</div>
               
                 <ul className="navbar-nav px-3">
                     <li className="nav-item text-nowrap">
-                        <a className="nav-link" href="#">Sair do sistema</a>
+                        <div className="nav-link" href="#">Sair do sistema</div>
                     </li>
                 </ul>
             </nav>
@@ -27,7 +29,7 @@ export default class extends Component {
                             <ul className="nav flex-column">
                                 
                                 <li className="nav-item">
-                                <Link to="/ListaAcompanhamentos" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Acompanhamentos</Link>
+                                    <Link to="/ListaAcompanhamentos" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Acompanhamentos</Link>
                                 </li>
 
                                 <li className="nav-item">   

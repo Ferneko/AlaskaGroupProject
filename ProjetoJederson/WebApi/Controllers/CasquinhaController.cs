@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             catch (Exception ex)
             {
 
-                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+                return Json(new { erro = ex.Message + " " + ex.InnerException });
             }
         }
 
@@ -93,11 +93,11 @@ namespace WebApi.Controllers
 
 
         [HttpDelete]
-        public JsonResult Delete([FromBody] Casquinha objeto)
+        public JsonResult Delete(int id)
         {
             try
             {
-                return Json(serviceCasquinha.Delete(objeto.Id));
+                return Json(serviceCasquinha.Delete(id));
             }
             catch (Exception ex)
             {

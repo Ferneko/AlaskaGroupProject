@@ -23,6 +23,7 @@ export default class CadastroAcompanhamentos  extends Component {
         this.setValor = this.setValor.bind(this)
         this.setAtivo = this.setAtivo.bind(this)
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
+       
     }
 
     setImagem(e) {
@@ -49,12 +50,18 @@ export default class CadastroAcompanhamentos  extends Component {
         this.setState({
             valor: e.target.value,
         })
+    
     }
+
+  
+
     setAtivo(e) {
-        this.setState({
-            ativo: e.target.value,
-        })
+        this.setState( {
+            ativo: e.target.value === 'true' ? true : false
+        });
     }
+
+   
 
     enviarParaBackEnd() {
         console.log(this.state)
@@ -62,15 +69,15 @@ export default class CadastroAcompanhamentos  extends Component {
             imagem: this.state.imagem,
             nome: this.state.nome,
             descricao: this.state.descricao,
-            valor: this.state.valor,
-            ativo: this.state.ativo
+            valor: Number(this.state.valor),
+            ativo: Boolean(this.state.ativo)
          }).then(resposta => {
             const dados = resposta.data;
             console.log(dados.erro)
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                alert("deu");
+                //alert("deu");
                 this.props.history.push('/ListaAcompanhamentos')
             }
         }).catch(error => {
@@ -81,6 +88,7 @@ export default class CadastroAcompanhamentos  extends Component {
     render() {
         return (  
             <Layout>
+             
                 {this.state.erro != null ?
                     <div className="alert alert-danger alert-dismissible fade show" role="alert">
                         {this.state.erro}
@@ -97,11 +105,6 @@ export default class CadastroAcompanhamentos  extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label>Id</label>
-                            <input type="text" className="form-control" id="id" name="id" value={this.state.id} onChange={this.setId} />
-                        </div>
-
-                        <div className="form-group">
                             <label>Nome</label>
                             <input type="text" className="form-control" id="nome" name="nome" value={this.state.nome} onChange={this.setNome} />
                         </div>
@@ -113,15 +116,17 @@ export default class CadastroAcompanhamentos  extends Component {
 
                         <div className="form-group">
                             <label>Valor</label>
-                            <input type="text" className="form-control" id="valor" name="valor" value={this.state.valor} onChange={this.setValor} />
+                            <input type="number" className="form-control" id="valor" name="valor" value={this.state.valor} onChange={this.setValor} />
                         </div>
 
                         <div className="form-group ">
-                            <label> Ativo: </label>
-                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
-                             <option value="">Selecione...</option>
-                             <option value="1">Sim</option>
-                             <option value="2">Não</option>
+                        <label> Ativo: </label>
+                    
+                            <select className="form-control" onChange={this.setAtivo}>
+                          
+                                <option value={true}>Sim</option>
+                                <option value={false}>Não</option>
+                           
                             </select>
                         </div>
 

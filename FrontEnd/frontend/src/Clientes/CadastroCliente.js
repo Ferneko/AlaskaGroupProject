@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../Layout/Layout';
 import Conexao from '../Conexao/Conexao';
-import { browserHistory } from 'react-router'
+
 export default class CadastroCliente extends Component {
     constructor(props) {
         super(props)
@@ -76,10 +76,9 @@ export default class CadastroCliente extends Component {
         })
     }
     setAtivo(e) {
-      
-        this.setState({
-            ativo: e.target.value == 1 ? true : false
-        })
+        this.setState( {
+            ativo: e.target.value === 'true' ? true : false
+        });
     }
     enviarParaBackEnd() {
         console.log(this.state)
@@ -100,7 +99,7 @@ export default class CadastroCliente extends Component {
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                alert("deu");
+                //alert("deu");
                 this.props.history.push('/ListaClientes')
             }
         }).catch(error => {
@@ -165,11 +164,11 @@ export default class CadastroCliente extends Component {
 
                       
 
-                        <div className="form-group col-md-4">
-                        <label> Ativo: </label>
-                            <select className="form-control" onChange={this.setAtivo}>
-                             <option value="1">Sim</option>
-                             <option value="0">Não</option>
+                        <div className="form-group ">
+                            <label> Ativo: </label>
+                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
+                                <option value="true">Sim</option>
+                                <option value="false">Não</option>
                             </select>
                         </div>
 
@@ -183,9 +182,6 @@ export default class CadastroCliente extends Component {
                         <button className="btn btn-success"  onClick={this.enviarParaBackEnd}>Salvar</button>
                         </div>
                    
-                
-           
-                
              </Layout>);
     }
 }

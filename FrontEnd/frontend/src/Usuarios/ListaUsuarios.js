@@ -7,7 +7,7 @@ export default class ListaUsuario extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            listaClientes: [],
+            listaUsuario: [],
             query : "",
             erro : null
         }
@@ -19,11 +19,12 @@ export default class ListaUsuario extends Component {
         this.setState({ query : e.target.value });
     }
     componentDidMount() {
-        Conexao.get("/Usuario").then(resposta => {
+        Conexao.get("/Usuarios").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
+                console.log(dados);
                 this.setState({ listaUsuario : dados });
             }
         });
@@ -32,7 +33,7 @@ export default class ListaUsuario extends Component {
     pesquisar(e){
         console.log(this.state.query)
         var data = this.state.query
-        Conexao.get("/Usuario/PesquisarUsuario/"+data).then(resposta => {
+        Conexao.get("/Usuarios/PesquisarUsuario/"+data).then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
@@ -44,22 +45,22 @@ export default class ListaUsuario extends Component {
 
     delete(e){
         
-        Conexao.delete("/Usuario", {params: { id: e.target.dataset.objeto }}).then(resposta => {
+        Conexao.delete("/Usuarios", {params: { id: e.target.dataset.objeto }}).then(resposta => {
             console.log(resposta.data)
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaClientes : dados });
+                this.setState({ listaUsuario : dados });
             }
         });
 
-        Conexao.get("/Usuario").then(resposta => {
+        Conexao.get("/Usuarios").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaClientes : dados });
+                this.setState({ listaUsuario : dados });
             }
         });
     }
@@ -121,13 +122,13 @@ export default class ListaUsuario extends Component {
                                     <tbody>
                                     
                                     
-                                        {this.state.listaClientes.map((item) =>
+                                        {this.state.listaUsuario.map((item) =>
                                             <tr key={item.id}>
                                                 <td>{item.id}</td>
-                                                <td>{item.Nome}</td>
-                                                <td>{item.Login}</td>
-                                                <td>{item.Senha}</td>
-                                                <td>{item.Ativo}</td>
+                                                <td>{item.nome}</td>
+                                                <td>{item.login}</td>
+                                                <td>{item.senha}</td>
+                                                <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
                                                 <td><button className="btn btn-warning">Editar</button></td>
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
                                             </tr>

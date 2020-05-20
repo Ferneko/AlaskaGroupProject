@@ -50,13 +50,13 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarUsuario/{texto}")]
-        public JsonResult PesquisarUsuario(string texto)
+        [HttpGet("PesquisarUsuario/{query}", Name = "PesquisarUsuario")]
+        public JsonResult PesquisarUsuario(string query)
         {
             try
             {
                
-                return Json(serviceUsuario.Pesquisar(texto));
+                return Json(serviceUsuario.Pesquisar(query));
             }
             catch (Exception ex)
             {
@@ -80,13 +80,12 @@ namespace WebApi.Controllers
             }
 
         }
-
         [HttpDelete]
-        public JsonResult Delete([FromBody] Usuario objeto)
+        public JsonResult Delete(int id)
         {
             try
             {
-                return Json(serviceUsuario.Delete(objeto.id));
+                return Json(serviceUsuario.Delete(id));
             }
             catch (Exception ex)
             {
