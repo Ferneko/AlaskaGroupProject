@@ -94,21 +94,7 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarAcompanhamentos/{query}", Name = "PesquisarAcompanhamentos")]
-        public JsonResult PesquisarAcompanhamentos(string query)
-        {
-            try
-            {
-
-                return Json(serviceAcompanhamentos.Pesquisar(query));
-            }
-            catch (Exception ex)
-            {
-
-                return Json(new { Erro = ex.Message + " " + ex.InnerException });
-            }
-
-        }
+       
 
     }
 }
