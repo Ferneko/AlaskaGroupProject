@@ -137,7 +137,7 @@ export default class ListaClientes extends Component {
                                                 <td>{item.cep}</td>
                                                 <td>{item.cidade}</td>
                                                 <td>{item.estado}</td>
-                                                <td>{item.ativo}</td>
+                                                <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
                                                 <td><button className="btn btn-warning">Editar</button></td>
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
                                             </tr>

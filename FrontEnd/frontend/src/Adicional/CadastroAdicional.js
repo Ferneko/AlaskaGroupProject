@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import Layout from '../Layout/Layout';
 import Conexao from '../Conexao/Conexao';
 
-export default class CadastroCasquinha extends Component {
+export default class CadastroAdicional extends Component {
     constructor(props) {
         super(props)
         this.state = {
 
             nome: "",
             tipo: "",
-            preco: "",
+            valor: "",
             ativo: true,
             erro: null
         }
 
         this.setNome = this.setNome.bind(this)
         this.setTipo = this.setTipo.bind(this)
-        this.setPreco = this.setPreco.bind(this)
+        this.setValor = this.setValor.bind(this)
         this.setAtivo = this.setAtivo.bind(this)
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
     }
@@ -35,12 +35,12 @@ export default class CadastroCasquinha extends Component {
         })
     }
 
-    setPreco(e) {
+    setValor(e) {
         this.setState({
-            preco: e.target.value,
+            valor: e.target.value,
         })
     }
-  
+
     setAtivo(e) {
         this.setState( {
             ativo: e.target.value === 'true' ? true : false
@@ -48,24 +48,23 @@ export default class CadastroCasquinha extends Component {
     }
     enviarParaBackEnd() {
         console.log(this.state)
-        Conexao.post("/Casquinha", { 
+        Conexao.post("/Adicional", {
             nome: this.state.nome,
             tipo: this.state.tipo,
-            preco: Number(this.state.preco),
+            valor: Number(this.state.valor),
             ativo: this.state.ativo,
 
-         }).then(resposta => {
-            // console.log('entrou aqui');
+        }).then(resposta => {
             const dados = resposta.data;
             console.log(dados.erro)
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-               
-                this.props.history.push('/ListaCasquinha')
+
+                this.props.history.push('/ListaAdicional')
             }
         }).catch(error => {
-           console.log(error)
+            console.log(error)
         })
 
 
@@ -84,44 +83,44 @@ export default class CadastroCasquinha extends Component {
 
                     <div className="col-4"></div>
                     <div className="col-4">
-                    
-                        
+
+
                         <div className="form-group" >
                             <label>Nome</label>
                             <input type="text" className="form-control" id="nome" name="nome" value={this.state.nome} onChange={this.setNome} />
                         </div>
-                       
-                        
+
+
                         <div className="form-group" >
                             <label>Tipo</label>
                             <input type="text" className="form-control" id="tipo" name="tipo" value={this.state.tipo} onChange={this.setTipo} />
                         </div>
-                        
-                        <div className="form-group" >
-                            <label>Preço</label>
-                            <input type="number" className="form-control" name="preco" value={this.state.preco} onChange={this.setPreco} />
-                       </div>
 
-                       <div className="form-group ">
+                        <div className="form-group">
+                            <label>Valor</label>
+                            <input type="number" className="form-control" name="valor" value={this.state.valor} onChange={this.setValor} />
+                        </div>
+
+                        <div className="form-group ">
                             <label> Ativo: </label>
                             <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
                                 <option value="true">Sim</option>
                                 <option value="false">Não</option>
                             </select>
                         </div>
-                        </div>
-                        
-                        
-                        
-                    </div><br></br>
-                   
-                    <div className="row">
-                        <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
-                     </div>
-                     
-                    <div className="col-4"></div>
+                    </div>
 
-               
+
+
+                </div><br></br>
+
+                <div className="row">
+                    <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
+                </div>
+
+                <div className="col-4"></div>
+
+
             </Layout>);
     }
 }

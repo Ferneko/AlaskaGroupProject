@@ -3,11 +3,11 @@ import Layout from '../Layout/Layout';
 import {Link} from 'react-router-dom';
 import Conexao from '../Conexao/Conexao';
 
-export default class listaCasquinha extends Component {
+export default class ListaUsuario extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            listaCasquinha: [],
+            listaUsuario: [],
             query : "",
             erro : null
         }
@@ -19,12 +19,13 @@ export default class listaCasquinha extends Component {
         this.setState({ query : e.target.value });
     }
     componentDidMount() {
-        Conexao.get("/Casquinha").then(resposta => {
+        Conexao.get("/Usuarios").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                console.log(dados);
+                this.setState({ listaUsuario : dados });
             }
         });
     }
@@ -32,34 +33,34 @@ export default class listaCasquinha extends Component {
     pesquisar(e){
         console.log(this.state.query)
         var data = this.state.query
-        Conexao.get("/Casquinha/PesquisarCasquinha/"+data).then(resposta => {
+        Conexao.get("/Usuarios/PesquisarUsuario/"+data).then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ listaUsuario : dados });
             }
         });
     }
 
     delete(e){
         
-        Conexao.delete("/Casquinha", {params: { id: e.target.dataset.objeto }}).then(resposta => {
+        Conexao.delete("/Usuarios", {params: { id: e.target.dataset.objeto }}).then(resposta => {
             console.log(resposta.data)
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ listaUsuario : dados });
             }
         });
 
-        Conexao.get("/Casquinha").then(resposta => {
+        Conexao.get("/Usuarios").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ listaUsuario : dados });
             }
         });
     }
@@ -84,7 +85,7 @@ export default class listaCasquinha extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-2">
-                                        <Link to="/CadastroCasquinha" className="btn btn-success">Nova Casquinha</Link>
+                                        <Link to="/CadastroUsuario" className="btn btn-success">Novo Usuario</Link>
                                     </div>
                                     <div className="col-10">
                                         <div className="input-group">
@@ -108,25 +109,26 @@ export default class listaCasquinha extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
+                                            <th>Codigo</th>
                                             <th>Nome</th>
-                                            <th>Tipo</th>
-                                            <th>Preço</th>
+                                            <th>Login</th>
+                                            <th>Senha</th>
                                             <th>Ativo</th>
                                             <th></th>
                                             <th></th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                     
                                     
-                                        {this.state.listaCasquinha.map((item) =>
+                                        {this.state.listaUsuario.map((item) =>
                                             <tr key={item.id}>
                                                 <td>{item.id}</td>
                                                 <td>{item.nome}</td>
-                                                <td>{item.tipo}</td>
-                                                <td>{item.preco}</td>
-                                                <td><input type="checkbox" disabled defaultChecked={item.ativo}/></td>
+                                                <td>{item.login}</td>
+                                                <td>{item.senha}</td>
+                                                <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
                                                 <td><button className="btn btn-warning">Editar</button></td>
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
                                             </tr>
@@ -142,3 +144,4 @@ export default class listaCasquinha extends Component {
             </Layout>);
     }
 }
+

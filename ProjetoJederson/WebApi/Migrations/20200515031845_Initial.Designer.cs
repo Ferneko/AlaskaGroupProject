@@ -9,8 +9,8 @@ using WebApi;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200321012534_Mesclagem")]
-    partial class Mesclagem
+    [Migration("20200515031845_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

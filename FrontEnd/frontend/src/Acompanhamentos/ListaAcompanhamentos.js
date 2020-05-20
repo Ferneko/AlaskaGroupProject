@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Layout from '../Layout/Layout';
 import {Link} from 'react-router-dom';
 import Conexao from '../Conexao/Conexao';
 
-export default class listaCasquinha extends Component {
+export default class ListaAcompanhamentos extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
-            listaCasquinha: [],
+            ListaAcompanhamentos: [],
             query : "",
             erro : null
         }
@@ -15,16 +16,18 @@ export default class listaCasquinha extends Component {
         this.delete = this.delete.bind(this);
         this.atualizaQuery = this.atualizaQuery.bind(this);
     }
+
     atualizaQuery(e){
         this.setState({ query : e.target.value });
     }
+
     componentDidMount() {
-        Conexao.get("/Casquinha").then(resposta => {
+        Conexao.get("/Acompanhamentos").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ ListaAcompanhamentos : dados });
             }
         });
     }
@@ -32,34 +35,32 @@ export default class listaCasquinha extends Component {
     pesquisar(e){
         console.log(this.state.query)
         var data = this.state.query
-        Conexao.get("/Casquinha/PesquisarCasquinha/"+data).then(resposta => {
+        Conexao.get("/Acompanhamentos/PesquisarAcompanhamentos/"+data).then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ ListaAcompanhamentos : dados });
             }
         });
     }
 
     delete(e){
-        
-        Conexao.delete("/Casquinha", {params: { id: e.target.dataset.objeto }}).then(resposta => {
+        Conexao.delete("/Acompanhamentos", {params: { id: e.target.dataset.objeto }}).then(resposta => {
             console.log(resposta.data)
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ ListaAcompanhamentos : dados });
             }
         });
-
-        Conexao.get("/Casquinha").then(resposta => {
+        Conexao.get("/Acompanhamentos").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ ListaAcompanhamentos : dados });
             }
         });
     }
@@ -67,13 +68,12 @@ export default class listaCasquinha extends Component {
     render() {
         return (
         <Layout>
-            
-            {this.state.erro != null ?
-                        <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                            {this.state.erro}
-                            <button type="button" onClick={() => this.setState({ erro: null })} className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        : ""}
+                {this.state.erro != null ?
+                    <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                        {this.state.erro}
+                        <button type="button" onClick={() => this.setState({ erro: null })} className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                : ""}
 
                 <div className="row">
                     <div className="col-12">
@@ -84,7 +84,7 @@ export default class listaCasquinha extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-2">
-                                        <Link to="/CadastroCasquinha" className="btn btn-success">Nova Casquinha</Link>
+                                        <Link to="/CadastroAcompanhamento" className="btn btn-success">Novo Acompanhamento</Link>
                                     </div>
                                     <div className="col-10">
                                         <div className="input-group">
@@ -108,37 +108,35 @@ export default class listaCasquinha extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
+                                            <th>Id</th>
+                                            <th>Imagem</th>
                                             <th>Nome</th>
-                                            <th>Tipo</th>
-                                            <th>Preço</th>
+                                            <th>Descrição</th>
+                                            <th>Valor</th>
                                             <th>Ativo</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    
-                                    
-                                        {this.state.listaCasquinha.map((item) =>
-                                            <tr key={item.id}>
-                                                <td>{item.id}</td>
-                                                <td>{item.nome}</td>
-                                                <td>{item.tipo}</td>
-                                                <td>{item.preco}</td>
-                                                <td><input type="checkbox" disabled defaultChecked={item.ativo}/></td>
-                                                <td><button className="btn btn-warning">Editar</button></td>
-                                                <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
-                                            </tr>
-                                        )}
-                                    </tbody>
+                                <tbody>
+                                    {this.state.ListaAcompanhamentos.map((item) =>
+                                        <tr key={item.id}>
+                                            <td>{item.imagem}</td>
+                                            <td>{item.nome}</td>
+                                            <td>{item.descricao}</td>
+                                            <td>{item.valor}</td>
+                                            <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
+                                            <td><button className="btn btn-warning">Editar</button></td>
+                                            <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
+                                        </tr>
+                                    )}
+                                </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </Layout>);
     }
+    
 }

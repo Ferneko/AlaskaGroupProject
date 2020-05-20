@@ -58,5 +58,9 @@ namespace WebApi.Data
             return new Acompanhamentos();
         }
 
+        public List<Acompanhamentos> PesquisarTodos(string imagem, long id, string nome, string descricao, decimal valor, bool ativo)
+        {
+            return db.ACOMPANHAMENTOS.Where(a => a.imagem == imagem || a.id == id || a.nome.Contains(nome) || a.descricao.Contains(descricao) || a.valor == valor).ToList();
+        }
     }
 }

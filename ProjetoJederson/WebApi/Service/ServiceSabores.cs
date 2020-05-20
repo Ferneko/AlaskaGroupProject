@@ -36,10 +36,8 @@ namespace WebApi.Service
                 throw new Exception("Nome não pode estar em branco");
             }
 
-            if (Search(objeto.Name).Count > 0)
-            {
-                throw new Exception("Nome já cadastrado");
-            }
+
+            
             return dao.Record(objeto);
         }
 

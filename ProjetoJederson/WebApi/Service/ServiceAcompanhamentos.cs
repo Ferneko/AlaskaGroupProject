@@ -70,5 +70,10 @@ namespace WebApi.Service
         {
             return dao.PesquisarId(id);
         }
+
+        public List<Acompanhamentos> PesquisarTodos(string imagem, long id, string nome, string descricao, decimal valor, bool ativo)
+        {
+            return dao.PesquisarTodos(imagem, id, nome, descricao, valor, ativo);
+        }
     }
 }
