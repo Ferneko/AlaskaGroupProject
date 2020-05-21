@@ -6,6 +6,7 @@ import ListaSabores from "../Sabores/ListaSabores";
 import CadastroSabores from "../Sabores/CadastroSabores"
 import NaoEncontrado from '../404/NaoEncontrado';
 import Layout from '../Layout/Layout';
+import EditarCasquinha from "../Casquinha/EditarCasquinha";
 import ListaCasquinha from "../Casquinha/ListaCasquinha";
 import CadastroCasquinha from "../Casquinha/CadastroCasquinha";
 import CadastroUsuario from "../Usuarios/CadastroUsuario";
@@ -23,6 +24,7 @@ const Routes = () => (
                 <Route path="/ListaClientes" component={ListaClientes} />
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
                 <Route path="/ListaSabores"component={ListaSabores}/>
+                <Route path="/EditarCasquinha/:id" component={EditarCasquinha} />
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
