@@ -17,7 +17,9 @@ namespace WebApi
         public DbSet<Acompanhamentos> ACOMPANHAMENTOS { get; set; }
         public DbSet<Casquinha> CASQUINHAS { get; set; }
         public DbSet<Adicional> ADICIONAIS { get; set; }
-        public DbSet<Sabores> SABORES { get; internal set; }
-        public DbSet<Cliente> CLIENTES { get; internal set; }
+        public DbSet<Sabores> SABORES { get; set; }
+        public DbSet<Cliente> CLIENTES { get; set; }
+        public DbSet<Caixa> CAIXA { get; set; }
+        public DbSet<Estoque> ESTOQUE { get; set; }
     }
 }
