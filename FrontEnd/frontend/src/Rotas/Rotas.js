@@ -20,27 +20,32 @@ import EditarSabores from "../Sabores/EditarSabores";
 import EditarUsuario from "../Usuarios/EditarUsuario";
 import EditarAdicional from "../Adicional/EditarAdicional";
 
+import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
                 <Route path="/CadastroCliente" component={CadastroCliente} />
-                <Route path="/ListaClientes" component={ListaClientes} />
-                <Route path="/EditarCliente/:id" component={EditarCliente}/>
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
-                <Route path="/ListaSabores"component={ListaSabores}/>
+                <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
+                <Route path="/CadastroUsuario" component={CadastroUsuario} />
+                <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
+                <Route path="/CadastroAdicional" component={CadastroAdicional} />
+
+                <Route path="/EditarCliente/:id" component={EditarCliente}/>
+                <Route path="/EditarAcompanhamento/:id" component={EditarAcompanhamento}/>
                 <Route path="/EditarSabores/:id" component={EditarSabores}/>
                 <Route path="/EditarCasquinha/:id" component={EditarCasquinha} />
                 <Route path="/EditarUsuario/:id" component={EditarUsuario}/>
-                <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
-                <Route path="/ListaCasquinha" component={ListaCasquinha} />
-                <Route path="/CadastroUsuario" component={CadastroUsuario} />
-                <Route path="/ListaUsuarios" component={ListaUsuario} />
-                <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
-                <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
-                <Route path="/CadastroAdicional" component={CadastroAdicional} />
-                <Route path="/ListaAdicional" component={ListaAdicional} />
                 <Route path="/EditarAdicional/:id" component={EditarAdicional} />
+
+                <Route path="/ListaClientes" component={ListaClientes} />
+                <Route path="/ListaSabores"component={ListaSabores}/>
+                <Route path="/ListaCasquinha" component={ListaCasquinha} />
+                <Route path="/ListaUsuarios" component={ListaUsuario} />
+                <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
+                <Route path="/ListaAdicional" component={ListaAdicional} />
+              
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
                 
