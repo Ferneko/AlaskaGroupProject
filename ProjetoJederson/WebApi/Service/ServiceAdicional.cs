@@ -15,17 +15,18 @@ namespace WebApi.Service
         {
             dao = new DaoAdicional(db);
         }
-        public string Delete(long id)
+        public List<Adicional> Delete(long id)
         {
             Adicional objeto = PesquisarPorId(id);
 
             if (objeto != null)
             {
-                return dao.Delete(objeto);
+                dao.Delete(objeto);
+                return ListaTodos();
             }
             else
             {
-                return "Erro 404 - não encontrado";
+                throw new Exception("Erro ao deleter. Id já deletado");
             }
         }
         public Adicional Gravar(Adicional objeto)
@@ -35,10 +36,7 @@ namespace WebApi.Service
                 throw new Exception("Nome não pode estar em branco");
             }
 
-            if (Pesquisar(objeto.nome).Count > 0)
-            {
-                throw new Exception("Nome já cadastrado");
-            }
+        
 
             return dao.Gravar(objeto);
         }

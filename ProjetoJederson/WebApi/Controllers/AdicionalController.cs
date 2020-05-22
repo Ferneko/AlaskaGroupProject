@@ -30,7 +30,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
         [HttpGet("{id}", Name = "Get")]
@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 
         }
@@ -58,20 +58,36 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
 
 
         [HttpDelete]
-        public JsonResult Delete([FromBody] Adicional objeto)
+        public JsonResult Delete(int id)
         {
             try
             {
-                return Json(serviceAdicional.Delete(objeto.id));
+                return Json(serviceAdicional.Delete(id));
             }
             catch (Exception ex)
             {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpGet("PesquisarAdicional/{query}", Name = "PesquisarAdicional")]
+        public JsonResult PesquisarAdicional(string query)
+        {
+            try
+            {
+
+                return Json(serviceAdicional.Pesquisar(query));
+            }
+            catch (Exception ex)
+            {
+
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 

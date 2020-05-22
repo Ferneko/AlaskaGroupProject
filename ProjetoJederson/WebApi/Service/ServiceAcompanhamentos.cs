@@ -16,17 +16,18 @@ namespace WebApi.Service
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
             dao = new DaoAcompanhamentos(db);
         }
-        public string Delete(long id)
+        public List<Acompanhamentos> Delete(long id)
         {
             Acompanhamentos objeto = PesquisarId(id);
 
             if (objeto != null)
             {
-                return dao.Delete(objeto);
+                dao.Delete(objeto);
+                return ListaTodos();
             }
             else
             {
-                return "Acompanhamento não encontrado";
+                throw new Exception("Erro ao deleter. Id já deletado");
             }
         }
         public Acompanhamentos Gravar(Acompanhamentos objeto)
@@ -42,11 +43,7 @@ namespace WebApi.Service
                 throw new Exception("descricao não pode estar em branco");
             }
 
-            if (Pesquisar(objeto.nome).Count > 0)
-            {
-                throw new Exception("Nome já cadastrado");
-            }
-
+          
            
             return dao.Gravar(objeto);
         }
@@ -69,6 +66,11 @@ namespace WebApi.Service
         public Acompanhamentos PesquisarId(long id)
         {
             return dao.PesquisarId(id);
+        }
+
+        public List<Acompanhamentos> PesquisarTodos(string imagem, long id, string nome, string descricao, decimal valor, bool ativo)
+        {
+            return dao.PesquisarTodos(imagem, id, nome, descricao, valor, ativo);
         }
     }
 }
