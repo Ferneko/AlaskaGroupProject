@@ -112,11 +112,11 @@ export default class EditarAdicional extends Component {
                     </div>
                     <div className="form-group" >
                         <label>Tipo</label>
-                        <input type="text" className="form-control" id="tipo" name="tipo" value={this.state.cpf} onChange={this.setTipo} />
+                        <input type="text" className="form-control" id="tipo" name="tipo" value={this.state.tipo} onChange={this.setTipo} />
                     </div>
                     <div className="form-group" >
                         <label>Valor</label>
-                        <input type="text" className="form-control" name="valor" value={this.state.valor} onChange={this.setValor} />
+                        <input type="number" className="form-control" name="valor" value={this.state.valor} onChange={this.setValor} />
                     </div>
 
                     <div className="form-group ">

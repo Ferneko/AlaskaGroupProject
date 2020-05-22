@@ -40,7 +40,7 @@ const Routes = () => (
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/CadastroAdicional" component={CadastroAdicional} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
-                <Route path="/EditarAdicional" component={EditarAdicional} />
+                <Route path="/EditarAdicional/:id" component={EditarAdicional} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
                 
