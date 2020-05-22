@@ -7,6 +7,7 @@ namespace WebApi.Model
 {
     public class Acompanhamentos
     {     
+        
         public string imagem { get; set; }
         public long id { get; set; }
         public string nome { get; set; }
