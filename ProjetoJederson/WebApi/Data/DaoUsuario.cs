@@ -29,7 +29,7 @@ namespace WebApi.Data
             }
             else
             {
-                db.USUARIOS.Add(objeto);
+                db.USUARIOS.Update(objeto);
                
             }
             db.SaveChanges();

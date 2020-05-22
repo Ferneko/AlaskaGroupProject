@@ -17,6 +17,7 @@ import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarCliente from "../Clientes/EditarCliente";
 import EditarSabores from "../Sabores/EditarSabores";
+import EditarUsuario from "../Usuarios/EditarUsuario";
 
 
 const Routes = () => (
@@ -29,6 +30,7 @@ const Routes = () => (
                 <Route path="/ListaSabores"component={ListaSabores}/>
                 <Route path="/EditarSabores/:id" component={EditarSabores}/>
                 <Route path="/EditarCasquinha/:id" component={EditarCasquinha} />
+                <Route path="/EditarUsuario/:id" component={EditarUsuario}/>
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
@@ -39,7 +41,7 @@ const Routes = () => (
                 <Route path="/ListaAdicional" component={ListaAdicional} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
-                <Route path="/EditarUsuario/:id" component={EditarUsuario}/>
+                
 
         </Switch>
 

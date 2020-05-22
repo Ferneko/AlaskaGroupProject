@@ -25,7 +25,7 @@ export default class EditarUsuario extends Component {
     }
 
     componentDidMount() {
-        Conexao.get("/Usuario/" + this.state.id).then(resposta => {
+        Conexao.get("/Usuarios/" + this.state.id).then(resposta => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
@@ -66,7 +66,7 @@ export default class EditarUsuario extends Component {
     }
     enviarParaBackEnd() {
         console.log(this.state)
-        Conexao.post("/Cliente", {
+        Conexao.post("/Usuarios", {
             id: this.state.id,
             nome: this.state.nome,
             login: this.state.login,
@@ -80,7 +80,7 @@ export default class EditarUsuario extends Component {
                 this.setState({ erro: dados.erro });
             } else {
                 //alert("deu");
-                this.props.history.push('/ListaUsuario')
+                this.props.history.push('/ListaUsuarios')
             }
         }).catch(error => {
             console.log(error)
@@ -115,7 +115,7 @@ export default class EditarUsuario extends Component {
                     </div>
                     <div className="form-group" >
                         <label>Senha</label>
-                        <input type="text" className="form-control" name="senha" value={this.state.senha} onChange={this.setSenha} />
+                        <input type="password" className="form-control" name="senha" value={this.state.senha} onChange={this.setSenha} />
                     </div>
                     
                         <div className="form-group ">
@@ -134,7 +134,7 @@ export default class EditarUsuario extends Component {
 
                     <div className="row">
                         <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
-                    </div></div>
+                    </div>
 
             </Layout>);
     }
