@@ -15,8 +15,12 @@ const Routes = () => (
                 <Route path="/ListaUsuarios" component={ListaUsuario} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
+                <Route path="/EditarUsuario/:id" component={EditarUsuario}/>
+
         </Switch>
+
     </BrowserRouter>
+
 );
 
 export default Routes;

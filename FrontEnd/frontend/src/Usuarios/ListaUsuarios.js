@@ -124,13 +124,14 @@ export default class ListaUsuario extends Component {
                                         {this.state.listaClientes.map((item) =>
                                             <tr key={item.id}>
                                                 <td>{item.id}</td>
-                                                <td>{item.N'ome}</td>
+                                                <td>{item.Nome}</td>
                                                 <td>{item.Login}</td>
                                                 <td>{item.Senha}</td>
                                                 <td>{item.Ativo}</td>
                                                 <td><button className="btn btn-warning">Editar</button></td>
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
-                                            </tr>
+
+                                                <td><Link Key={item.id} to={{pathname: -"/EditarUsuario/"+ item.id}} className="btn btn-warning" >Editar</Link></td>
                                         )}
                                     </tbody>
                                 </table>
