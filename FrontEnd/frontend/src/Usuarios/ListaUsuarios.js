@@ -129,9 +129,11 @@ export default class ListaUsuario extends Component {
                                                 <td>{item.login}</td>
                                                 <td>{item.senha}</td>
                                                 <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
-                                                <td><button className="btn btn-warning">Editar</button></td>
+
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
-                                            </tr>
+
+                                                <td><Link Key={item.id} to={{pathname: -"/EditarUsuario/"+ item.id}} className="btn btn-warning" >Editar</Link></td>
+                                                </tr>
                                         )}
                                     </tbody>
                                 </table>
