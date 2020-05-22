@@ -108,7 +108,7 @@ export default class listaCasquinha extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>Codigo</th>
+                                            <th>Código</th>
                                             <th>Nome</th>
                                             <th>Tipo</th>
                                             <th>Preço</th>
@@ -127,7 +127,9 @@ export default class listaCasquinha extends Component {
                                                 <td>{item.tipo}</td>
                                                 <td>{item.preco}</td>
                                                 <td><input type="checkbox" disabled defaultChecked={item.ativo}/></td>
-                                                <td><button className="btn btn-warning">Editar</button></td>
+
+                                                <td><Link key={item.id} to={{ pathname: "/EditarCasquinha/"+ item.id }} className="btn btn-warning" >Editar</Link></td>
+                                                
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
                                             </tr>
                                         )}
