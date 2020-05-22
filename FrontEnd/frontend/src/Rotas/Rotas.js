@@ -18,6 +18,7 @@ import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarCliente from "../Clientes/EditarCliente";
 import EditarSabores from "../Sabores/EditarSabores";
 import EditarUsuario from "../Usuarios/EditarUsuario";
+import EditarAdicional from "../Adicional/EditarAdicional";
 
 
 const Routes = () => (
@@ -39,6 +40,7 @@ const Routes = () => (
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/CadastroAdicional" component={CadastroAdicional} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
+                <Route path="/EditarAdicional" component={EditarAdicional} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
                 
