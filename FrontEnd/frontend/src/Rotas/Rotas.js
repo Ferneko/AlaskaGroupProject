@@ -14,6 +14,7 @@ import ListaAcompanhamentos from "../Acompanhamentos/ListaAcompanhamentos";
 import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
+import EditarSabores from "../Sabores/EditarSabores";
 
 
 const Routes = () => (
@@ -23,6 +24,7 @@ const Routes = () => (
                 <Route path="/ListaClientes" component={ListaClientes} />
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
                 <Route path="/ListaSabores"component={ListaSabores}/>
+                <Route path="/EditarSabores/:id" component={EditarSabores}/>
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
