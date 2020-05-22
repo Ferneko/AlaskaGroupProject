@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import './Layout.css';
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import CadastroAcompanhamento from "../Adicional/CadastroAdicional";
-=======
-
->>>>>>> fdefe3935661e88e77a5bbb5be92c9eaf679e560
+ HEAD
+ fdefe3935661e88e77a5bbb5be92c9eaf679e560
 
 
 export default class extends Component {

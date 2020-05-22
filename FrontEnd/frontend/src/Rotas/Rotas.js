@@ -14,6 +14,7 @@ import ListaAcompanhamentos from "../Acompanhamentos/ListaAcompanhamentos";
 import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
+import EditarAdicional from "../Adicional/EditarAdicional";
 
 
 const Routes = () => (
@@ -31,6 +32,7 @@ const Routes = () => (
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/CadastroAdicional" component={CadastroAdicional} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
+                <Route path="/EditarAdicional" component={EditarAdicional} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
         </Switch>
