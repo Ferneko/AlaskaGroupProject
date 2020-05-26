@@ -15,11 +15,15 @@ import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarSabores from "../Sabores/EditarSabores";
+import EntradaCaixa from "../EntradaCaixa/EntradaCaixa";
+import ListaCaixa from "../EntradaCaixa/ListaCaixa";
 
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
+                <Route path="/EntradaCaixa" component={EntradaCaixa} />
+                <Route path="/ListaCaixa" component={ListaCaixa} />
                 <Route path="/CadastroCliente" component={CadastroCliente} />
                 <Route path="/ListaClientes" component={ListaClientes} />
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
