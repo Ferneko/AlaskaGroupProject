@@ -3,12 +3,22 @@ import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
 import Conexao from "../Conexao/Conexao";
 
-export default class ListaAcompanhamentos extends Component {
+export default class ListaEstoque extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ListaAcompanhamentos: [],
-      query: "",
+      id: this.props.match.params.id,
+      data: "",
+      tipo: "",
+      tipoMovimentacao: "",
+      casquinhaid: "",
+      quantidadeCasquinha: "",
+      adicionalid: "",
+      quantidadeAdicional: "",
+      acompanhamentoid: "",
+      quantidadeAcompanhamento: "",
+      saboresid: "",
+      quantidadeSabores: "",
       erro: null,
     };
     this.pesquisar = this.pesquisar.bind(this);
@@ -21,12 +31,12 @@ export default class ListaAcompanhamentos extends Component {
   }
 
   componentDidMount() {
-    Conexao.get("/Acompanhamentos").then((resposta) => {
+    Conexao.get("/Estoque").then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaAcompanhamentos: dados });
+        this.setState({ ListaEstoque: dados });
       }
     });
   }
@@ -34,20 +44,18 @@ export default class ListaAcompanhamentos extends Component {
   pesquisar(e) {
     console.log(this.state.query);
     var data = this.state.query;
-    Conexao.get("/Acompanhamentos/PesquisarAcompanhamentos/" + data).then(
-      (resposta) => {
-        const dados = resposta.data;
-        if (dados.erro != null) {
-          this.setState({ erro: dados.erro });
-        } else {
-          this.setState({ ListaAcompanhamentos: dados });
-        }
+    Conexao.get("/Estoque/PesquisarEstoque/" + data).then((resposta) => {
+      const dados = resposta.data;
+      if (dados.erro != null) {
+        this.setState({ erro: dados.erro });
+      } else {
+        this.setState({ ListaEstoque: dados });
       }
-    );
+    });
   }
 
   delete(e) {
-    Conexao.delete("/Acompanhamentos", {
+    Conexao.delete("/Estoque", {
       params: { id: e.target.dataset.objeto },
     }).then((resposta) => {
       console.log(resposta.data);
@@ -55,15 +63,15 @@ export default class ListaAcompanhamentos extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaAcompanhamentos: dados });
+        this.setState({ ListaEstoque: dados });
       }
     });
-    Conexao.get("/Acompanhamentos").then((resposta) => {
+    Conexao.get("/Estoque").then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaAcompanhamentos: dados });
+        this.setState({ ListaEstoque: dados });
       }
     });
   }
@@ -98,11 +106,8 @@ export default class ListaAcompanhamentos extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-2">
-                    <Link
-                      to="/CadastroAcompanhamento"
-                      className="btn btn-success"
-                    >
-                      Novo Acompanhamento
+                    <Link to="/CadastroEstoque" className="btn btn-success">
+                      Novo Estoque
                     </Link>
                   </div>
                   <div className="col-10">
@@ -140,40 +145,42 @@ export default class ListaAcompanhamentos extends Component {
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Imagem</th>
-                      <th>Nome</th>
-                      <th>Descrição</th>
-                      <th>Valor</th>
-                      <th>Ativo</th>
-                      <th></th>
-                      <th></th>
+                      <th>Data</th>
+                      <th>Tipo</th>
+                      <th>Tipo da Movimentação</th>
+                      <th>Casquinha Id</th>
+                      <th>Quantidade de Casquinha</th>
+                      <th>Adicional Id</th>
+                      <th>Quantidade de Adicional</th>
+                      <th>Acompanhamento Id</th>
+                      <th>Quantidade de Acompanhamento</th>
+                      <th>Sabores Id</th>
+                      <th>Quantidade de Sabores</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.ListaAcompanhamentos.map((item) => (
+                    {this.state.ListaEstoque.map((item) => (
                       <tr key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.imagem}</td>
-                        <td>{item.nome}</td>
-                        <td>{item.descricao}</td>
-                        <td>{item.valor}</td>
-                        <td>
-                          <input
-                            disabled
-                            type="checkbox"
-                            defaultChecked={item.ativo}
-                          />
-                        </td>
-
+                        <td>{item.data}</td>
+                        <td>{item.tipo}</td>
+                        <td>{item.tipoMovimentacao}</td>
+                        <td>{item.casquinhaid}</td>
+                        <td>{item.quantidadeCasquinha}</td>
+                        <td>{item.adicionalid}</td>
+                        <td>{item.quantidadeAdicional}</td>
+                        <td>{item.acompanhamentoid}</td>
+                        <td>{item.quantidadeAcompanhamento}</td>
+                        <td>{item.saboresid}</td>
+                        <td>{item.quantidadeSabores}</td>
                         <td>
                           <Link
                             key={item.id}
-                            to={{
-                              pathname: "/EditarAcompanhamento/" + item.id,
-                            }}
+                            to={{ pathname: "/EditarEstoque/" + item.id }}
                             className="btn btn-warning"
                           >
-                            Editar
+                            {" "}
+                            Editar{" "}
                           </Link>
                         </td>
 
@@ -183,7 +190,8 @@ export default class ListaAcompanhamentos extends Component {
                             onClick={this.delete}
                             data-objeto={item.id}
                           >
-                            Excluir
+                            {" "}
+                            Excluir{" "}
                           </button>
                         </td>
                       </tr>

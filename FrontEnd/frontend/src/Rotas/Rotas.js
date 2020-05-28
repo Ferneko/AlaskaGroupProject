@@ -14,13 +14,18 @@ import ListaAcompanhamentos from "../Acompanhamentos/ListaAcompanhamentos";
 import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
+import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 
+import ListaEstoque from "../Estoque/ListaEstoque";
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
                 <Route path="/CadastroCliente" component={CadastroCliente} />
                 <Route path="/ListaClientes" component={ListaClientes} />
+
+                <Route path="/ListaEstoque" component={ListaEstoque}/>
+
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
                 <Route path="/ListaSabores"component={ListaSabores}/>
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
@@ -28,6 +33,7 @@ const Routes = () => (
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
                 <Route path="/ListaUsuarios" component={ListaUsuario} />
                 <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
+                <Route path="/EditarAcompanhamento/:id" component={EditarAcompanhamento}/>
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/CadastroAdicional" component={CadastroAdicional} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
