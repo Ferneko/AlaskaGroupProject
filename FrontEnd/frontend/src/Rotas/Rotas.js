@@ -15,8 +15,11 @@ import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
+<<<<<<< HEAD
 
 import ListaEstoque from "../Estoque/ListaEstoque";
+=======
+>>>>>>> f2a1571d10c54d841a3d416e82288223ddc45352
 
 const Routes = () => (
     <BrowserRouter>
@@ -24,7 +27,11 @@ const Routes = () => (
                 <Route path="/CadastroCliente" component={CadastroCliente} />
                 <Route path="/ListaClientes" component={ListaClientes} />
 
+<<<<<<< HEAD
                 <Route path="/ListaEstoque" component={ListaEstoque}/>
+=======
+                <Route path="/EditarAcompanhamento/:id" component={EditarAcompanhamento}/>
+>>>>>>> f2a1571d10c54d841a3d416e82288223ddc45352
 
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
                 <Route path="/ListaSabores"component={ListaSabores}/>

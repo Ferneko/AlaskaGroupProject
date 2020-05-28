@@ -19,9 +19,12 @@ export default class extends Component {
                     <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                         <div className="sidebar-sticky">
                             <ul className="nav flex-column">
+<<<<<<< HEAD
                                 <li className="nav-item">
                                     <Link to="/ListaEstoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatório de Estoque</Link>
                                 </li>
+=======
+>>>>>>> f2a1571d10c54d841a3d416e82288223ddc45352
                                 <li className="nav-item">
                                     <Link to="/ListaAcompanhamentos" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Acompanhamentos</Link>
                                 </li>
