@@ -48,6 +48,8 @@ export default class extends Component {
                                     <Link to="/ListaRelatorioEstoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatório de Estoque</Link>
                                 </li>
 
+
+
                                 <li className="nav-item">   
                                     <Link to="/EntradaCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Entrada Caixa</Link>      
                                 </li>

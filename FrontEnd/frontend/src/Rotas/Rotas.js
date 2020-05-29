@@ -17,15 +17,12 @@ import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarCliente from "../Clientes/EditarCliente";
 import EditarSabores from "../Sabores/EditarSabores";
-<<<<<<< HEAD
 import EditarUsuario from "../Usuarios/EditarUsuario";
 import EditarAdicional from "../Adicional/EditarAdicional";
 import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
-=======
 import EntradaCaixa from "../EntradaCaixa/EntradaCaixa";
 import ListaCaixa from "../EntradaCaixa/ListaCaixa";
->>>>>>> igor
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
