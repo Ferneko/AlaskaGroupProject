@@ -3,7 +3,7 @@ import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
 import Conexao from "../Conexao/Conexao";
 
-export default class ListaEstoque extends Component {
+export default class ListaRelatorioEstoque extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,7 @@ export default class ListaEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
   }
@@ -49,7 +49,7 @@ export default class ListaEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
   }
@@ -63,7 +63,7 @@ export default class ListaEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
     Conexao.get("/Estoque").then((resposta) => {
@@ -71,7 +71,7 @@ export default class ListaEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
   }
@@ -156,6 +156,8 @@ export default class ListaEstoque extends Component {
                       <th>Quantidade de Acompanhamento</th>
                       <th>Sabores Id</th>
                       <th>Quantidade de Sabores</th>
+                      <th></th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>

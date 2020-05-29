@@ -15,27 +15,19 @@ import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
-<<<<<<< HEAD
-
-import ListaEstoque from "../Estoque/ListaEstoque";
-=======
->>>>>>> f2a1571d10c54d841a3d416e82288223ddc45352
+import ListaRelatorioEstoque from "../Estoque/Estoque";
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-                <Route path="/CadastroCliente" component={CadastroCliente} />
-                <Route path="/ListaClientes" component={ListaClientes} />
+                <Route path="/CadastroCliente" component={CadastroCliente}/>
+                <Route path="/ListaClientes" component={ListaClientes}/>
 
-<<<<<<< HEAD
-                <Route path="/ListaEstoque" component={ListaEstoque}/>
-=======
-                <Route path="/EditarAcompanhamento/:id" component={EditarAcompanhamento}/>
->>>>>>> f2a1571d10c54d841a3d416e82288223ddc45352
-
+                <Route path="/ListaRelatorioEstoque" component={ListaRelatorioEstoque}/>
+               
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
                 <Route path="/ListaSabores"component={ListaSabores}/>
-                <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
+                <Route path="/CadastroCasquinha" component={CadastroCasquinha}/>
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
                 <Route path="/ListaUsuarios" component={ListaUsuario} />
