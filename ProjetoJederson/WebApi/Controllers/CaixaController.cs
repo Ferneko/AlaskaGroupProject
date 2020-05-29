@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Model;
 using WebApi.Service;
 
 namespace WebApi.Controllers
@@ -47,8 +48,8 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("Movimentacao", Name = "Movimentacao")]
-        public JsonResult Movimentacao()
+        [HttpGet("Movimentacao", Name = "MovimentacaoCaixa")]
+        public JsonResult MovimentacaoCaixa()
         {
             try
             {
