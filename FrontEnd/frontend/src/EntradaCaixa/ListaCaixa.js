@@ -38,7 +38,8 @@ export default class ListaCaixa extends Component {
                 this.setState({ erro : dados.erro });
             }else{
                 this.setState({ ListaCaixa : dados });
-            }
+            } 
+            
         });
     }
 
