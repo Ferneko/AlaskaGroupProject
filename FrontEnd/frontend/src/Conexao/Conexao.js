@@ -5,7 +5,7 @@ const Conexao = axios.create({
 });
 
 Conexao.interceptors.request.use(async config => {
-  const token = "JWT_AQUI";
+  const token = localStorage.getItem('tokenJWT');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
