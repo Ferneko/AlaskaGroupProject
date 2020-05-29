@@ -23,6 +23,7 @@ import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
+import ListaRelatorioEstoque from "../Estoque/Estoque";
 
 const Routes = () => (
     <BrowserRouter>
@@ -31,7 +32,8 @@ const Routes = () => (
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
           
                 <Route path="/Estoque"component={Estoque}/>
-          
+                <Route path="/ListaRelatorioEstoque" component={ListaRelatorioEstoque}/>
+                
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
                 <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
@@ -43,7 +45,7 @@ const Routes = () => (
                 <Route path="/EditarCasquinha/:id" component={EditarCasquinha} />
                 <Route path="/EditarUsuario/:id" component={EditarUsuario}/>
                 <Route path="/EditarAdicional/:id" component={EditarAdicional} />
-
+              
                 <Route path="/ListaClientes" component={ListaClientes} />
                 <Route path="/ListaSabores"component={ListaSabores}/>
                 <Route path="/ListaCasquinha" component={ListaCasquinha} />
