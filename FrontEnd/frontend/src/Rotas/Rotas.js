@@ -20,6 +20,7 @@ import EditarSabores from "../Sabores/EditarSabores";
 import EditarUsuario from "../Usuarios/EditarUsuario";
 import EditarAdicional from "../Adicional/EditarAdicional";
 import ControleCaixa from "../Caixa/ControleCaixa";
+import Estoque from "../Estoque/Estoque";
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 
@@ -28,6 +29,9 @@ const Routes = () => (
         <Switch>
                 <Route path="/CadastroCliente" component={CadastroCliente} />
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
+          
+                <Route path="/Estoque"component={Estoque}/>
+          
                 <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
                 <Route path="/CadastroUsuario" component={CadastroUsuario} />
                 <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />

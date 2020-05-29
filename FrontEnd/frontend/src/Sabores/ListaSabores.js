@@ -108,13 +108,13 @@ export default class ListaSabores extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
-                                            <th>nome</th>
-                                            <th>descrição</th>
-                                            <th>preço</th>
-                                            <th>ativo</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Ativo</th>
+                                           
+                                           
 
                                         </tr>
                                     </thead>
