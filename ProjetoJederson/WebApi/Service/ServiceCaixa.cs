@@ -45,5 +45,10 @@ namespace WebApi.Service
                 throw new Exception("Erro ao deleter. Id já deletado");
             }
         }
+
+        internal object movimentaocao()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
