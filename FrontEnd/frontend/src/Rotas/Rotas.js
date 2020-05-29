@@ -23,7 +23,7 @@ import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
-import ListaRelatorioEstoque from "../Estoque/Estoque";
+import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
 
 const Routes = () => (
     <BrowserRouter>
