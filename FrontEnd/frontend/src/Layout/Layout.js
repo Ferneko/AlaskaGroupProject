@@ -20,9 +20,7 @@ export default class extends Component {
                     <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                         <div className="sidebar-sticky">
                             <ul className="nav flex-column">
-                                <li className="nav-item">
-                                    <Link to="/ListaRelatorioEstoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatório de Estoque</Link>
-                                </li>
+                              
                                 <li className="nav-item">
                                     <Link to="/ListaAcompanhamentos" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Acompanhamentos</Link>
                                 </li>
@@ -42,12 +40,26 @@ export default class extends Component {
                                     <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinha</Link>
                                 </li>
 
-                                <li className="nav-item">
-                                    <Link to="/ControleCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Caixa</Link>
-                                </li>
+                               
                                 <li className="nav-item">
                                     <Link to="/Estoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Estoque</Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link to="/ListaRelatorioEstoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatório de Estoque</Link>
+                                </li>
+
+                                <li className="nav-item">   
+                                    <Link to="/EntradaCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Entrada Caixa</Link>      
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/ControleCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Caixa</Link>
+                                </li>
+                                <li className="nav-item">   
+                                    <Link to="/ListaCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Lista Caixa</Link>      
+                                </li>
+                             
+                             
+                         
 
                             </ul>
                         </div>
