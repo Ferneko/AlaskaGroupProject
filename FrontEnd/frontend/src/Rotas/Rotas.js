@@ -15,7 +15,7 @@ import CadastroAcompanhamento from "../Acompanhamentos/CadastroAcompanhamento";
 import ListaAdicional from "../Adicional/ListaAdicional";
 import CadastroAdicional from "../Adicional/CadastroAdicional";
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
-import ListaRelatorioEstoque from "../Estoque/Estoque";
+import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
 
 const Routes = () => (
     <BrowserRouter>
