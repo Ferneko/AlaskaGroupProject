@@ -77,11 +77,11 @@ export default class ListaAcompanhamentos extends Component {
 
                 <div className="row">
                     <div className="col-12">
-                        <div className="card">
-                            <div className="card-header">
+                        <div className="card " >
+                            <div className="card-header ">
                                 Pesquisar
                             </div>
-                            <div className="card-body">
+                            <div className="card-body ">
                                 <div className="row">
                                     <div className="col-2">
                                         <Link to="/CadastroAcompanhamento" className="btn btn-success">Novo Acompanhamento</Link>

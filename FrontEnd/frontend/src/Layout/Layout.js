@@ -47,6 +47,9 @@ export default class extends Component {
                                 <li className="nav-item">   
                                     <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinha</Link>      
                                 </li>
+                                <li className="nav-item">   
+                                    <Link to="/Estoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Estoque</Link>      
+                                </li>
                              
                             </ul>
 
