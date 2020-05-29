@@ -19,6 +19,7 @@ import EditarCliente from "../Clientes/EditarCliente";
 import EditarSabores from "../Sabores/EditarSabores";
 import EditarUsuario from "../Usuarios/EditarUsuario";
 import EditarAdicional from "../Adicional/EditarAdicional";
+import ControleCaixa from "../Caixa/ControleCaixa";
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 
@@ -46,6 +47,8 @@ const Routes = () => (
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
               
+                <Route path="/EditarAdicional" component={EditarAdicional} />
+                <Route path="/ControleCaixa" component={ControleCaixa} />
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
                 
