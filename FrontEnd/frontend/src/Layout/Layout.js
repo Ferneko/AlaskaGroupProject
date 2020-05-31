@@ -10,7 +10,7 @@ export default class extends Component {
                 <div className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Alaska Sorveteria</div>
                 <ul className="navbar-nav px-3">
                     <li className="nav-item text-nowrap">
-                        <div className="nav-link" href="#">Sair do sistema</div>
+                        <div className="nav-link" href="#">Sair do Sistema</div>
                     </li>
                 </ul>
             </nav>
