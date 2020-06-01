@@ -137,17 +137,15 @@ export default class ListaRelatorioEstoque extends Component {
                       <th>Id</th>
                       <th>Data</th>
                       <th>Tipo</th>
-                      <th>Tipo da Movimentação</th>
+                      <th>Tipo da Mov</th>
                       <th>Casquinha Id</th>
-                      <th>Quantidade de Casquinha</th>
+                      <th>Quant de Casquinha</th>
                       <th>Adicional Id</th>
-                      <th>Quantidade de Adicional</th>
+                      <th>Quant de Adicional</th>
                       <th>Acompanhamento Id</th>
-                      <th>Quantidade de Acompanhamento</th>
+                      <th>Quant de Acompanhamento</th>
                       <th>Sabores Id</th>
-                      <th>Quantidade de Sabores</th>
-                      <th></th>
-                      <th></th>
+                      <th>Quant de Sabores</th>
                     </tr>
                   </thead>
                   <tbody>
