@@ -7,18 +7,8 @@ export default class ListaRelatorioEstoque extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.id,
-      data: "",
-      tipo: "",
-      tipoMovimentacao: "",
-      casquinhaid: "",
-      quantidadeCasquinha: "",
-      adicionalid: "",
-      quantidadeAdicional: "",
-      acompanhamentoid: "",
-      quantidadeAcompanhamento: "",
-      saboresid: "",
-      quantidadeSabores: "",
+      ListaRelatorioEstoque: [],
+      query: "",
       erro: null,
     };
     this.pesquisar = this.pesquisar.bind(this);
@@ -161,7 +151,7 @@ export default class ListaRelatorioEstoque extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.ListaEstoque.map((item) => (
+                    {this.state.ListaRelatorioEstoque.map((item) => (
                       <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.data}</td>
