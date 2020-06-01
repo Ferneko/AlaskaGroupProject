@@ -113,8 +113,6 @@ export default class listaCasquinha extends Component {
                                             <th>Tipo</th>
                                             <th>Preço</th>
                                             <th>Ativo</th>
-                                            <th></th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>

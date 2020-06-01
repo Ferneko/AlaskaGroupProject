@@ -145,8 +145,6 @@ export default class ListaAcompanhamentos extends Component {
                       <th>Descrição</th>
                       <th>Valor</th>
                       <th>Ativo</th>
-                      <th></th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>

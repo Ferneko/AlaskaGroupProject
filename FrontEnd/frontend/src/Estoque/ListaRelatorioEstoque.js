@@ -163,6 +163,7 @@ export default class ListaRelatorioEstoque extends Component {
                         <td>{item.quantidadeAcompanhamento}</td>
                         <td>{item.saboresid}</td>
                         <td>{item.quantidadeSabores}</td>
+                        
                         <td>
                           <Link
                             key={item.id}
