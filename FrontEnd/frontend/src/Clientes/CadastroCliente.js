@@ -127,7 +127,6 @@ export default class CadastroCliente extends Component {
         )}
 
         <div className="col-4"></div>
-        <div className="col-4"></div>
         <div class="row">
           <div className="form-group" class="col-md-4">
             <label>Nome</label>
@@ -140,6 +139,9 @@ export default class CadastroCliente extends Component {
               onChange={this.setNome}
             />
           </div>
+        </div>
+
+        <div class="row">
           <div className="form-group" class="col-md-4">
             <label>CPF</label>
             <input
@@ -151,6 +153,9 @@ export default class CadastroCliente extends Component {
               onChange={this.setCpf}
             />
           </div>
+        </div>
+
+        <div class="row">
           <div className="form-group" class="col-md-4">
             <label>Telefone</label>
             <input
@@ -174,6 +179,9 @@ export default class CadastroCliente extends Component {
               onChange={this.setEndereco}
             />
           </div>
+        </div>
+
+        <div class="row">
           <div className="form-group" class="col-md-4">
             <label>Bairro</label>
             <input
@@ -184,6 +192,9 @@ export default class CadastroCliente extends Component {
               onChange={this.setBairro}
             />
           </div>
+        </div>
+
+        <div class="row">
           <div className="form-group" class="col-md-4">
             <label>CEP</label>
             <input
@@ -207,6 +218,9 @@ export default class CadastroCliente extends Component {
               onChange={this.setCidade}
             />
           </div>
+        </div>
+
+        <div class="row">
           <div className="form-group" class="col-md-4">
             <label>Estado</label>
             <input
@@ -217,9 +231,11 @@ export default class CadastroCliente extends Component {
               onChange={this.setEstado}
             />
           </div>
+        </div>
 
-          <div className="form-group ">
-            <label> Ativo: </label>
+        <div class="row">
+          <div className="form-group" class="col-md-4">
+            <label>Ativo:</label>
             <select
               className="form-control"
               value={this.state.ativo}
@@ -230,6 +246,7 @@ export default class CadastroCliente extends Component {
             </select>
           </div>
         </div>
+
         <br></br>
 
         <div class="row">

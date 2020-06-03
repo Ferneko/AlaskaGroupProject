@@ -163,27 +163,13 @@ export default class ListaRelatorioEstoque extends Component {
                         <td>{item.quantidadeAcompanhamento}</td>
                         <td>{item.saboresid}</td>
                         <td>{item.quantidadeSabores}</td>
-                        
+
                         <td>
-                          <Link
-                            key={item.id}
-                            to={{ pathname: "/EditarEstoque/" + item.id }}
-                            className="btn btn-warning"
-                          >
-                            {" "}
-                            Editar{" "}
-                          </Link>
+                          <Link key={item.id} to={{ pathname: "/EditarEstoque/" + item.id }} className="btn btn-warning"> {" "} Editar{" "}</Link>
                         </td>
 
                         <td>
-                          <button
-                            className="btn btn-danger"
-                            onClick={this.delete}
-                            data-objeto={item.id}
-                          >
-                            {" "}
-                            Excluir{" "}
-                          </button>
+                          <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> {" "} Excluir{" "} </button>
                         </td>
                       </tr>
                     ))}

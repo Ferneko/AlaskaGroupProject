@@ -155,34 +155,17 @@ export default class ListaAcompanhamentos extends Component {
                         <td>{item.nome}</td>
                         <td>{item.descricao}</td>
                         <td>{item.valor}</td>
+                        
                         <td>
-                          <input
-                            disabled
-                            type="checkbox"
-                            defaultChecked={item.ativo}
-                          />
+                          <input disabled type="checkbox" defaultChecked={item.ativo}/>
                         </td>
 
                         <td>
-                          <Link
-                            key={item.id}
-                            to={{
-                              pathname: "/EditarAcompanhamento/" + item.id,
-                            }}
-                            className="btn btn-warning"
-                          >
-                            Editar
-                          </Link>
+                          <Link key={item.id} to={{ pathname: "/EditarAcompanhamento/" + item.id, }} className="btn btn-warning"> Editar </Link>
                         </td>
 
                         <td>
-                          <button
-                            className="btn btn-danger"
-                            onClick={this.delete}
-                            data-objeto={item.id}
-                          >
-                            Excluir
-                          </button>
+                          <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> Excluir </button>
                         </td>
                       </tr>
                     ))}
