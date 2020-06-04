@@ -21,5 +21,8 @@ namespace WebApi
         public DbSet<Cliente> CLIENTES { get; set; }
         public DbSet<Caixa> CAIXA { get; set; }
         public DbSet<Estoque> ESTOQUE { get; set; }
+
+        public DbSet<Permissao> PERMISSAO { get; set; }
+        public DbSet<GrupoUsuario> GRUPO_USUARIO { get; set; }
     }
 }
