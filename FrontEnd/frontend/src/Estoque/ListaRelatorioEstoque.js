@@ -7,12 +7,7 @@ export default class ListaRelatorioEstoque extends Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      ListaRelatorioEstoque: [],
-      query: "",
-=======
       RelatorioEstoque: [],
->>>>>>> master
       erro: null,
       query: ""
     };
@@ -160,13 +155,6 @@ export default class ListaRelatorioEstoque extends Component {
                         <td>{item.quantidadeSabores}</td>
 
                         <td>
-<<<<<<< HEAD
-                          <Link key={item.id} to={{ pathname: "/EditarEstoque/" + item.id }} className="btn btn-warning"> {" "} Editar{" "}</Link>
-                        </td>
-
-                        <td>
-                          <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> {" "} Excluir{" "} </button>
-=======
                           <button
                             className="btn btn-danger"
                             onClick={this.delete}
@@ -175,7 +163,6 @@ export default class ListaRelatorioEstoque extends Component {
                             {" "}
                             Excluir{" "}
                           </button>
->>>>>>> master
                         </td>
                       </tr>
                     ))}
