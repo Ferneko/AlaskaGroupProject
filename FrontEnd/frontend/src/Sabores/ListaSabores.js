@@ -119,7 +119,53 @@ export default class ListaSabores extends Component {
                         </button>
                       </div>
                     </div>
+<<<<<<< HEAD
                   </div>
+=======
+
+                </div>
+                <br />
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <table className="table table-houver">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Ativo</th>
+                                           
+                                           
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    
+                                        {this.state.listaSabores.map((item) =>
+                                            <tr key={item.id}>
+                                                <td>{item.id}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.description}</td>
+                                                <td>{item.price}</td>
+                                                <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
+                                                <td><Link key={item.id} to={{ pathname: "/EditarSabores/"+ item.id}} className="btn btn-warning">Editar</Link></td>
+                                                <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
+
+
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+>>>>>>> master
                 </div>
               </div>
             </div>

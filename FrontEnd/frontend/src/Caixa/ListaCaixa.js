@@ -3,11 +3,11 @@ import Layout from '../Layout/Layout';
 import {Link} from 'react-router-dom';
 import Conexao from '../Conexao/Conexao';
 
-export default class listaCasquinha extends Component {
+export default class ListaCaixa extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            listaCasquinha: [],
+            ListaCaixa: [],
             query : "",
             erro : null
         }
@@ -19,12 +19,12 @@ export default class listaCasquinha extends Component {
         this.setState({ query : e.target.value });
     }
     componentDidMount() {
-        Conexao.get("/Casquinha").then(resposta => {
+        Conexao.get("/Caixa").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ ListaCaixa : dados });
             }
         });
     }
@@ -32,34 +32,35 @@ export default class listaCasquinha extends Component {
     pesquisar(e){
         console.log(this.state.query)
         var data = this.state.query
-        Conexao.get("/Casquinha/PesquisarCasquinha/"+data).then(resposta => {
+        Conexao.get("/Caixa/PesquisarCaixa/"+data).then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
-            }
+                this.setState({ ListaCaixa : dados });
+            } 
+            
         });
     }
 
     delete(e){
         
-        Conexao.delete("/Casquinha", {params: { id: e.target.dataset.objeto }}).then(resposta => {
+        Conexao.delete("/Caixa", {params: { id: e.target.dataset.objeto }}).then(resposta => {
             console.log(resposta.data)
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ ListaCaixa : dados });
             }
         });
 
-        Conexao.get("/Casquinha").then(resposta => {
+        Conexao.get("/Caixa").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCasquinha : dados });
+                this.setState({ listaCaixa : dados });
             }
         });
     }
@@ -84,11 +85,11 @@ export default class listaCasquinha extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-2">
-                                        <Link to="/CadastroCasquinha" className="btn btn-success">Nova Casquinha</Link>
+                                        <Link to="/ControleCaixa" className="btn btn-success">Controle de caixa</Link>
                                     </div>
                                     <div className="col-10">
                                         <div className="input-group">
-                                            <input type="text" className="form-control" placeholder="Digite aqui sua pesquisa" onChange={this.atualizaQuery} aria-label="Digite aqui sua pesquisa" aria-describedby="basic-addon2" />
+                                            <input type="date" className="form-control" placeholder="Digite aqui sua pesquisa" onChange={this.atualizaQuery} aria-label="Digite aqui sua pesquisa" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
                                                 <button className="btn btn-primary" type="button" onClick={this.pesquisar}>Pesquisar</button>
                                             </div>
@@ -108,27 +109,31 @@ export default class listaCasquinha extends Component {
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Tipo</th>
-                                            <th>Preço</th>
-                                            <th>Ativo</th>
+                                            <th>id</th>
+                                            <th>data</th>
+                                            <th>movimentação</th>
+                                            <th>preço</th>
+                                            <th>descrição</th>
+                                           
+                                            <th></th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                     
                                     
-                                        {this.state.listaCasquinha.map((item) =>
+                                        {this.state.ListaCaixa.map((item) =>
                                             <tr key={item.id}>
                                                 <td>{item.id}</td>
-                                                <td>{item.nome}</td>
-                                                <td>{item.tipo}</td>
-                                                <td>{item.preco}</td>
-                                                <td><input type="checkbox" disabled defaultChecked={item.ativo}/></td>
-
-                                                <td><Link key={item.id} to={{ pathname: "/EditarCasquinha/"+ item.id }} className="btn btn-warning" >Editar</Link></td>
-                                                
+                                                <td>{item.data}</td>
+                                                <td>{item.tipoMovimentacao === 1 ? "Entrada" : "Saída"}</td>
+                                                <td>{item.valor}</td>
+                                                <td>{item.descricao}</td>
+                                              
+                                              
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
+
+
                                             </tr>
                                         )}
                                     </tbody>

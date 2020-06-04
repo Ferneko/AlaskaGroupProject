@@ -97,6 +97,7 @@ export default class ListaUsuario extends Component {
               <div className="card-header">Pesquisar</div>
               <div className="card-body">
                 <div className="row">
+<<<<<<< HEAD
                   <div className="col-2">
                     <Link to="/CadastroUsuario" className="btn btn-success">
                       Novo Usuario
@@ -121,6 +122,46 @@ export default class ListaUsuario extends Component {
                           Pesquisar
                         </button>
                       </div>
+=======
+                    <div className="col-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <table className="table table-houver">
+                                    <thead>
+                                        <tr>
+                                            <th>Codigo</th>
+                                            <th>Nome</th>
+                                            <th>Login</th>
+                                           
+                                            <th>Ativo</th>
+                                            <th></th>
+                                            <th></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    
+                                        {this.state.listaUsuario.map((item) =>
+                                            <tr key={item.id}>
+                                                <td>{item.id}</td>
+                                                <td>{item.nome}</td>
+                                                <td>{item.login}</td>
+                                              
+                                                <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
+                                                <td><Link Key={item.id} to={{ pathname: "/EditarUsuario/"+ item.id}} className="btn btn-warning" >Editar</Link></td>
+                                                
+                                                <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
+
+                                               
+                                                </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+>>>>>>> master
                     </div>
                   </div>
                 </div>

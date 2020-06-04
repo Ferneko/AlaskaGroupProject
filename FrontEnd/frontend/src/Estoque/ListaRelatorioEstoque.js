@@ -7,9 +7,14 @@ export default class ListaRelatorioEstoque extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       ListaRelatorioEstoque: [],
       query: "",
+=======
+      RelatorioEstoque: [],
+>>>>>>> master
       erro: null,
+      query: ""
     };
     this.pesquisar = this.pesquisar.bind(this);
     this.delete = this.delete.bind(this);
@@ -26,7 +31,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioEstoque: dados });
+        this.setState({ RelatorioEstoque: dados });
       }
     });
   }
@@ -39,7 +44,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioEstoque: dados });
+        this.setState({ RelatorioEstoque: dados });
       }
     });
   }
@@ -53,7 +58,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioEstoque: dados });
+        this.setState({ RelatorioEstoque: dados });
       }
     });
     Conexao.get("/Estoque").then((resposta) => {
@@ -61,7 +66,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioEstoque: dados });
+        this.setState({ RelatorioEstoque: dados });
       }
     });
   }
@@ -86,8 +91,8 @@ export default class ListaRelatorioEstoque extends Component {
             </button>
           </div>
         ) : (
-          ""
-        )}
+            ""
+          )}
 
         <div className="row">
           <div className="col-12">
@@ -96,14 +101,14 @@ export default class ListaRelatorioEstoque extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-2">
-                    <Link to="/CadastroEstoque" className="btn btn-success">
-                      Novo Estoque
+                    <Link to="/Estoque" className="btn btn-success">
+                      Movimentar Estoque
                     </Link>
                   </div>
                   <div className="col-10">
                     <div className="input-group">
                       <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         placeholder="Digite aqui sua pesquisa"
                         onChange={this.atualizaQuery}
@@ -134,42 +139,43 @@ export default class ListaRelatorioEstoque extends Component {
                 <table className="table table-houver">
                   <thead>
                     <tr>
-                      <th>Id</th>
                       <th>Data</th>
-                      <th>Tipo</th>
-                      <th>Tipo da Mov</th>
-                      <th>Casquinha Id</th>
-                      <th>Quant de Casquinha</th>
-                      <th>Adicional Id</th>
-                      <th>Quant de Adicional</th>
-                      <th>Acompanhamento Id</th>
-                      <th>Quant de Acompanhamento</th>
-                      <th>Sabores Id</th>
-                      <th>Quant de Sabores</th>
+                      <th>Tipo da Movimentação</th>
+                      <th>Casquinha</th>
+                      <th>Adicional</th>
+                      <th>Acompanhamento</th>
+                      <th>Sabores</th>
+                      <th></th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.ListaRelatorioEstoque.map((item) => (
+                    {this.state.RelatorioEstoque.map((item) => (
                       <tr key={item.id}>
-                        <td>{item.id}</td>
                         <td>{item.data}</td>
-                        <td>{item.tipo}</td>
-                        <td>{item.tipoMovimentacao}</td>
-                        <td>{item.casquinhaid}</td>
+                        <td>{item.tipoMovimentacao === 1 ? "Entrada" : "Saida"}</td>
                         <td>{item.quantidadeCasquinha}</td>
-                        <td>{item.adicionalid}</td>
                         <td>{item.quantidadeAdicional}</td>
-                        <td>{item.acompanhamentoid}</td>
                         <td>{item.quantidadeAcompanhamento}</td>
-                        <td>{item.saboresid}</td>
                         <td>{item.quantidadeSabores}</td>
 
                         <td>
+<<<<<<< HEAD
                           <Link key={item.id} to={{ pathname: "/EditarEstoque/" + item.id }} className="btn btn-warning"> {" "} Editar{" "}</Link>
                         </td>
 
                         <td>
                           <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> {" "} Excluir{" "} </button>
+=======
+                          <button
+                            className="btn btn-danger"
+                            onClick={this.delete}
+                            data-objeto={item.id}
+                          >
+                            {" "}
+                            Excluir{" "}
+                          </button>
+>>>>>>> master
                         </td>
                       </tr>
                     ))}

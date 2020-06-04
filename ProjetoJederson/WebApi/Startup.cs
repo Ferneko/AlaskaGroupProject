@@ -26,38 +26,56 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("CONEXAO")) );
-            services.AddCors(option =>
+            try
             {
-                option.AddPolicy("basico", builder =>
+                services.AddControllers();
+                services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("CONEXAO")));
+                services.AddCors(option =>
                 {
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyMethod();
-                });
+                    option.AddPolicy("basico", builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                    });
 
-            });
+                });
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            try
             {
-                app.UseDeveloperExceptionPage();
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                }
+
+                app.UseHttpsRedirection();
+                app.UseCors("basico");
+                app.UseRouting();
+
+                app.UseAuthorization();
+
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
             }
-
-            app.UseHttpsRedirection();
-            app.UseCors("basico");
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            catch (Exception ex)
             {
-                endpoints.MapControllers();
-            });
+
+                throw;
+            }
+          
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi;
 
 namespace WebApi.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20200603203541_EstoqueCaixa")]
+    partial class EstoqueCaixa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,42 +207,6 @@ namespace WebApi.Migrations
                     b.HasIndex("saboresId");
 
                     b.ToTable("ESTOQUE");
-                });
-
-            modelBuilder.Entity("WebApi.Model.GrupoUsuario", b =>
-                {
-                    b.Property<long>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("GRUPO_USUARIO");
-                });
-
-            modelBuilder.Entity("WebApi.Model.Permissao", b =>
-                {
-                    b.Property<long>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("descricao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("role")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("PERMISSAO");
                 });
 
             modelBuilder.Entity("WebApi.Model.Sabores", b =>
