@@ -50,5 +50,10 @@ namespace WebApi.Service
         {
             throw new NotImplementedException();
         }
+
+        public List<Caixa> Pesquisar(DateTime query)
+        {
+            return dao.Pesquisar(query);
+        }
     }
 }

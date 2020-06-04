@@ -21,8 +21,7 @@ import EditarUsuario from "../Usuarios/EditarUsuario";
 import EditarAdicional from "../Adicional/EditarAdicional";
 import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
-import EntradaCaixa from "../EntradaCaixa/EntradaCaixa";
-import ListaCaixa from "../EntradaCaixa/ListaCaixa";
+import ListaCaixa from "../Caixa/ListaCaixa";
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
@@ -30,8 +29,7 @@ import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-                <Route path="/EntradaCaixa" component={EntradaCaixa} />
-                <Route path="/ListaCaixa" component={ListaCaixa} />
+               
                 <Route path="/CadastroCliente" component={CadastroCliente} />
                 <Route path="/CadastroSabores"component={CadastroSabores}/>
           
@@ -57,8 +55,10 @@ const Routes = () => (
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
               
-                <Route path="/EditarAdicional" component={EditarAdicional} />
+               
+                <Route path="/ListaCaixa" component={ListaCaixa} />
                 <Route path="/ControleCaixa" component={ControleCaixa} />
+
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
                 <Route path="*" component={NaoEncontrado} />
                 

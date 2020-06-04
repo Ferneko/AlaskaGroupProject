@@ -19,7 +19,7 @@ export default class ListaCaixa extends Component {
         this.setState({ query : e.target.value });
     }
     componentDidMount() {
-        Conexao.get("/EntradaCaixa").then(resposta => {
+        Conexao.get("/Caixa").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
@@ -32,7 +32,7 @@ export default class ListaCaixa extends Component {
     pesquisar(e){
         console.log(this.state.query)
         var data = this.state.query
-        Conexao.get("/EntradaCaixa/PesquisarCaixa/"+data).then(resposta => {
+        Conexao.get("/Caixa/PesquisarCaixa/"+data).then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
@@ -45,7 +45,7 @@ export default class ListaCaixa extends Component {
 
     delete(e){
         
-        Conexao.delete("/EntradaCaixa", {params: { id: e.target.dataset.objeto }}).then(resposta => {
+        Conexao.delete("/Caixa", {params: { id: e.target.dataset.objeto }}).then(resposta => {
             console.log(resposta.data)
             const dados = resposta.data;
             if(dados.erro != null){
@@ -55,7 +55,7 @@ export default class ListaCaixa extends Component {
             }
         });
 
-        Conexao.get("/EntradaCaixa").then(resposta => {
+        Conexao.get("/Caixa").then(resposta => {
             const dados = resposta.data;
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
@@ -85,11 +85,11 @@ export default class ListaCaixa extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-2">
-                                        <Link to="/EntradaCaixa" className="btn btn-success">Nova Entrada</Link>
+                                        <Link to="/ControleCaixa" className="btn btn-success">Controle de caixa</Link>
                                     </div>
                                     <div className="col-10">
                                         <div className="input-group">
-                                            <input type="text" className="form-control" placeholder="Digite aqui sua pesquisa" onChange={this.atualizaQuery} aria-label="Digite aqui sua pesquisa" aria-describedby="basic-addon2" />
+                                            <input type="date" className="form-control" placeholder="Digite aqui sua pesquisa" onChange={this.atualizaQuery} aria-label="Digite aqui sua pesquisa" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
                                                 <button className="btn btn-primary" type="button" onClick={this.pesquisar}>Pesquisar</button>
                                             </div>
@@ -114,7 +114,7 @@ export default class ListaCaixa extends Component {
                                             <th>movimentação</th>
                                             <th>preço</th>
                                             <th>descrição</th>
-                                            <th></th>
+                                           
                                             <th></th>
 
                                         </tr>
@@ -126,11 +126,11 @@ export default class ListaCaixa extends Component {
                                             <tr key={item.id}>
                                                 <td>{item.id}</td>
                                                 <td>{item.data}</td>
-                                                <td>{item.tipo}</td>
-                                                <td>{item.price}</td>
-                                                <td>{item.description}</td>
-                                                <td><input disabled type="checkbox" defaultChecked={item.ativo}/></td>
-                                                <td><Link key={item.id} to={{ pathname: "/EditarCaixa/"+ item.id}} className="btn btn-warning">Editar</Link></td>
+                                                <td>{item.tipoMovimentacao === 1 ? "Entrada" : "Saída"}</td>
+                                                <td>{item.valor}</td>
+                                                <td>{item.descricao}</td>
+                                              
+                                              
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
 
 

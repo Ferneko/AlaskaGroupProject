@@ -6,17 +6,14 @@ export default class ControleCaixa extends Component {
     constructor(props) {
         super(props)
 
-        //console.log(props);
-        //console.log(this.props.match.params.id);
         this.state = {
-            id: this.props.match.params.id,
-            data: "",
-            tipoMovimentacao: "",
+            data: new Date(),
+            tipoMovimentacao: 1,
             valor: "",
             descricao: "",
             erro: null
         }
-        
+
         this.setData = this.setData.bind(this)
         this.setTipoMovimentacao = this.setTipoMovimentacao.bind(this)
         this.setValor = this.setValor.bind(this)
@@ -24,24 +21,8 @@ export default class ControleCaixa extends Component {
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
     }
 
-    componentDidMount() {
-        Conexao.get("/Caixa/" + this.state.id).then(resposta => {
-            const dados = resposta.data;
-            if (dados.erro != null) {
-                this.setState({ erro: dados.erro });
-            } else {
-                this.setState({
 
-                    id: dados.id,
-                    data: dados.data,
-                    tipoMovimentacao: dados.tipoMovimentacao,
-                    valor: dados.valor,
-                    descricao: dados.descricao
 
-                });
-            }
-        });
-    }
 
     setData(e) {
         this.setState({
@@ -50,13 +31,40 @@ export default class ControleCaixa extends Component {
     }
 
     setTipoMovimentacao(e) {
+        let valor = this.state.valor
+        if (Number(e.target.value) === 1) 
+        {
+            if (valor < 0) 
+            {
+                valor = valor * -1;
+            }
+        } else {
+            if (valor > 0) 
+            {
+                valor = valor * -1;
+            }
+        }
+
         this.setState({
-            tipoMovimentacao: e.target.value === 'true' ? true : false
+            tipoMovimentacao: Number(e.target.value),
+            valor: valor
         });
     }
     setValor(e) {
+        let valorOk = e.target.value
+        if (this.state.tipoMovimentacao === 1) {
+            if (valorOk < 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+        } else {
+            if (valorOk > 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+        }
         this.setState({
-            valor: e.target.value,
+            valor: valorOk
         })
     }
     setDescricao(e) {
@@ -67,12 +75,12 @@ export default class ControleCaixa extends Component {
     enviarParaBackEnd() {
         console.log(this.state)
         Conexao.post("/Caixa", {
-            id: this.state.id,
+
             data: this.state.data,
-            tipoMovimentacao: this.state.tipo,
-            valor: this.state.valor,
+            tipoMovimentacao: this.state.tipoMovimentacao,
+            valor: Number(this.state.valor),
             descricao: this.state.descricao
-            
+
 
         }).then(resposta => {
             const dados = resposta.data;
@@ -81,7 +89,7 @@ export default class ControleCaixa extends Component {
                 this.setState({ erro: dados.erro });
             } else {
                 //alert("deu");
-                this.props.history.push('/Caixa')
+                this.props.history.push('/ListaCaixa')
             }
         }).catch(error => {
             console.log(error)
@@ -102,42 +110,39 @@ export default class ControleCaixa extends Component {
                 <div className="col-4"></div>
                 <div className="col-4">
 
+
                     <div className="form-group">
-                        <label>Código</label>
-                        <input type="text" readOnly={true} className="form-control" id="id" name="id" value={this.state.id} />
-                    </div>
-                    <div className="form-group"  >
                         <label>Data</label>
                         <input type="date" className="form-control" id="nome" name="date" value={this.state.data} onChange={this.setData} />
                     </div>
                     <div className="form-group ">
                         <label> Tipo de Movimentação: </label>
-                        <select className="form-control" value={this.state.tipoMovimentacao} onChange={this.setTipoMovimentacao}>
-                            <option value="true">Entrada</option>
-                            <option value="false">Saida</option>
+                        <select className="form-control" defaultValue={this.state.tipoMovimentacao} onChange={this.setTipoMovimentacao}>
+                            <option value="1">Entrada</option>
+                            <option value="0">Saida</option>
                         </select>
                     </div>
                     <div className="form-group" >
                         <label>Valor</label>
-                        <input type="text" className="form-control" name="valor" value={this.state.valor} onChange={this.setValor} />
+                        <input type="number" className="form-control" name="valor" value={this.state.valor} onChange={this.setValor} />
                     </div>
                     <div className="form-group" >
                         <label>Descrição</label>
                         <input type="text" className="form-control" name="descricao" value={this.state.descricao} onChange={this.setDescricao} />
                     </div>
 
-        
-
-                    </div>
-                    <br></br>
 
 
+                </div>
+                <br></br>
 
 
-                    <div className="row">
-                        <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
-                    </div>
-                    <div className="col-4"></div>
+
+
+                <div className="row">
+                    <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
+                </div>
+                <div className="col-4"></div>
 
             </Layout>);
     }

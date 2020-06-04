@@ -33,6 +33,23 @@ namespace WebApi.Controllers
             }
         }
 
+
+        [HttpGet("PesquisarEstoque/{query}", Name = "PesquisarEstoque")]
+        public JsonResult PesquisarEstoque(DateTime query)
+        {
+            try
+            {
+                return Json(service.Pesquisar(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+
         [HttpPost]
         public JsonResult Post([FromBody] Estoque estoque)
         {
@@ -58,6 +75,35 @@ namespace WebApi.Controllers
             catch (Exception ex)
             {
 
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpGet("NovaEntrada", Name = "NovaEntrada")]
+        public JsonResult NovaEntrada()
+        {
+            try
+            {
+                return Json(service.novaEntrada());
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpDelete]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                return Json(service.Delete(id));
+            }
+            catch (Exception ex)
+            {
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 

@@ -11,19 +11,19 @@ namespace WebApi.Model
         public DateTime data { get; set; }
         public int tipoMovimentacao { get; set; }
 
-        public int casquinhaId { get; set; }
+        public long casquinhaId { get; set; }
         public decimal quantidadeCasquinha { get; set; }
         public Casquinha casquinha { get; set; }
 
-        public int adicionalId { get; set; }
+        public long adicionalId { get; set; }
         public decimal quantidadeAdicional { get; set; }
         public Adicional adicional { get; set; }
 
-        public int acompanhamentoId { get; set; }
+        public long acompanhamentoId { get; set; }
         public decimal quantidadeAcompanhamento { get; set; }
         public Acompanhamentos acompanhamento { get; set; }
 
-        public int saboresId { get; set; }
+        public long saboresId { get; set; }
         public decimal quantidadeSabores { get; set; }
         public Sabores sabores { get; set; }
     }

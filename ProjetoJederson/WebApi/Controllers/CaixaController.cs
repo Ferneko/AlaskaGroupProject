@@ -62,5 +62,34 @@ namespace WebApi.Controllers
             }
 
         }
+
+        [HttpGet("PesquisarCaixa/{query}", Name = "PesquisarCaixa")]
+        public JsonResult PesquisarCaixa(DateTime query)
+        {
+            try
+            {
+                return Json(service.Pesquisar(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpDelete]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                return Json(service.Delete(id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
     }
 }

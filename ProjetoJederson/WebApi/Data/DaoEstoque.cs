@@ -50,5 +50,9 @@ namespace WebApi.Data
             return db.ESTOQUE.Where(a => a.id == id).FirstOrDefault();
         }
 
+        public List<Estoque> Pesquisar(DateTime date)
+        {
+            return db.ESTOQUE.Where(a => a.data == date).ToList();
+        }
     }
 }

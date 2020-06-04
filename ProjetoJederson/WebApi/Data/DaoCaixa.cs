@@ -50,5 +50,9 @@ namespace WebApi.Data
             return db.CAIXA.Where(a => a.id == id).FirstOrDefault();
         }
 
+        public List<Caixa> Pesquisar(DateTime query)
+        {
+            return db.CAIXA.Where(a => a.data == query).ToList();
+        }
     }
 }
