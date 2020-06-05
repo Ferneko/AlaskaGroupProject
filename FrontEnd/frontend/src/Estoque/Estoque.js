@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import Layout from '../Layout/Layout';
 import Conexao from '../Conexao/Conexao';
-
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
 export default class Estoque extends Component {
+   
     constructor(props) {
         super(props)
+       
         this.state = {
 
-            id: this.props.match.params.id,
-            data: new Date().getDate(),
+          
+            data: new Date(),
             tipoMovimentacao: 1,//entrada ==1 saida ==0
             casquinhaId: "",
             quantidadeCasquinha: 0,
@@ -40,7 +43,10 @@ export default class Estoque extends Component {
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
 
     }
+   
     componentDidMount() {
+       
+
         Conexao.get("/Estoque/NovaEntrada").then(resposta => {
             const dados = resposta.data;
             if (dados.erro != null) {
@@ -162,16 +168,16 @@ export default class Estoque extends Component {
 
             tipoMovimentacao: this.state.tipoMovimentacao,
 
-            casquinhaId: this.state.casquinhaId,
+            casquinhaId: Number(this.state.casquinhaId),
             quantidadeCasquinha: Number(this.state.quantidadeCasquinha),
 
-            adicionalId: this.state.adicionalid,
+            adicionalId: Number(this.state.adicionalid),
             quantidadeAdicional: Number(this.state.quantidadeAdicional),
 
-            acompanhamentoId: this.state.acompanhamentoId,
+            acompanhamentoId: Number(this.state.acompanhamentoId),
             quantidadeAcompanhamento: Number(this.state.quantidadeAcompanhamento),
 
-            saboresId: this.state.saboresid,
+            saboresId: Number(this.state.saboresid),
             quantidadeSabores: Number(this.state.quantidadeSabores),
            
 
@@ -185,7 +191,7 @@ export default class Estoque extends Component {
                 this.setState({ erro: dados.erro });
             } else {
 
-                this.props.history.push('/Estoque')//nao sei ainda oque fazer aqui
+                this.props.history.push('/ListaRelatorioEstoque')
             }
         }).catch(error => {
             console.log(error)
@@ -206,8 +212,12 @@ export default class Estoque extends Component {
                 <div className="row">
 
                     <div className="form-group col-md-3">
-                        <label>Data</label>
-                        <input type="date" className="form-control" id="data" name="date" value={this.state.data} onChange={this.setData} />
+                        <label>Data</label><br/>
+                        <DatePicker className="form-control" style={{width:'100%'}}
+                            selected={this.state.data}
+                            onChange={this.setData}
+                         />
+                      
                     </div>
 
 
@@ -304,3 +314,22 @@ export default class Estoque extends Component {
     }
 }
 
+/*
+
+ let dia = new Date().getDay();
+        console.log(dia+" Dia");
+
+        let mes = new Date().getMonth()+1;
+        console.log(mes+" mes");
+
+        let ano = new Date().getFullYear();
+        console.log(ano+" ano");
+
+        //let dataAgora = +"/"+new Date(Date.now()).getMonth()+"/"+new Date(Date.now()).getFullYear()
+        let dataAgora = dia+"-"+mes+"-"+ano;
+        //console.log(new Date(dataAgora).getDay());
+        console.log(dataAgora);
+        document.getElementById("data").value = "2014-02-09";
+        //this.dateInput.current.value = dataAgora;
+ <input type="date" className="form-control" ref={this.dateInput} id="data" name="data" value={this.state.data} onChange={this.setData} />
+        */

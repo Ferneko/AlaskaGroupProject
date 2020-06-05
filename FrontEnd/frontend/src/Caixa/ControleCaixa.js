@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Layout from '../Layout/Layout';
 import Conexao from '../Conexao/Conexao';
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
 export default class ControleCaixa extends Component {
     constructor(props) {
@@ -112,8 +114,12 @@ export default class ControleCaixa extends Component {
 
 
                     <div className="form-group">
-                        <label>Data</label>
-                        <input type="date" className="form-control" id="nome" name="date" value={this.state.data} onChange={this.setData} />
+                        <label>Data</label><br/>
+                        {/*<input type="date" className="form-control" id="nome" name="date" value={this.state.data} onChange={this.setData} />*/}
+                        <DatePicker className="form-control" style={{width:'100%'}}
+                            selected={this.state.data}
+                            onChange={this.setData}
+                         />
                     </div>
                     <div className="form-group ">
                         <label> Tipo de Movimentação: </label>
