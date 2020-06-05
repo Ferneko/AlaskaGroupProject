@@ -1,165 +1,36 @@
-import React, { Component } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
 
-export default class Estoque extends Component {
+class ValidacaoEstoque extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.id,
-      data: new Date().getDate(),
-      tipoMovimentacao: 1, //entrada ==1 saida ==0
-      casquinhaId: "",
-      quantidadeCasquinha: 0,
-      adicionalid: "",
-      quantidadeAdicional: 0,
-      acompanhamentoId: "",
-      quantidadeAcompanhamento: 0,
-      saboresid: "",
-      quantidadeSabores: 0,
+      data: new Date(),
+      tipoMovimentacao: 1,
+      valor: "",
+      descricao: "",
       erro: null,
-      todasCasquinhas: [],
-      todosAdicionais: [],
-      todosAcompanhamentos: [],
-      todosSabores: [],
     };
 
-    //this.setId= this.setId.bind(this)
-    this.setData = this.setData.bind(this);
-    this.setTipoMovimentacao = this.setTipoMovimentacao.bind(this);
-    this.setCasquinhaid = this.setCasquinhaid.bind(this);
-    this.setQuantidadeCasquinha = this.setQuantidadeCasquinha.bind(this);
-    this.setAdicionalid = this.setAdicionalid.bind(this);
-    this.setQuantidadeAdicional = this.setQuantidadeAdicional.bind(this);
-    this.setAcompanhamentoid = this.setAcompanhamentoid.bind(this);
-    this.setQuantidadeAcompanhamento = this.setQuantidadeAcompanhamento.bind(
-      this
-    );
-    this.setSaboresid = this.setSaboresid.bind(this);
-    this.setQuantidadeSabores = this.setQuantidadeSabores.bind(this);
-    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
-  }
-  componentDidMount() {
-    Conexao.get("/Estoque/NovaEntrada").then((resposta) => {
-      const dados = resposta.data;
-      if (dados.erro != null) {
-        this.setState({ erro: dados.erro });
-      } else {
-        this.setState({
-          todasCasquinhas: dados.todasCasquinhas,
-          casquinhaId: dados.todasCasquinhas[0].id,
-
-          todosAdicionais: dados.todosAdicionais,
-          adicionalid: dados.todosAdicionais[0].id,
-
-          todosAcompanhamentos: dados.todosAcompanhamentos,
-          acompanhamentoId: dados.todosAcompanhamentos[0].id,
-
-          todosSabores: dados.todosSabores,
-          saboresid: dados.todosSabores[0].id,
-        });
-      }
-    });
-  }
-
-  setData(e) {
-    this.setState({
-      data: e.target.value,
-    });
-  }
-
-  setTipoMovimentacao(e) {
-    let arrayValores = [
-      this.state.quantidadeCasquinha,
-      this.state.quantidadeAdicional,
-      this.state.quantidadeAcompanhamento,
-      this.state.quantidadeSabores,
-    ];
-    var i = 0;
-    if (Number(e.target.value) === 1) {
-      for (i = 0; i < arrayValores.length; i++) {
-        if (arrayValores[i] < 0) {
-          arrayValores[i] = arrayValores[i] * -1;
-        }
-      }
-    } else {
-      for (i = 0; i < arrayValores.length; i++) {
-        if (arrayValores[i] > 0) {
-          arrayValores[i] = arrayValores[i] * -1;
-        }
-      }
-    }
-
-    this.setState({
-      tipoMovimentacao: Number(e.target.value),
-      quantidadeCasquinha: arrayValores[0],
-      quantidadeAdicional: arrayValores[1],
-      quantidadeAcompanhamento: arrayValores[2],
-      quantidadeSabores: arrayValores[3],
-    });
-
-    this.setState({
-      tipoMovimentacao: e.target.value,
-    });
-  }
-
-  setCasquinhaid(e) {
-    this.setState({
-      casquinhaId: e.target.value,
-    });
-  }
-  setQuantidadeCasquinha(e) {
-    this.setState({
-      quantidadeCasquinha: e.target.value,
-    });
-  }
-  setAdicionalid(e) {
-    this.setState({
-      adicionalid: e.target.value,
-    });
-  }
-  setQuantidadeAdicional(e) {
-    this.setState({
-      quantidadeAdicional: e.target.value,
-    });
-  }
-  setAcompanhamentoid(e) {
-    this.setState({
-      acompanhamentoId: e.target.value,
-    });
-  }
-  setQuantidadeAcompanhamento(e) {
-    this.setState({
-      quantidadeAcompanhamento: e.target.value,
-    });
-  }
-  setSaboresid(e) {
-    this.setState({
-      saboresid: e.target.value,
-    });
-  }
-  setQuantidadeSabores(e) {
-    this.setState({
-      quantidadeSabores: e.target.value,
-    });
+    this.handleChange.setData = this.setData.bind(this);
+    this.handleChange.setTipoMovimentacao = this.setTipoMovimentacao.bind(this);
+    this.handleChange.setValor = this.setValor.bind(this);
+    this.handleChange.setDescricao = this.setDescricao.bind(this);
   }
 
   enviarParaBackEnd() {
     console.log(this.state);
     let enviarDados = {
       data: this.state.data,
-
       tipoMovimentacao: this.state.tipoMovimentacao,
-
       casquinhaId: this.state.casquinhaId,
       quantidadeCasquinha: Number(this.state.quantidadeCasquinha),
-
       adicionalId: this.state.adicionalid,
       quantidadeAdicional: Number(this.state.quantidadeAdicional),
-
       acompanhamentoId: this.state.acompanhamentoId,
       quantidadeAcompanhamento: Number(this.state.quantidadeAcompanhamento),
-
       saboresId: this.state.saboresid,
       quantidadeSabores: Number(this.state.quantidadeSabores),
     };
@@ -178,6 +49,13 @@ export default class Estoque extends Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  handleChange(event) {
+    this.setState({ data: event.target.data.replace(/[^\d\s-/]/g, "") });
+    this.setState({ tipoMovimentacao: event.target.tipoMovimentacao.replace(/[^\d\s-/]/g, "") });
+    this.setState({ valor: event.target.valor.replace(/[^\d\s-/]/g, "") });
+    this.setState({ descricao: event.target.descricao.replace(/[^\d\s-/]/g, "") });
   }
 
   render() {
@@ -362,3 +240,11 @@ export default class Estoque extends Component {
     );
   }
 }
+
+function App() {
+  return <ValidacaoEstoque />;
+}
+
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(<App />, rootElement);

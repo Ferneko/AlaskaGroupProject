@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
 
-export default class CadastroCliente extends Component {
+class ValidacaoClientes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,63 +19,15 @@ export default class CadastroCliente extends Component {
       erro: null,
     };
 
-    this.setNome = this.setNome.bind(this);
-    this.setCpf = this.setCpf.bind(this);
-    this.setTelefone = this.setTelefone.bind(this);
-    this.setEndereco = this.setEndereco.bind(this);
-    this.setBairro = this.setBairro.bind(this);
-    this.setCep = this.setCep.bind(this);
-    this.setCidade = this.setCidade.bind(this);
-    this.setEstado = this.setEstado.bind(this);
-    this.setAtivo = this.setAtivo.bind(this);
-    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
-  }
-
-  setNome(e) {
-    this.setState({
-      nome: e.target.value,
-    });
-  }
-
-  setCpf(e) {
-    this.setState({
-      cpf: e.target.value,
-    });
-  }
-  setTelefone(e) {
-    this.setState({
-      telefone: e.target.value,
-    });
-  }
-  setEndereco(e) {
-    this.setState({
-      endereco: e.target.value,
-    });
-  }
-  setBairro(e) {
-    this.setState({
-      bairro: e.target.value,
-    });
-  }
-  setCep(e) {
-    this.setState({
-      cep: e.target.value,
-    });
-  }
-  setCidade(e) {
-    this.setState({
-      cidade: e.target.value,
-    });
-  }
-  setEstado(e) {
-    this.setState({
-      estado: e.target.value,
-    });
-  }
-  setAtivo(e) {
-    this.setState({
-      ativo: e.target.value === "true" ? true : false,
-    });
+    this.handleChange.setNome = this.setNome.bind(this);
+    this.handleChange.setCpf = this.setCpf.bind(this);
+    this.handleChange.setTelefone = this.setTelefone.bind(this);
+    this.handleChange.setEndereco = this.setEndereco.bind(this);
+    this.handleChange.setBairro = this.setBairro.bind(this);
+    this.handleChange.setCep = this.setCep.bind(this);
+    this.handleChange.setCidade = this.setCidade.bind(this);
+    this.handleChange.setEstado = this.setEstado.bind(this);
+    this.handleChange.setAtivo = this.setAtivo.bind(this);
   }
 
   enviarParaBackEnd() {
@@ -104,10 +57,22 @@ export default class CadastroCliente extends Component {
         console.log(error);
       });
   }
-  
+
+  handleChange(event) {
+    this.setState({ nome:  event.target.nome.replace(/[^\d\s-/]/g,  "") });
+    this.setState({ cpf:   event.target.cpf.replace(/[^\d\s-/]/g,   "") });
+    this.setState({ telefone: event.target.telefone.replace(/[^\d\s-/]/g, "") });
+    this.setState({ endereco: event.target.endereco.replace(/[^\d\s-/]/g, "") });
+    this.setState({ bairro: event.target.bairro.replace(/[^\d\s-/]/g, "") });
+    this.setState({ cep: event.target.cep.replace(/[^\d\s-/]/g, "") });
+    this.setState({ cidade: event.target.cidade.replace(/[^\d\s-/]/g, "") });
+    this.setState({ estado: event.target.estado.replace(/[^\d\s-/]/g, "") });
+    this.setState({ ativo: event.target.ativo.replace(/[^\d\s-/]/g, "") });
+  }
+
   render() {
     return (
-      <Layout>
+        <Layout>
         {this.state.erro != null ? (
           <div
             className="alert alert-danger alert-dismissible fade show"
@@ -260,3 +225,11 @@ export default class CadastroCliente extends Component {
     );
   }
 }
+
+function App() {
+  return <ValidacaoClientes />;
+}
+
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(<App />, rootElement);

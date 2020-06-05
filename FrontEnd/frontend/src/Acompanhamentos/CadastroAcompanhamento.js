@@ -12,7 +12,7 @@ export default class CadastroAcompanhamentos extends Component {
       descricao: "",
       valor: "",
       ativo: true,
-      erro: null,
+      erro: null
     };
 
     this.setImagem = this.setImagem.bind(this);

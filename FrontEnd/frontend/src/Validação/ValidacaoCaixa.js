@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
 
-export default class ControleCaixa extends Component {
+class ValidacaoCaixa extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: new Date(),
       tipoMovimentacao: 1,
@@ -14,55 +14,10 @@ export default class ControleCaixa extends Component {
       erro: null,
     };
 
-    this.setData = this.setData.bind(this);
-    this.setTipoMovimentacao = this.setTipoMovimentacao.bind(this);
-    this.setValor = this.setValor.bind(this);
-    this.setDescricao = this.setDescricao.bind(this);
-    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
-  }
-
-  setData(e) {
-    this.setState({
-      data: e.target.value,
-    });
-  }
-
-  setTipoMovimentacao(e) {
-    let valor = this.state.valor;
-    if (Number(e.target.value) === 1) {
-      if (valor < 0) {
-        valor = valor * -1;
-      }
-    } else {
-      if (valor > 0) {
-        valor = valor * -1;
-      }
-    }
-
-    this.setState({
-      tipoMovimentacao: Number(e.target.value),
-      valor: valor,
-    });
-  }
-  setValor(e) {
-    let valorOk = e.target.value;
-    if (this.state.tipoMovimentacao === 1) {
-      if (valorOk < 0) {
-        valorOk = valorOk * -1;
-      }
-    } else {
-      if (valorOk > 0) {
-        valorOk = valorOk * -1;
-      }
-    }
-    this.setState({
-      valor: valorOk,
-    });
-  }
-  setDescricao(e) {
-    this.setState({
-      descricao: e.target.value,
-    });
+    this.handleChange.setData = this.setData.bind(this);
+    this.handleChange.setTipoMovimentacao = this.setTipoMovimentacao.bind(this);
+    this.handleChange.setValor = this.setValor.bind(this);
+    this.handleChange.setDescricao = this.setDescricao.bind(this);
   }
 
   enviarParaBackEnd() {
@@ -87,10 +42,17 @@ export default class ControleCaixa extends Component {
         console.log(error);
       });
   }
-  
+
+  handleChange(event) {
+    this.setState({ data: event.target.data.replace(/[^\d\s-/]/g, "") });
+    this.setState({ tipoMovimentacao: event.target.tipoMovimentacao.replace(/[^\d\s-/]/g, "") });
+    this.setState({ valor: event.target.valor.replace(/[^\d\s-/]/g, "") });
+    this.setState({ descricao: event.target.descricao.replace(/[^\d\s-/]/g, "") });
+  }
+
   render() {
     return (
-      <Layout>
+        <Layout>
         {this.state.erro != null ? (
           <div
             className="alert alert-danger alert-dismissible fade show"
@@ -168,3 +130,11 @@ export default class ControleCaixa extends Component {
     );
   }
 }
+
+function App() {
+  return <ValidacaoCaixa />;
+}
+
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(<App />, rootElement);

@@ -3,29 +3,29 @@ import ReactDOM from "react-dom";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
 
-class ValidacaoCasquinha extends React.Component {
+class ValidacaoUsuarios extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       nome: "",
-      tipo: "",
-      preco: "",
+      login: "",
+      senha: "",
       ativo: true,
-      erro: null
+      erro: null,
     };
 
     this.handleChange.setNome = this.setNome.bind(this);
-    this.handleChange.setTipo = this.setTipo.bind(this);
-    this.handleChange.setPreco = this.setPreco.bind(this);
+    this.handleChange.setLogin = this.setLogin.bind(this);
+    this.handleChange.setSenha = this.setSenha.bind(this);
     this.handleChange.setAtivo = this.setAtivo.bind(this);
   }
 
   enviarParaBackEnd() {
     console.log(this.state);
-    Conexao.post("/Casquinha", {
+    Conexao.post("/Usuarios", {
       nome: this.state.nome,
-      tipo: this.state.tipo,
-      preco: Number(this.state.preco),
+      login: this.state.login,
+      senha: this.state.senha,
       ativo: this.state.ativo,
     })
       .then((resposta) => {
@@ -34,7 +34,8 @@ class ValidacaoCasquinha extends React.Component {
         if (dados.erro != null) {
           this.setState({ erro: dados.erro });
         } else {
-          this.props.history.push("/ListaCasquinha");
+          //alert("deu");
+          this.props.history.push("/ListaUsuarios");
         }
       })
       .catch((error) => {
@@ -43,15 +44,35 @@ class ValidacaoCasquinha extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ nome: event.target.nome.replace(/[^\d\s-/]/g, "") });
-    this.setState({ tipo: event.target.tipo.replace(/[^\d\s-/]/g, "") });
-    this.setState({ preco: event.target.preco.replace(/[^\d\s-/]/g, "") });
+    this.setState({ nome:  event.target.nome.replace(/[^\d\s-/]/g, "") });
+    this.setState({ login: event.target.login.replace(/[^\d\s-/]/g, "") });
+    this.setState({ senha: event.target.senha.replace(/[^\d\s-/]/g, "") });
     this.setState({ ativo: event.target.ativo.replace(/[^\d\s-/]/g, "") });
   }
 
   render() {
     return (
-      <Layout>
+        <Layout>
+        {this.state.erro != null ? (
+          <div
+            className="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            {this.state.erro}
+            <button
+              type="button"
+              onClick={() => this.setState({ erro: null })}
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
@@ -63,51 +84,50 @@ class ValidacaoCasquinha extends React.Component {
                 id="nome"
                 name="nome"
                 value={this.state.nome}
-                onChange={this.handleChange.setNome}
+                onChange={this.setNome}
               />
             </div>
-
             <div className="form-group">
-              <label>Tipo</label>
+              <label>Login</label>
               <input
                 type="text"
                 className="form-control"
-                id="tipo"
-                name="tipo"
-                value={this.state.tipo}
-                onChange={this.handleChange.setTipo}
+                id="login"
+                name="login"
+                value={this.state.login}
+                onChange={this.setLogin}
               />
             </div>
-
             <div className="form-group">
-              <label>Preço</label>
+              <label>Senha</label>
               <input
-                type="number"
+                type="password"
                 className="form-control"
-                name="preco"
-                value={this.state.preco}
-                onChange={this.handleChange.setPreco}
+                name="senha"
+                value={this.state.senha}
+                onChange={this.setSenha}
               />
             </div>
 
             <div className="form-group ">
               <label> Ativo: </label>
               <select
-                className="form-control"
                 value={this.state.ativo}
-                onChange={this.handleChange.setAtivo}
+                className="form-control"
+                onChange={this.setAtivo}
               >
                 <option value="true">Sim</option>
                 <option value="false">Não</option>
               </select>
             </div>
+            <button
+              className="btn btn-success"
+              onClick={this.enviarParaBackEnd}
+            >
+              Salvar
+            </button>
           </div>
-        </div>
-        <br></br>
-        <div className="row">
-          <button className="btn btn-success" onClick={this.enviarParaBackEnd}>
-            Salvar
-          </button>
+          <div className="col-4"></div>
         </div>
       </Layout>
     );
@@ -115,7 +135,7 @@ class ValidacaoCasquinha extends React.Component {
 }
 
 function App() {
-  return <ValidacaoCasquinha />;
+  return <ValidacaoUsuarios />;
 }
 
 const rootElement = document.getElementById("root");

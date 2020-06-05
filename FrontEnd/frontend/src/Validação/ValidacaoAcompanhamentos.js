@@ -1,52 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
 
-export default class CadastroUsuario extends Component {
+class ValidacaoAcompanhamentos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      imagem: "",
+      id: "",
       nome: "",
-      login: "",
-      senha: "",
+      descricao: "",
+      valor: "",
       ativo: true,
-      erro: null,
+      erro: null
     };
 
-    this.setNome = this.setNome.bind(this);
-    this.setLogin = this.setLogin.bind(this);
-    this.setSenha = this.setSenha.bind(this);
-    this.setAtivo = this.setAtivo.bind(this);
-    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
-  }
-
-  setNome(e) {
-    this.setState({
-      nome: e.target.value,
-    });
-  }
-  setLogin(e) {
-    this.setState({
-      login: e.target.value,
-    });
-  }
-  setSenha(e) {
-    this.setState({
-      senha: e.target.value,
-    });
-  }
-  setAtivo(e) {
-    this.setState({
-      ativo: e.target.value === "true" ? true : false,
-    });
+    this.handleChange.setImagem = this.setImagem.bind(this);
+    this.handleChange.setId = this.setId.bind(this);
+    this.handleChange.setNome = this.setNome.bind(this);
+    this.handleChange.setDescricao = this.setDescricao.bind(this);
+    this.handleChange.setValor = this.setValor.bind(this);
+    this.handleChange.setAtivo = this.setAtivo.bind(this);
   }
 
   enviarParaBackEnd() {
     console.log(this.state);
-    Conexao.post("/Usuarios", {
+    Conexao.post("/Acompanhamentos", {
       nome: this.state.nome,
-      login: this.state.login,
-      senha: this.state.senha,
+      tipo: this.state.tipo,
+      preco: Number(this.state.preco),
       ativo: this.state.ativo,
     })
       .then((resposta) => {
@@ -55,15 +38,23 @@ export default class CadastroUsuario extends Component {
         if (dados.erro != null) {
           this.setState({ erro: dados.erro });
         } else {
-          //alert("deu");
-          this.props.history.push("/ListaUsuarios");
+          this.props.history.push("/ListaAcompanhamentos");
         }
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  
+
+  handleChange(event) {
+    this.setState({ imagem: event.target.imagem.replace(/[^\d\s-/]/g, "") });
+    this.setState({ id: event.target.id.replace(/[^\d\s-/]/g, "") });
+    this.setState({ nome: event.target.nome.replace(/[^\d\s-/]/g, "") });
+    this.setState({ descricao: event.target.descricao.replace(/[^\d\s-/]/g, "") });
+    this.setState({ valor: event.target.valor.replace(/[^\d\s-/]/g, "") });
+    this.setState({ ativo: event.target.ativo.replace(/[^\d\s-/]/g, "") });
+  }
+
   render() {
     return (
       <Layout>
@@ -91,6 +82,18 @@ export default class CadastroUsuario extends Component {
           <div className="col-4"></div>
           <div className="col-4">
             <div className="form-group">
+              <label>Imagem</label>
+              <input
+                type="text"
+                className="form-control"
+                id="imagem"
+                name="imagem"
+                value={this.state.imagem}
+                onChange={this.setImagem}
+              />
+            </div>
+
+            <div className="form-group">
               <label>Nome</label>
               <input
                 type="text"
@@ -101,39 +104,40 @@ export default class CadastroUsuario extends Component {
                 onChange={this.setNome}
               />
             </div>
+
             <div className="form-group">
-              <label>Login</label>
+              <label>Descricao</label>
               <input
                 type="text"
                 className="form-control"
-                id="login"
-                name="login"
-                value={this.state.login}
-                onChange={this.setLogin}
+                id="descricao"
+                name="descricao"
+                value={this.state.descricao}
+                onChange={this.setDescricao}
               />
             </div>
+
             <div className="form-group">
-              <label>Senha</label>
+              <label>Valor</label>
               <input
-                type="password"
+                type="number"
                 className="form-control"
-                name="senha"
-                value={this.state.senha}
-                onChange={this.setSenha}
+                id="valor"
+                name="valor"
+                value={this.state.valor}
+                onChange={this.setValor}
               />
             </div>
 
             <div className="form-group ">
               <label> Ativo: </label>
-              <select
-                value={this.state.ativo}
-                className="form-control"
-                onChange={this.setAtivo}
-              >
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
+
+              <select className="form-control" onChange={this.setAtivo}>
+                <option value={true}>Sim</option>
+                <option value={false}>Não</option>
               </select>
             </div>
+
             <button
               className="btn btn-success"
               onClick={this.enviarParaBackEnd}
@@ -147,3 +151,11 @@ export default class CadastroUsuario extends Component {
     );
   }
 }
+
+function App() {
+  return <ValidacaoAcompanhamentos />;
+}
+
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(<App />, rootElement);
