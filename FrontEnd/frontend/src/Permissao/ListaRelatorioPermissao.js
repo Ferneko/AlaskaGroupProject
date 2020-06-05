@@ -3,13 +3,13 @@ import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
 import Conexao from "../Conexao/Conexao";
 
-export default class ListaRelatorioEstoque extends Component {
+export default class ListaRelatorioPermissao extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      RelatorioEstoque: [],
+      ListaRelatorioPermissao: [],
       erro: null,
-      query: ""
+      query: "",
     };
     this.pesquisar = this.pesquisar.bind(this);
     this.delete = this.delete.bind(this);
@@ -21,12 +21,12 @@ export default class ListaRelatorioEstoque extends Component {
   }
 
   componentDidMount() {
-    Conexao.get("/Estoque").then((resposta) => {
+    Conexao.get("/Permissao").then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioPermissao: dados });
       }
     });
   }
@@ -34,18 +34,18 @@ export default class ListaRelatorioEstoque extends Component {
   pesquisar(e) {
     console.log(this.state.query);
     var data = this.state.query;
-    Conexao.get("/Estoque/PesquisarEstoque/" + data).then((resposta) => {
+    Conexao.get("/Permissao/PesquisarPermissao/" + data).then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioPermissao: dados });
       }
     });
   }
 
   delete(e) {
-    Conexao.delete("/Estoque", {
+    Conexao.delete("/Permissao", {
       params: { id: e.target.dataset.objeto },
     }).then((resposta) => {
       console.log(resposta.data);
@@ -53,15 +53,15 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioPermissao: dados });
       }
     });
-    Conexao.get("/Estoque").then((resposta) => {
+    Conexao.get("/Permissao").then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioPermissao: dados });
       }
     });
   }
@@ -86,8 +86,8 @@ export default class ListaRelatorioEstoque extends Component {
             </button>
           </div>
         ) : (
-            ""
-          )}
+          ""
+        )}
 
         <div className="row">
           <div className="col-12">
@@ -96,9 +96,7 @@ export default class ListaRelatorioEstoque extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-2">
-                    <Link to="/Estoque" className="btn btn-success">
-                      Movimentar Estoque
-                    </Link>
+                    <Link to="/CadastroPermissao" className="btn btn-success"> Nova Permissão </Link>
                   </div>
                   <div className="col-10">
                     <div className="input-group">
@@ -134,25 +132,19 @@ export default class ListaRelatorioEstoque extends Component {
                 <table className="table table-houver">
                   <thead>
                     <tr>
-                      <th>Data</th>
-                      <th>Tipo da Movimentação</th>
-                      <th>Casquinha</th>
-                      <th>Adicional</th>
-                      <th>Acompanhamento</th>
-                      <th>Sabores</th>
-                      <th></th>
-                      <th></th>
+                      <th>Id</th>
+                      <th>Role</th>
+                      <th>Descrição</th>
+                      <th>Nome</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.RelatorioEstoque.map((item) => (
+                    {this.state.ListaRelatorioPermissao.map((item) => (
                       <tr key={item.id}>
-                        <td>{item.data}</td>
-                        <td>{item.tipoMovimentacao === 1 ? "Entrada" : "Saida"}</td>
-                        <td>{item.quantidadeCasquinha}</td>
-                        <td>{item.quantidadeAdicional}</td>
-                        <td>{item.quantidadeAcompanhamento}</td>
-                        <td>{item.quantidadeSabores}</td>
+                        <td>{item.id}</td>
+                        <td>{item.role}</td>
+                        <td>{item.descricao}</td>
+                        <td>{item.nome}</td>         
                         <td>
                           <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> Excluir </button>
                         </td>

@@ -161,19 +161,13 @@ export default class CadastroAcompanhamentos extends Component {
 
             <div className="form-group ">
               <label> Ativo: </label>
-
               <select className="form-control" onChange={this.setAtivo}>
                 <option value={true}>Sim</option>
                 <option value={false}>Não</option>
               </select>
             </div>
-
-            <button
-              className="btn btn-success"
-              onClick={this.enviarParaBackEnd}
-            >
-              Salvar
-            </button>
+            
+            <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
           </div>
           <div className="col-4"></div>
         </div>

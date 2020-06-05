@@ -3,11 +3,11 @@ import Layout from '../Layout/Layout';
 import {Link} from 'react-router-dom';
 import Conexao from '../Conexao/Conexao';
 
-export default class ListaCaixa extends Component {
+export default class ListaRelatorioCaixa extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            ListaCaixa: [],
+            ListaRelatorioCaixa: [],
             query : "",
             erro : null
         }
@@ -24,7 +24,7 @@ export default class ListaCaixa extends Component {
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ ListaCaixa : dados });
+                this.setState({ ListaRelatorioCaixa : dados });
             }
         });
     }
@@ -37,7 +37,7 @@ export default class ListaCaixa extends Component {
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ ListaCaixa : dados });
+                this.setState({ ListaRelatorioCaixa : dados });
             } 
             
         });
@@ -51,7 +51,7 @@ export default class ListaCaixa extends Component {
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ ListaCaixa : dados });
+                this.setState({ ListaRelatorioCaixa : dados });
             }
         });
 
@@ -60,7 +60,7 @@ export default class ListaCaixa extends Component {
             if(dados.erro != null){
                 this.setState({ erro : dados.erro });
             }else{
-                this.setState({ listaCaixa : dados });
+                this.setState({ ListaRelatorioCaixa : dados });
             }
         });
     }
@@ -106,34 +106,28 @@ export default class ListaCaixa extends Component {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body">
+                                
                                 <table className="table table-houver">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
-                                            <th>data</th>
-                                            <th>movimentação</th>
-                                            <th>preço</th>
-                                            <th>descrição</th>
-                                           
-                                            <th></th>
-
+                                            <th>Id</th>
+                                            <th>Data</th>
+                                            <th>Movimentação</th>
+                                            <th>Preço</th>
+                                            <th>Descrição</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
-                                    
-                                        {this.state.ListaCaixa.map((item) =>
+                                        {this.state.ListaRelatorioCaixa.map((item) =>
                                             <tr key={item.id}>
                                                 <td>{item.id}</td>
                                                 <td>{item.data}</td>
                                                 <td>{item.tipoMovimentacao === 1 ? "Entrada" : "Saída"}</td>
                                                 <td>{item.valor}</td>
                                                 <td>{item.descricao}</td>
-                                              
-                                              
-                                                <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
-
-
+                                                <td>
+                                                    <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> Excluir </button>
+                                                </td>
                                             </tr>
                                         )}
                                     </tbody>

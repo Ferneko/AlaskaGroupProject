@@ -21,9 +21,14 @@ import EditarUsuario from "../Usuarios/EditarUsuario";
 import EditarAdicional from "../Adicional/EditarAdicional";
 import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
-import ListaCaixa from "../Caixa/ListaCaixa";
+import ListaRelatorioCaixa from "../Caixa/ListaRelatorioCaixa";
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
+
+import Permissao from "../Permissao/CadastroPermissao";
+import CadastroPermissao from "../Permissao/CadastroPermissao";
+import EditarPermissao from "../Permissao/EditarPermissao";
+import ListaRelatorioPermissao from "../Permissao/ListaRelatorioPermissao";
 
 const Routes = () => (
     <BrowserRouter>
@@ -54,9 +59,13 @@ const Routes = () => (
             <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos}/>
             <Route path="/ListaAdicional" component={ListaAdicional}/>
               
-               
-            <Route path="/ListaCaixa" component={ListaCaixa}/>
+            <Route path="/ListaRelatorioCaixa" component={ListaRelatorioCaixa}/>
             <Route path="/ControleCaixa" component={ControleCaixa}/>
+
+            <Route path="/Permissao"component={Permissao}/>
+            <Route path="/CadastroPermissao" component={CadastroPermissao}/>
+            <Route path="/EditarPermissao/:id" component={EditarPermissao}/>
+            <Route path="/ListaRelatorioPermissao" component={ListaRelatorioPermissao}/>
 
             <Route exact path="/" component={() => <Layout></Layout>}/>
             <Route path="*" component={NaoEncontrado}/>

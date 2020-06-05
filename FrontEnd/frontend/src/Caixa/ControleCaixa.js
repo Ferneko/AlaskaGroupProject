@@ -5,7 +5,6 @@ import Conexao from "../Conexao/Conexao";
 export default class ControleCaixa extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: new Date(),
       tipoMovimentacao: 1,
@@ -80,7 +79,7 @@ export default class ControleCaixa extends Component {
           this.setState({ erro: dados.erro });
         } else {
           //alert("deu");
-          this.props.history.push("/ListaCaixa");
+          this.props.history.push("/ListaRelatorioCaixa");
         }
       })
       .catch((error) => {
@@ -165,9 +164,7 @@ export default class ControleCaixa extends Component {
         <br></br>
 
         <div className="row">
-          <button className="btn btn-success" onClick={this.enviarParaBackEnd}>
-            Salvar
-          </button>
+          <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
         </div>
         <div className="col-4"></div>
       </Layout>
