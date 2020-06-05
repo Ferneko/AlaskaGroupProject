@@ -68,6 +68,32 @@ export default class CadastroSabores extends Component {
   render() {
     return (
       <Layout>
+        {this.state.erro != null ? (
+          <div
+            className="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            {this.state.erro}
+            <button
+              type="button"
+              onClick={() => this.setState({ erro: null })}
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
+        <div className="row" id="titulo-cadastro-sabores">
+            <h4>Cadastro de Sabores</h4>
+        </div>
+
+        <br></br>
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">

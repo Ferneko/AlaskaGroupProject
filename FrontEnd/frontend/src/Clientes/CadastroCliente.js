@@ -128,6 +128,12 @@ export default class CadastroCliente extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-cadastro-cliente">
+            <h4>Cadastro de Clientes</h4>
+        </div>
+
+        <br></br>
+
         <div className="col-4"></div>
         <div class="row">
           <div className="form-group" class="col-md-4">

@@ -87,6 +87,12 @@ export default class CadastroAdicional extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-cadastro-adicional">
+            <h4>Cadastro de Adicionais</h4>
+        </div>
+
+        <br></br>
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">

@@ -85,7 +85,7 @@ export default class ListaCaixa extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-2">
-                                        <Link to="/ControleCaixa" className="btn btn-success">Controle de caixa</Link>
+                                        <Link to="/ControleCaixa" className="btn btn-success">Controle de Caixa</Link>
                                     </div>
                                     <div className="col-10">
                                         <div className="input-group">

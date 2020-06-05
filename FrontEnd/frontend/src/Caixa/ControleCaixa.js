@@ -111,6 +111,12 @@ export default class ControleCaixa extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-controle-caixa">
+            <h4>Controle de Caixa</h4>
+        </div>
+
+        <br></br>
+
         <div className="col-4"></div>
         <div className="col-4">
           <div className="form-group">

@@ -203,6 +203,12 @@ export default class Estoque extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-cadastro-movimentar-estoque">
+            <h4>Movimentar Estoque</h4>
+        </div>
+
+        <br></br> <br></br>
+
         <div className="row">
           <div className="form-group col-md-3">
             <label>Data</label>

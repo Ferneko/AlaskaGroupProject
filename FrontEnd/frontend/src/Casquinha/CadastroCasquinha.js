@@ -88,6 +88,12 @@ export default class CadastroCasquinha extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-cadastro-casquinha">
+            <h4>Cadastro de Casquinhas</h4>
+        </div>
+
+        <br></br>
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">

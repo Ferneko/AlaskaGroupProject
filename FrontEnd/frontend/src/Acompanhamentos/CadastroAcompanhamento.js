@@ -102,6 +102,12 @@ export default class CadastroAcompanhamentos extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-cadastro-cabecalho">
+            <h4>Cadastro de Acompanhamentos</h4>
+        </div>
+
+        <br></br>
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
