@@ -24,5 +24,9 @@ namespace WebApi
 
         public DbSet<Permissao> PERMISSAO { get; set; }
         public DbSet<GrupoUsuario> GRUPO_USUARIO { get; set; }
+
+        public DbSet<GrupoUsuarioPermissao> GRUPO_USUARIO_PERMISSAO { get; set; }
+        public DbSet<UsuariosGrupoUsuarios> USUARIOS_GRUPO_USUARIOS { get; set; }
+        public DbSet<UsuarioPermissao> USUARIO_PERMISSAO { get; set; }
     }
 }
