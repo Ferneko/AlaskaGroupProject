@@ -72,7 +72,10 @@ export default class ListaAcompanhamentos extends Component {
     return (
       <Layout>
         {this.state.erro != null ? (
-          <div className="alert alert-danger alert-dismissible fade show" role="alert">
+          <div
+            className="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
             {this.state.erro}
             <button
               type="button"
@@ -85,8 +88,8 @@ export default class ListaAcompanhamentos extends Component {
             </button>
           </div>
         ) : (
-            ""
-          )}
+          ""
+        )}
 
         <div className="row">
           <div className="col-12">
@@ -95,20 +98,36 @@ export default class ListaAcompanhamentos extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-12">
-                    <div className="card " >
-                        <div className="row">
-                          <div className="col-2">
-                            <Link to="/CadastroAcompanhamento" className="btn btn-success">Novo Acompanhamento</Link>
-                          </div>
-                          <div className="col-10">
-                            <div className="input-group">
-                              <input type="text" className="form-control" placeholder="Digite aqui sua pesquisa" onChange={this.atualizaQuery} aria-label="Digite aqui sua pesquisa" aria-describedby="basic-addon2" />
-                              <div className="input-group-append">
-                                <button className="btn btn-primary" type="button" onClick={this.pesquisar}>Pesquisar</button>
-                              </div>
-                            </div>
+                    <div className="row">
+                      <div className="col-2">
+                        <Link
+                          to="/CadastroAcompanhamento"
+                          className="btn btn-success"
+                        >
+                          Novo Acompanhamento
+                        </Link>
+                      </div>
+                      <div className="col-10">
+                        <div className="input-group">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Digite aqui sua pesquisa"
+                            onChange={this.atualizaQuery}
+                            aria-label="Digite aqui sua pesquisa"
+                            aria-describedby="basic-addon2"
+                          />
+                          <div className="input-group-append">
+                            <button
+                              className="btn btn-primary"
+                              type="button"
+                              onClick={this.pesquisar}
+                            >
+                              Pesquisar
+                            </button>
                           </div>
                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -141,15 +160,10 @@ export default class ListaAcompanhamentos extends Component {
                         <td>{item.nome}</td>
                         <td>{item.descricao}</td>
                         <td>{item.valor}</td>
-                        
+                        <td><input disabled type="checkbox" defaultChecked={item.ativo} /></td>
                         <td>
-                          <input disabled type="checkbox" defaultChecked={item.ativo}/>
+                          <Link key={item.id} to={{ pathname: "/EditarAcompanhamento/" + item.id,}} className="btn btn-warning"> Editar </Link>
                         </td>
-
-                        <td>
-                          <Link key={item.id} to={{ pathname: "/EditarAcompanhamento/" + item.id, }} className="btn btn-warning"> Editar </Link>
-                        </td>
-
                         <td>
                           <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> Excluir </button>
                         </td>
@@ -161,7 +175,7 @@ export default class ListaAcompanhamentos extends Component {
             </div>
           </div>
         </div>
-      </Layout >
+      </Layout>
     );
   }
 }
