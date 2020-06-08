@@ -202,13 +202,10 @@ export default class Estoque extends Component {
         ) : (
           ""
         )}
-
         <div className="row" id="titulo-cadastro-movimentar-estoque">
-            <h4>Movimentar Estoque</h4>
+          <h4>Movimentar Estoque</h4>
         </div>
-
         <br></br> <br></br>
-
         <div className="row">
           <div className="form-group col-md-3">
             <label>Data</label>
@@ -221,7 +218,6 @@ export default class Estoque extends Component {
               onChange={this.setData}
             />
           </div>
-
           <div className="form-group col-md-3">
             <label> Tipo de Movimentação </label>
             <select
@@ -234,7 +230,6 @@ export default class Estoque extends Component {
             </select>
           </div>
         </div>
-
         <div className="row">
           <div className="form-group col-md-3">
             <label>Casquinha</label>
@@ -251,7 +246,6 @@ export default class Estoque extends Component {
               ))}
             </select>
           </div>
-
           <div className="form-group col-md-3">
             <label>Qtd Casquinha</label>
             <input
@@ -264,11 +258,9 @@ export default class Estoque extends Component {
             />
           </div>
         </div>
-
         <div className="row">
           <div className="form-group col-md-3">
             <label>Adicional</label>
-
             <select
               className="form-control"
               name="adicionalid"
@@ -282,7 +274,6 @@ export default class Estoque extends Component {
               ))}
             </select>
           </div>
-
           <div className="form-group col-md-3">
             <label>Qtd Adicional</label>
             <input
@@ -295,11 +286,9 @@ export default class Estoque extends Component {
             />
           </div>
         </div>
-
         <div className="row">
           <div className="form-group col-md-3">
             <label>Acompanhamento</label>
-
             <select
               className="form-control"
               name="acompanhamentoId"
@@ -313,7 +302,6 @@ export default class Estoque extends Component {
               ))}
             </select>
           </div>
-
           <div className="form-group col-md-3">
             <label>Qtd Acompanhamento</label>
             <input
@@ -326,7 +314,6 @@ export default class Estoque extends Component {
             />
           </div>
         </div>
-
         <div className="row">
           <div className="form-group col-md-3">
             <label>Sabor</label>
@@ -343,7 +330,6 @@ export default class Estoque extends Component {
               ))}
             </select>
           </div>
-
           <div className="form-group col-md-3">
             <label>Qtd Sabor</label>
             <input
@@ -356,13 +342,10 @@ export default class Estoque extends Component {
             />
           </div>
         </div>
-
-        <br></br>
-
         <div className="row">
-          <button className="btn btn-success" onClick={this.enviarParaBackEnd}>
-            Salvar
-          </button>
+          <div className="form-group col-md-3">
+            <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+          </div>
         </div>
       </Layout>
     );

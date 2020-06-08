@@ -88,7 +88,7 @@ export default class CadastroAdicional extends Component {
         )}
 
         <div className="row" id="titulo-cadastro-adicional">
-            <h4>Cadastro de Adicionais</h4>
+          <h4>Cadastro de Adicionais</h4>
         </div>
 
         <br></br>
@@ -96,7 +96,7 @@ export default class CadastroAdicional extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="form-group">
+            <div className="form-group col-md-10">
               <label>Nome</label>
               <input
                 type="text"
@@ -107,8 +107,7 @@ export default class CadastroAdicional extends Component {
                 onChange={this.setNome}
               />
             </div>
-
-            <div className="form-group">
+            <div className="form-group col-md-10">
               <label>Tipo</label>
               <input
                 type="text"
@@ -119,8 +118,7 @@ export default class CadastroAdicional extends Component {
                 onChange={this.setTipo}
               />
             </div>
-
-            <div className="form-group">
+            <div className="form-group col-md-10">
               <label>Valor</label>
               <input
                 type="number"
@@ -130,8 +128,7 @@ export default class CadastroAdicional extends Component {
                 onChange={this.setValor}
               />
             </div>
-
-            <div className="form-group ">
+            <div className="form-group col-md-10">
               <label> Ativo: </label>
               <select
                 className="form-control"
@@ -142,17 +139,11 @@ export default class CadastroAdicional extends Component {
                 <option value="false">Não</option>
               </select>
             </div>
+            <div className="form-group col-md-10">
+              <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+            </div>
           </div>
         </div>
-        <br></br>
-
-        <div className="row">
-          <button className="btn btn-success" onClick={this.enviarParaBackEnd}>
-            Salvar
-          </button>
-        </div>
-
-        <div className="col-4"></div>
       </Layout>
     );
   }

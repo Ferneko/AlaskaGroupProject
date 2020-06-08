@@ -116,57 +116,66 @@ export default class ControleCaixa extends Component {
 
         <br></br>
 
-        <div className="col-4"></div>
-        <div className="col-4">
-          <div className="form-group">
-            <label>Data</label>
-            <input
-              type="date"
-              className="form-control"
-              id="nome"
-              name="date"
-              value={this.state.data}
-              onChange={this.setData}
-            />
-          </div>
-          <div className="form-group ">
-            <label> Tipo de Movimentação: </label>
-            <select
-              className="form-control"
-              defaultValue={this.state.tipoMovimentacao}
-              onChange={this.setTipoMovimentacao}
-            >
-              <option value="1">Entrada</option>
-              <option value="0">Saida</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Valor</label>
-            <input
-              type="number"
-              className="form-control"
-              name="valor"
-              value={this.state.valor}
-              onChange={this.setValor}
-            />
-          </div>
-          <div className="form-group">
-            <label>Descrição</label>
-            <input
-              type="text"
-              className="form-control"
-              name="descricao"
-              value={this.state.descricao}
-              onChange={this.setDescricao}
-            />
-          </div>
-        </div>
-        <br></br>
-
         <div className="row">
-          <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
-        </div>
-        <div className="col-4"></div>
+          <div className="col-4"></div>
+            <div className="col-4">
+              <div class="row">
+                <div className="form-group col-md-10">
+                  <label>Data</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="nome"
+                    name="date"
+                    value={this.state.data}
+                    onChange={this.setData}
+                  />
+                </div>
+              </div> 
+              <div class="row">
+                  <div className="form-group col-md-10">
+                    <label> Tipo de Movimentação: </label>
+                    <select
+                      className="form-control"
+                      defaultValue={this.state.tipoMovimentacao}
+                      onChange={this.setTipoMovimentacao}>
+                      <option value="1">Entrada</option>
+                      <option value="0">Saida</option>
+                    </select>
+                </div>
+              </div>
+              <div class="row">
+                  <div className="form-group col-md-10">
+                    <label>Valor</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="valor"
+                      value={this.state.valor}
+                      onChange={this.setValor}
+                    />
+                </div>
+              </div> 
+              <div class="row">
+                  <div className="form-group col-md-10">
+                    <label>Descrição</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="descricao"
+                      value={this.state.descricao}
+                      onChange={this.setDescricao}
+                    />
+                 </div>
+              </div> 
+              <div className="row">
+                <div className="form-group col-md-10">
+                  <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
       </Layout>
     );
   }

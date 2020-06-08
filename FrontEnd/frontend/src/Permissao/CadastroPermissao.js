@@ -96,32 +96,30 @@ export default class CadastroPermissao extends Component {
         <br></br>
 
         <div className="row">
-        <div className="col-4"></div>
+          <div className="col-4"></div>
           <div className="col-4">
-              <div className="form-group col-md-10">
-                <label>Id</label>
-                <input
-                  type="text"
-                  readOnly={true}
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={this.state.SetId}
-                />
-              </div>
-
-              <div className="form-group col-md-10">
-                <label>Role</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="role"
-                  name="role"
-                  value={this.state.role}
-                  onChange={this.setRole}
-                />
-              </div>
-
+            <div className="form-group col-md-10">
+              <label>Id</label>
+              <input
+                type="text"
+                readOnly={true}
+                className="form-control"
+                id="id"
+                name="id"
+                value={this.state.SetId}
+              />
+            </div>
+            <div className="form-group col-md-10">
+              <label>Role</label>
+              <input
+                type="text"
+                className="form-control"
+                id="role"
+                name="role"
+                value={this.state.role}
+                onChange={this.setRole}
+              />
+            </div>
             <div className="form-group col-md-10">
               <label>Descrição</label>
               <input
@@ -133,7 +131,6 @@ export default class CadastroPermissao extends Component {
                 onChange={this.setDescricao}
               />
             </div>
-
             <div className="form-group col-md-10">
               <label>Nome</label>
               <input
@@ -145,8 +142,9 @@ export default class CadastroPermissao extends Component {
                 onChange={this.setNome}
               />
             </div>
-            <br></br>
-            <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar  </button>
+            <div className="form-group col-md-10">
+              <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+            </div>
           </div>
         </div>
       </Layout>

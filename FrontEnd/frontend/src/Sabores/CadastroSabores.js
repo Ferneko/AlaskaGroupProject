@@ -89,7 +89,7 @@ export default class CadastroSabores extends Component {
         )}
 
         <div className="row" id="titulo-cadastro-sabores">
-            <h4>Cadastro de Sabores</h4>
+          <h4>Cadastro de Sabores</h4>
         </div>
 
         <br></br>
@@ -97,27 +97,27 @@ export default class CadastroSabores extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="form-group">
+            <div className="form-group col-md-12">
               <label>Nome</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control col-md-12"
                 name="name"
                 value={this.state.name}
                 onChange={this.setName}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group col-md-12">
               <label>Descrição</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control col-md-12"
                 name="description"
                 value={this.state.description}
                 onChange={this.setDescription}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group col-md-12">
               <label>Preço</label>
               <input
                 type="number"
@@ -127,7 +127,7 @@ export default class CadastroSabores extends Component {
                 onChange={this.setPrice}
               />
             </div>
-            <div className="form-group ">
+            <div className="form-group col-md-12">
               <label> Ativo: </label>
               <select
                 className="form-control"
@@ -138,14 +138,10 @@ export default class CadastroSabores extends Component {
                 <option value="false">Não</option>
               </select>
             </div>
-            <button
-              className="btn btn-success"
-              onClick={this.enviarParaBackEnd}
-            >
-              Salvar
-            </button>
+            <div className="form-group col-md-12">
+              <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+            </div>
           </div>
-          <div className="col-4"></div>
         </div>
       </Layout>
     );

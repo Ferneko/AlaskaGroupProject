@@ -104,7 +104,7 @@ export default class CadastroCliente extends Component {
         console.log(error);
       });
   }
-  
+
   render() {
     return (
       <Layout>
@@ -129,138 +129,131 @@ export default class CadastroCliente extends Component {
         )}
 
         <div className="row" id="titulo-cadastro-cliente">
-            <h4>Cadastro de Clientes</h4>
+          <h4>Cadastro de Clientes</h4>
         </div>
 
         <br></br>
 
-        <div className="col-4"></div>
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Nome</label>
-            <input
-              type="text"
-              className="form-control"
-              id="nome"
-              name="nome"
-              value={this.state.nome}
-              onChange={this.setNome}
-            />
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-4">
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Nome</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="nome"
+                  name="nome"
+                  value={this.state.nome}
+                  onChange={this.setNome}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>CPF</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="cpf"
+                  name="cpf"
+                  value={this.state.cpf}
+                  onChange={this.setCpf}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Telefone</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="telefone"
+                  value={this.state.telefone}
+                  onChange={this.setTelefone}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Endereço</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="endereco"
+                  value={this.state.endereco}
+                  onChange={this.setEndereco}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Bairro</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="bairro"
+                  value={this.state.bairro}
+                  onChange={this.setBairro}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>CEP</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="cep"
+                  value={this.state.cep}
+                  onChange={this.setCep}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Cidade</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="cidade"
+                  value={this.state.cidade}
+                  onChange={this.setCidade}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Estado</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="estado"
+                  value={this.state.estado}
+                  onChange={this.setEstado}
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Ativo:</label>
+                <select
+                  className="form-control"
+                  value={this.state.ativo}
+                  onChange={this.setAtivo}
+                >
+                  <option value="true">Sim</option>
+                  <option value="false">Não</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>CPF</label>
-            <input
-              type="text"
-              className="form-control"
-              id="cpf"
-              name="cpf"
-              value={this.state.cpf}
-              onChange={this.setCpf}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Telefone</label>
-            <input
-              type="text"
-              className="form-control"
-              name="telefone"
-              value={this.state.telefone}
-              onChange={this.setTelefone}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Endereço</label>
-            <input
-              type="text"
-              className="form-control"
-              name="endereco"
-              value={this.state.endereco}
-              onChange={this.setEndereco}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Bairro</label>
-            <input
-              type="text"
-              className="form-control"
-              name="bairro"
-              value={this.state.bairro}
-              onChange={this.setBairro}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>CEP</label>
-            <input
-              type="text"
-              className="form-control"
-              name="cep"
-              value={this.state.cep}
-              onChange={this.setCep}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Cidade</label>
-            <input
-              type="text"
-              className="form-control"
-              name="cidade"
-              value={this.state.cidade}
-              onChange={this.setCidade}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Estado</label>
-            <input
-              type="text"
-              className="form-control"
-              name="estado"
-              value={this.state.estado}
-              onChange={this.setEstado}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div className="form-group" class="col-md-4">
-            <label>Ativo:</label>
-            <select
-              className="form-control"
-              value={this.state.ativo}
-              onChange={this.setAtivo}
-            >
-              <option value="true">Sim</option>
-              <option value="false">Não</option>
-            </select>
-          </div>
-        </div>
-
-        <br></br>
-
-        <div class="row">
-          <button className="btn btn-success" onClick={this.enviarParaBackEnd}>
-            Salvar
-          </button>
         </div>
       </Layout>
     );
