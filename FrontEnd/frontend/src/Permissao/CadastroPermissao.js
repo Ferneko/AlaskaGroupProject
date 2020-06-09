@@ -89,11 +89,11 @@ export default class CadastroPermissao extends Component {
           ""
         )}
 
-        <div className="row" id="titulo-permissao">
-          <h4>Cadastro de Permissão</h4>
+        <div className="row" id="titulo-cadastro-permissao">
+          <div className="form-group col-md-12">
+              <h4>Cadastro de Permissão</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>

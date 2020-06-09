@@ -89,10 +89,10 @@ export default class CadastroSabores extends Component {
         )}
 
         <div className="row" id="titulo-cadastro-sabores">
-          <h4>Cadastro de Sabores</h4>
+          <div className="form-group col-md-12">
+              <h4>Cadastro de Sabores</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>

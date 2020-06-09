@@ -96,11 +96,11 @@ export default class CadastroAcompanhamentos extends Component {
           </div>
         ):("")}
 
-        <div className="row" id="titulo-cadastro-cabecalho">
-          <h4>Cadastro de Acompanhamentos</h4>
+        <div className="row" id="titulo-cadastro-acompanhamento">
+          <div className="form-group col-md-12">
+              <h4>Cadastro de Acompanhamentos</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>

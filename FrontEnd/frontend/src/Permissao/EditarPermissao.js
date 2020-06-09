@@ -103,11 +103,11 @@ export default class EditarPermissao extends Component {
           ""
         )}
 
-        <div className="row" id="titulo-permissao">
-            <h4>Permissão</h4>
+        <div className="row" id="titulo-editar-permissao">
+          <div className="form-group col-md-12">
+            <h4>Edição de Permissão</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>

@@ -100,6 +100,12 @@ export default class EditarCasquinha extends Component {
                     </div>
                     : ""}
 
+            <div className="row" id="titulo-editar-casquinha">
+                <div className="form-group col-md-12">
+                    <h4>Edição de Casquinhas</h4>
+                </div>
+            </div>
+
             <div className="row">
                 <div className="col-4"></div>
                 <div className="col-4">

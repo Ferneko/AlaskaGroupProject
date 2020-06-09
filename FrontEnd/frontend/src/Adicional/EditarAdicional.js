@@ -107,6 +107,12 @@ export default class EditarAdicional extends Component {
           ""
         )}
 
+        <div className="row" id="titulo-editar-adicional">
+          <div className="form-group col-md-12">
+              <h4>Edição de Adicionais</h4>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">

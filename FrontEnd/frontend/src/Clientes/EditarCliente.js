@@ -152,6 +152,12 @@ export default class EditarCliente extends Component {
         ) : (
           ""
         )}
+        
+        <div className="row" id="titulo-editar-cliente">
+          <div className="form-group col-md-12">
+              <h4>Edição de Clientes</h4>
+          </div>
+        </div>
 
         <div className="row">
           <div className="col-4"></div>

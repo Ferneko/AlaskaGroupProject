@@ -97,7 +97,13 @@ export default class EditarUsuario extends Component {
                         <button type="button" onClick={() => this.setState({ erro: null })} className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     : ""}
-
+       
+        <div className="row" id="titulo-editar-usuarios">
+          <div className="form-group col-md-12">
+            <h4>Edição de Usuários</h4>
+          </div>
+        </div>
+       
         <div className="row">
           <div className="col-4"></div>
             <div className="col-4">

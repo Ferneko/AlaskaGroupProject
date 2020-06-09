@@ -114,6 +114,12 @@ export default class EditarAcompanhamento extends Component {
           </div>
         ):("")}
 
+        <div className="row" id="titulo-editar-acompanhamentos">
+          <div className="form-group col-md-12">
+            <h4>Edição de Acompanhamentos</h4>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">

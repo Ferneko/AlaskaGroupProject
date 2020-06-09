@@ -84,11 +84,11 @@ export default class EditarGrupoUsuario extends Component {
           ""
         )}
 
-        <div className="row" id="titulo-cadastro-cabecalho">
-          <h4>Grupo Usuário</h4>
+        <div className="row" id="titulo-editar-grupo-usuario">
+          <div className="form-group col-md-12">
+              <h4>Edição de Grupo Usuário</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>

@@ -88,10 +88,10 @@ export default class CadastroUsuario extends Component {
         )}
 
         <div className="row" id="titulo-cadastro-usuarios">
+          <div className="form-group col-md-12">
             <h4>Cadastro de Usuários</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>
