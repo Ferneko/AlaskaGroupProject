@@ -95,59 +95,63 @@ export default class CadastroUsuario extends Component {
 
         <div className="row">
           <div className="col-4"></div>
-          <div className="col-4">
-            <div className="form-group">
-              <label>Nome</label>
-              <input
-                type="text"
-                className="form-control"
-                id="nome"
-                name="nome"
-                value={this.state.nome}
-                onChange={this.setNome}
-              />
-            </div>
-            <div className="form-group">
-              <label>Login</label>
-              <input
-                type="text"
-                className="form-control"
-                id="login"
-                name="login"
-                value={this.state.login}
-                onChange={this.setLogin}
-              />
-            </div>
-            <div className="form-group">
-              <label>Senha</label>
-              <input
-                type="password"
-                className="form-control"
-                name="senha"
-                value={this.state.senha}
-                onChange={this.setSenha}
-              />
-            </div>
-
-            <div className="form-group ">
-              <label> Ativo: </label>
-              <select
-                value={this.state.ativo}
-                className="form-control"
-                onChange={this.setAtivo}
-              >
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
-              </select>
-            </div>
-            <button
-              className="btn btn-success"
-              onClick={this.enviarParaBackEnd}
-            >
-              Salvar
-            </button>
+            <div className="col-4">
+              <div class="row">
+                <div className="form-group col-md-12">
+                  <label> Nome </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="nome"
+                    name="nome"
+                    value={this.state.nome}
+                    onChange={this.setNome}
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div className="form-group col-md-12">
+                    <label> Login </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="login"
+                      name="login"
+                      value={this.state.login}
+                      onChange={this.setLogin}
+                    />
+                </div>
+              </div>
+              <div class="row">
+                <div className="form-group col-md-12">
+                    <label> Senha </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="senha"
+                      value={this.state.senha}
+                      onChange={this.setSenha}
+                    />
+                </div>
+              </div>
+              <div class="row">
+                <div className="form-group col-md-12">
+                    <label> Ativo: </label>
+                    <select
+                      value={this.state.ativo}
+                      className="form-control"
+                      onChange={this.setAtivo}>
+                      <option value="true">Sim</option>
+                      <option value="false">Não</option>
+                    </select>
+                </div>
+              </div>
+              <div class="row">
+                  <div className="form-group col-md-12">
+                      <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                  </div>
+              </div>
           </div>
-          <div className="col-4"></div>
         </div>
       </Layout>
     );

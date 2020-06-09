@@ -98,7 +98,7 @@ export default class CadastroSabores extends Component {
           <div className="col-4"></div>
           <div className="col-4">
             <div className="form-group col-md-12">
-              <label>Nome</label>
+              <label> Nome </label>
               <input
                 type="text"
                 className="form-control col-md-12"
@@ -108,7 +108,7 @@ export default class CadastroSabores extends Component {
               />
             </div>
             <div className="form-group col-md-12">
-              <label>Descrição</label>
+              <label> Descrição </label>
               <input
                 type="text"
                 className="form-control col-md-12"
@@ -118,7 +118,7 @@ export default class CadastroSabores extends Component {
               />
             </div>
             <div className="form-group col-md-12">
-              <label>Preço</label>
+              <label> Preço </label>
               <input
                 type="number"
                 className="form-control"

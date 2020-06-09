@@ -99,7 +99,7 @@ export default class CadastroCasquinha extends Component {
           <div className="col-4">
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Nome</label>
+                <label> Nome </label>
                 <input
                   type="text"
                   className="form-control"
@@ -112,7 +112,7 @@ export default class CadastroCasquinha extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Tipo</label>
+                <label> Tipo </label>
                 <input
                   type="text"
                   className="form-control"
@@ -125,7 +125,7 @@ export default class CadastroCasquinha extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Preço</label>
+                <label> Preço </label>
                 <input
                   type="number"
                   className="form-control"
@@ -141,8 +141,7 @@ export default class CadastroCasquinha extends Component {
                 <select
                   className="form-control"
                   value={this.state.ativo}
-                  onChange={this.setAtivo}
-                >
+                  onChange={this.setAtivo}>
                   <option value="true">Sim</option>
                   <option value="false">Não</option>
                 </select>

@@ -96,8 +96,8 @@ export default class CadastroAdicional extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="form-group col-md-10">
-              <label>Nome</label>
+            <div className="form-group col-md-12">
+              <label> Nome </label>
               <input
                 type="text"
                 className="form-control"
@@ -107,8 +107,8 @@ export default class CadastroAdicional extends Component {
                 onChange={this.setNome}
               />
             </div>
-            <div className="form-group col-md-10">
-              <label>Tipo</label>
+            <div className="form-group col-md-12">
+              <label> Tipo </label>
               <input
                 type="text"
                 className="form-control"
@@ -118,8 +118,8 @@ export default class CadastroAdicional extends Component {
                 onChange={this.setTipo}
               />
             </div>
-            <div className="form-group col-md-10">
-              <label>Valor</label>
+            <div className="form-group col-md-12">
+              <label> Valor </label>
               <input
                 type="number"
                 className="form-control"
@@ -128,7 +128,7 @@ export default class CadastroAdicional extends Component {
                 onChange={this.setValor}
               />
             </div>
-            <div className="form-group col-md-10">
+            <div className="form-group col-md-12">
               <label> Ativo: </label>
               <select
                 className="form-control"
@@ -139,7 +139,7 @@ export default class CadastroAdicional extends Component {
                 <option value="false">Não</option>
               </select>
             </div>
-            <div className="form-group col-md-10">
+            <div className="form-group col-md-12">
               <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
             </div>
           </div>

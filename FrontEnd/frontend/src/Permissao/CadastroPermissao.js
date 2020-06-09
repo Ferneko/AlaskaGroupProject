@@ -98,52 +98,62 @@ export default class CadastroPermissao extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="form-group col-md-10">
-              <label>Id</label>
-              <input
-                type="text"
-                readOnly={true}
-                className="form-control"
-                id="id"
-                name="id"
-                value={this.state.SetId}
-              />
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Id</label>
+                <input
+                  type="text"
+                  readOnly={true}
+                  className="form-control"
+                  id="id"
+                  name="id"
+                  value={this.state.SetId}
+                />
+              </div>
+            </div>  
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Role</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="role"
+                  name="role"
+                  value={this.state.role}
+                  onChange={this.setRole}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-10">
-              <label>Role</label>
-              <input
-                type="text"
-                className="form-control"
-                id="role"
-                name="role"
-                value={this.state.role}
-                onChange={this.setRole}
-              />
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Descrição</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="descricao"
+                  name="descricao"
+                  value={this.state.descricao}
+                  onChange={this.setDescricao}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-10">
-              <label>Descrição</label>
-              <input
-                type="text"
-                className="form-control"
-                id="descricao"
-                name="descricao"
-                value={this.state.descricao}
-                onChange={this.setDescricao}
-              />
+            <div class="row">
+              <div className="form-group col-md-12">
+                <label>Nome</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="nome"
+                  name="nome"
+                  value={this.state.nome}
+                  onChange={this.setNome}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-10">
-              <label>Nome</label>
-              <input
-                type="text"
-                className="form-control"
-                id="nome"
-                name="nome"
-                value={this.state.nome}
-                onChange={this.setNome}
-              />
-            </div>
-            <div className="form-group col-md-10">
-              <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+            <div class="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+              </div>
             </div>
           </div>
         </div>

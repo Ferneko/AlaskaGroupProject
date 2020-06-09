@@ -112,8 +112,8 @@ export default class CadastroAcompanhamentos extends Component {
           <div className="col-4"></div>
           <div className="col-4">
             <div class="row">
-              <div className="form-group col-md-10">
-                <label>Imagem</label>
+              <div className="form-group col-md-12">
+                <label> Imagem </label>
                 <input
                   type="text"
                   className="form-control"
@@ -125,7 +125,7 @@ export default class CadastroAcompanhamentos extends Component {
               </div>
             </div>
             <div class="row">
-              <div className="form-group col-md-10">
+              <div className="form-group col-md-12">
                 <label>Nome</label>
                 <input
                   type="text"
@@ -138,8 +138,8 @@ export default class CadastroAcompanhamentos extends Component {
               </div>
             </div>
             <div class="row">
-              <div className="form-group col-md-10">
-                <label>Descricao</label>
+              <div className="form-group col-md-12">
+                <label> Descrição </label>
                 <input
                   type="text"
                   className="form-control"
@@ -151,8 +151,8 @@ export default class CadastroAcompanhamentos extends Component {
               </div>
             </div>
             <div class="row">
-              <div className="form-group col-md-10">
-                <label>Valor</label>
+              <div className="form-group col-md-12">
+                <label> Valor </label>
                 <input
                   type="number"
                   className="form-control"
@@ -164,7 +164,7 @@ export default class CadastroAcompanhamentos extends Component {
               </div>
             </div>
             <div class="row">
-              <div className="form-group col-md-10">
+              <div className="form-group col-md-12">
                 <label> Ativo: </label>
                 <select className="form-control" onChange={this.setAtivo}>
                   <option value={true}>Sim</option>
@@ -173,7 +173,7 @@ export default class CadastroAcompanhamentos extends Component {
               </div>
             </div>
             <div class="row">
-              <div className="form-group col-md-10">
+              <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
               </div>
             </div>

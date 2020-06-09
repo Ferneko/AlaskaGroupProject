@@ -120,7 +120,7 @@ export default class ControleCaixa extends Component {
           <div className="col-4"></div>
             <div className="col-4">
               <div class="row">
-                <div className="form-group col-md-10">
+                <div className="form-group col-md-12">
                   <label>Data</label>
                   <input
                     type="date"
@@ -133,7 +133,7 @@ export default class ControleCaixa extends Component {
                 </div>
               </div> 
               <div class="row">
-                  <div className="form-group col-md-10">
+                  <div className="form-group col-md-12">
                     <label> Tipo de Movimentação: </label>
                     <select
                       className="form-control"
@@ -145,7 +145,7 @@ export default class ControleCaixa extends Component {
                 </div>
               </div>
               <div class="row">
-                  <div className="form-group col-md-10">
+                  <div className="form-group col-md-12">
                     <label>Valor</label>
                     <input
                       type="number"
@@ -157,7 +157,7 @@ export default class ControleCaixa extends Component {
                 </div>
               </div> 
               <div class="row">
-                  <div className="form-group col-md-10">
+                  <div className="form-group col-md-12">
                     <label>Descrição</label>
                     <input
                       type="text"
@@ -169,11 +169,10 @@ export default class ControleCaixa extends Component {
                  </div>
               </div> 
               <div className="row">
-                <div className="form-group col-md-10">
+                <div className="form-group col-md-12">
                   <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 </div>
               </div>
-
             </div>
           </div>
       </Layout>

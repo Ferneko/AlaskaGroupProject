@@ -139,7 +139,7 @@ export default class CadastroCliente extends Component {
           <div className="col-4">
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Nome</label>
+                <label> Nome </label>
                 <input
                   type="text"
                   className="form-control"
@@ -152,7 +152,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>CPF</label>
+                <label> CPF </label>
                 <input
                   type="text"
                   className="form-control"
@@ -165,7 +165,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Telefone</label>
+                <label> Telefone </label>
                 <input
                   type="text"
                   className="form-control"
@@ -177,7 +177,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Endereço</label>
+                <label> Endereço </label>
                 <input
                   type="text"
                   className="form-control"
@@ -189,7 +189,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Bairro</label>
+                <label> Bairro </label>
                 <input
                   type="text"
                   className="form-control"
@@ -201,7 +201,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>CEP</label>
+                <label> CEP </label>
                 <input
                   type="text"
                   className="form-control"
@@ -213,7 +213,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Cidade</label>
+                <label> Cidade </label>
                 <input
                   type="text"
                   className="form-control"
@@ -225,7 +225,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Estado</label>
+                <label> Estado </label>
                 <input
                   type="text"
                   className="form-control"
@@ -237,7 +237,7 @@ export default class CadastroCliente extends Component {
             </div>
             <div class="row">
               <div className="form-group col-md-12">
-                <label>Ativo:</label>
+                <label> Ativo: </label>
                 <select
                   className="form-control"
                   value={this.state.ativo}
