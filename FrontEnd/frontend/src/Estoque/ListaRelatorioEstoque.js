@@ -7,7 +7,7 @@ export default class ListaRelatorioEstoque extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      RelatorioEstoque: [],
+      ListaRelatorioEstoque: [],
       erro: null,
       query: ""
     };
@@ -26,7 +26,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
   }
@@ -39,7 +39,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
   }
@@ -53,7 +53,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
     Conexao.get("/Estoque").then((resposta) => {
@@ -61,7 +61,7 @@ export default class ListaRelatorioEstoque extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ RelatorioEstoque: dados });
+        this.setState({ ListaRelatorioEstoque: dados });
       }
     });
   }
@@ -145,7 +145,7 @@ export default class ListaRelatorioEstoque extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.RelatorioEstoque.map((item) => (
+                    {this.state.ListaRelatorioEstoque.map((item) => (
                       <tr key={item.id}>
                         <td>{item.data}</td>
                         <td>{item.tipoMovimentacao === 1 ? "Entrada" : "Saida"}</td>

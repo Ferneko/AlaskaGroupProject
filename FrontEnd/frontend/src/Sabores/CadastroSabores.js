@@ -97,49 +97,58 @@ export default class CadastroSabores extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="form-group col-md-12">
-              <label> Nome </label>
-              <input
-                type="text"
-                className="form-control col-md-12"
-                name="name"
-                value={this.state.name}
-                onChange={this.setName}
-              />
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Nome </label>
+                <input
+                  type="text"
+                  className="form-control col-md-12"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.setName}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <label> Descrição </label>
-              <input
-                type="text"
-                className="form-control col-md-12"
-                name="description"
-                value={this.state.description}
-                onChange={this.setDescription}
-              />
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Descrição </label>
+                <input
+                  type="text"
+                  className="form-control col-md-12"
+                  name="description"
+                  value={this.state.description}
+                  onChange={this.setDescription}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <label> Preço </label>
-              <input
-                type="number"
-                className="form-control"
-                name="price"
-                value={this.state.price}
-                onChange={this.setPrice}
-              />
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Preço </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="price"
+                  value={this.state.price}
+                  onChange={this.setPrice}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <label> Ativo: </label>
-              <select
-                className="form-control"
-                value={this.state.ativo}
-                onChange={this.setAtivo}
-              >
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
-              </select>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Ativo: </label>
+                <select
+                  className="form-control"
+                  value={this.state.ativo}
+                  onChange={this.setAtivo}>
+                  <option value="true">Sim</option>
+                  <option value="false">Não</option>
+                </select>
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+              </div>
             </div>
           </div>
         </div>

@@ -96,51 +96,61 @@ export default class CadastroAdicional extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="form-group col-md-12">
-              <label> Nome </label>
-              <input
-                type="text"
-                className="form-control"
-                id="nome"
-                name="nome"
-                value={this.state.nome}
-                onChange={this.setNome}
-              />
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Nome </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="nome"
+                  name="nome"
+                  value={this.state.nome}
+                  onChange={this.setNome}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <label> Tipo </label>
-              <input
-                type="text"
-                className="form-control"
-                id="tipo"
-                name="tipo"
-                value={this.state.tipo}
-                onChange={this.setTipo}
-              />
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Tipo </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="tipo"
+                  name="tipo"
+                  value={this.state.tipo}
+                  onChange={this.setTipo}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <label> Valor </label>
-              <input
-                type="number"
-                className="form-control"
-                name="valor"
-                value={this.state.valor}
-                onChange={this.setValor}
-              />
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Valor </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="valor"
+                  value={this.state.valor}
+                  onChange={this.setValor}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <label> Ativo: </label>
-              <select
-                className="form-control"
-                value={this.state.ativo}
-                onChange={this.setAtivo}
-              >
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
-              </select>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Ativo: </label>
+                <select
+                  className="form-control"
+                  value={this.state.ativo}
+                  onChange={this.setAtivo}
+                >
+                  <option value="true">Sim</option>
+                  <option value="false">Não</option>
+                </select>
+              </div>
             </div>
-            <div className="form-group col-md-12">
-              <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+              </div>
             </div>
           </div>
         </div>

@@ -27,7 +27,6 @@ import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
 
 import Permissao from "../Permissao/CadastroPermissao";
 import CadastroPermissao from "../Permissao/CadastroPermissao";
-import EditarPermissao from "../Permissao/EditarPermissao";
 import ListaRelatorioPermissao from "../Permissao/ListaRelatorioPermissao";
 
 const Routes = () => (
@@ -64,7 +63,6 @@ const Routes = () => (
 
             <Route path="/Permissao"component={Permissao}/>
             <Route path="/CadastroPermissao" component={CadastroPermissao}/>
-            <Route path="/EditarPermissao/:id" component={EditarPermissao}/>
             <Route path="/ListaRelatorioPermissao" component={ListaRelatorioPermissao}/>
 
             <Route exact path="/" component={() => <Layout></Layout>}/>

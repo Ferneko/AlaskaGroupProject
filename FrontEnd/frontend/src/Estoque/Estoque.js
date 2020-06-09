@@ -24,7 +24,6 @@ export default class Estoque extends Component {
       todosSabores: [],
     };
 
-    //this.setId= this.setId.bind(this)
     this.setData = this.setData.bind(this);
     this.setTipoMovimentacao = this.setTipoMovimentacao.bind(this);
     this.setCasquinhaid = this.setCasquinhaid.bind(this);
@@ -32,13 +31,12 @@ export default class Estoque extends Component {
     this.setAdicionalid = this.setAdicionalid.bind(this);
     this.setQuantidadeAdicional = this.setQuantidadeAdicional.bind(this);
     this.setAcompanhamentoid = this.setAcompanhamentoid.bind(this);
-    this.setQuantidadeAcompanhamento = this.setQuantidadeAcompanhamento.bind(
-      this
-    );
+    this.setQuantidadeAcompanhamento = this.setQuantidadeAcompanhamento.bind(this);
     this.setSaboresid = this.setSaboresid.bind(this);
     this.setQuantidadeSabores = this.setQuantidadeSabores.bind(this);
     this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
   }
+  
   componentDidMount() {
     Conexao.get("/Estoque/NovaEntrada").then((resposta) => {
       const dados = resposta.data;

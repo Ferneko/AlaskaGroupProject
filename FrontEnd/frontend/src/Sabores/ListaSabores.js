@@ -147,24 +147,12 @@ export default class ListaSabores extends Component {
                         <td>{item.name}</td>
                         <td>{item.description}</td>
                         <td>{item.price}</td>
+                        <td><input disabled type="checkbox" defaultChecked={item.ativo} /></td>
                         <td>
-                          <input
-                            disabled
-                            type="checkbox"
-                            defaultChecked={item.ativo}
-                          />
+                          <Link key={item.id} to={{ pathname: "/EditarSabores/" + item.id,}} className="btn btn-warning"> Editar </Link>
                         </td>
                         <td>
-                          <button className="btn btn-warning">Editar</button>
-                        </td>
-                        <td>
-                          <button
-                            className="btn btn-danger"
-                            onClick={this.delete}
-                            data-objeto={item.id}
-                          >
-                            Excluir
-                          </button>
+                          <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> Excluir </button>
                         </td>
                       </tr>
                     ))}

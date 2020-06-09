@@ -98,45 +98,65 @@ export default class EditarSabores extends Component {
                     </div>
                     : ""}
 
-                <div className="col-4"></div>
-                <div className="col-4">
-
-                    <div className="form-group">
-                        <label>Código</label>
-                        <input type="text" readOnly={true} className="form-control" id="id" name="id" value={this.state.id} />
-                    </div>
-                    <div className="form-group"  >
-                        <label>Nome</label>
-                        <input type="text" className="form-control" id="name" name="name" value={this.state.name} onChange={this.setName} />
-                    </div>
-                    <div className="form-group" >
-                        <label>Descricao</label>
-                        <input type="text" className="form-control" id="description" name="description" value={this.state.description} onChange={this.setDescription} />
-                    </div>
-                    <div className="form-group" >
-                        <label>Preço</label>
-                        <input type="text" className="form-control" name="price" value={this.state.price} onChange={this.setPrice} />
-                    </div>
-
-                        <div className="form-group ">
-                            <label> Ativo: </label>
-                            <select className="form-control" value={this.state.ativo} onChange={this.setAtivo}>
-                                <option value="true">Sim</option>
-                                <option value="false">Não</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <br></br>
-
-
-
-
-                    <div className="row">
-                        <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
-                    </div>
-
-            </Layout>);
-    }
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-4">
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Nome </label>
+                <input
+                  type="text"
+                  className="form-control col-md-12"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.setName}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Descrição </label>
+                <input
+                  type="text"
+                  className="form-control col-md-12"
+                  name="description"
+                  value={this.state.description}
+                  onChange={this.setDescription}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Preço </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="price"
+                  value={this.state.price}
+                  onChange={this.setPrice}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <label> Ativo: </label>
+                <select
+                  className="form-control"
+                  value={this.state.ativo}
+                  onChange={this.setAtivo}>
+                  <option value="true">Sim</option>
+                  <option value="false">Não</option>
+                </select>
+              </div>
+            </div>
+            <div className="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 }
-
