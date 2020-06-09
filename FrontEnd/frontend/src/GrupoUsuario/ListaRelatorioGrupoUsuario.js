@@ -3,11 +3,11 @@ import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
 import Conexao from "../Conexao/Conexao";
 
-export default class ListaRelatorioPermissao extends Component {
+export default class ListaRelatorioGrupoUsuario extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ListaRelatorioPermissao: [],
+      ListaRelatorioGrupoUsuario: [],
       erro: null,
       query: "",
     };
@@ -21,12 +21,12 @@ export default class ListaRelatorioPermissao extends Component {
   }
 
   componentDidMount() {
-    Conexao.get("/Permissao").then((resposta) => {
+    Conexao.get("/GrupoUsuario").then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioPermissao: dados });
+        this.setState({ ListaRelatorioGrupoUsuario: dados });
       }
     });
   }
@@ -34,18 +34,20 @@ export default class ListaRelatorioPermissao extends Component {
   pesquisar(e) {
     console.log(this.state.query);
     var data = this.state.query;
-    Conexao.get("/Permissao/PesquisarPermissao/" + data).then((resposta) => {
-      const dados = resposta.data;
-      if (dados.erro != null) {
-        this.setState({ erro: dados.erro });
-      } else {
-        this.setState({ ListaRelatorioPermissao: dados });
+    Conexao.get("/GrupoUsuario/PesquisarGrupoUsuario/" + data).then(
+      (resposta) => {
+        const dados = resposta.data;
+        if (dados.erro != null) {
+          this.setState({ erro: dados.erro });
+        } else {
+          this.setState({ ListaRelatorioGrupoUsuario: dados });
+        }
       }
-    });
+    );
   }
 
   delete(e) {
-    Conexao.delete("/Permissao", {
+    Conexao.delete("/GrupoUsuario", {
       params: { id: e.target.dataset.objeto },
     }).then((resposta) => {
       console.log(resposta.data);
@@ -53,15 +55,15 @@ export default class ListaRelatorioPermissao extends Component {
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioPermissao: dados });
+        this.setState({ ListaRelatorioGrupoUsuario: dados });
       }
     });
-    Conexao.get("/Permissao").then((resposta) => {
+    Conexao.get("/GrupoUsuario").then((resposta) => {
       const dados = resposta.data;
       if (dados.erro != null) {
         this.setState({ erro: dados.erro });
       } else {
-        this.setState({ ListaRelatorioPermissao: dados });
+        this.setState({ ListaRelatorioGrupoUsuario: dados });
       }
     });
   }
@@ -96,7 +98,13 @@ export default class ListaRelatorioPermissao extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-2">
-                    <Link to="/CadastroPermissao" className="btn btn-success"> Nova Permissão </Link>
+                    <Link
+                      to="/CadastroGrupoUsuario"
+                      className="btn btn-success"
+                    >
+                      {" "}
+                      Novo Grupo Usuário
+                    </Link>
                   </div>
                   <div className="col-10">
                     <div className="input-group">
@@ -133,23 +141,19 @@ export default class ListaRelatorioPermissao extends Component {
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Role</th>
-                      <th>Descrição</th>
                       <th>Nome</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.ListaRelatorioPermissao.map((item) => (
+                    {this.state.ListaRelatorioGrupoUsuario.map((item) => (
                       <tr key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.role}</td>
-                        <td>{item.descricao}</td>
-                        <td>{item.nome}</td>     
+                        <td>{item.nome}</td>
                         <td>
-                          <Link key={item.id} to={{ pathname: "/EditarPermissao/" + item.id }} className="btn btn-warning"> Editar </Link>
-                        </td>    
+                          <Link key={item.id} to={{ pathname: "/EditarGrupoUsuario/" + item.id }} className="btn btn-warning"> Editar </Link>
+                        </td>
                         <td>
-                          <button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}> Excluir </button>
+                          <button className="btn btn-danger" onClick={this.delete}  data-objeto={item.id}> Excluir </button>
                         </td>
                       </tr>
                     ))}

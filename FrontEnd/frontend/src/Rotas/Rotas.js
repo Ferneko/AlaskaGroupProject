@@ -27,7 +27,13 @@ import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
 
 import Permissao from "../Permissao/CadastroPermissao";
 import CadastroPermissao from "../Permissao/CadastroPermissao";
+import EditarPermissao from "../Permissao/EditarPermissao";
 import ListaRelatorioPermissao from "../Permissao/ListaRelatorioPermissao";
+
+import GrupoUsuario from "../GrupoUsuario/CadastroGrupoUsuario";
+import CadastroGrupoUsuario from "../GrupoUsuario/CadastroGrupoUsuario";
+import EditarGrupoUsuario from "../GrupoUsuario/EditarGrupoUsuario";
+import ListaRelatorioGrupoUsuario from "../GrupoUsuario/ListaRelatorioGrupoUsuario";
 
 const Routes = () => (
     <BrowserRouter>
@@ -63,7 +69,13 @@ const Routes = () => (
 
             <Route path="/Permissao"component={Permissao}/>
             <Route path="/CadastroPermissao" component={CadastroPermissao}/>
+            <Route path="/EditarPermissao/:id" component={EditarPermissao}/>
             <Route path="/ListaRelatorioPermissao" component={ListaRelatorioPermissao}/>
+
+            <Route path="/GrupoUsuario"component={GrupoUsuario}/>
+            <Route path="/CadastroGrupoUsuario" component={CadastroGrupoUsuario}/>
+            <Route path="/EditarGrupoUsuario/:id" component={EditarGrupoUsuario}/>
+            <Route path="/ListaRelatorioGrupoUsuario" component={ListaRelatorioGrupoUsuario}/>
 
             <Route exact path="/" component={() => <Layout></Layout>}/>
             <Route path="*" component={NaoEncontrado}/>

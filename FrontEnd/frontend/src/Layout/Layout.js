@@ -68,11 +68,16 @@ export default class extends Component {
                                 </li>
 
 
-
+                                <li className="nav-item">   
+                                    <Link to="/GrupoUsuario" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Grupo Usuário</Link>      
+                                </li>
+                                <li className="nav-item">   
+                                    <Link to="/ListaRelatorioGrupoUsuario" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatorio do Grupo Usuário</Link>      
+                                </li>
 
 
                                 
-                         
+
                             </ul>
                         </div>
                     </nav>
