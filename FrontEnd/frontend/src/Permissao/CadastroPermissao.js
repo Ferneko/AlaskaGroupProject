@@ -99,7 +99,7 @@ export default class CadastroPermissao extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label>Id</label>
                 <input
@@ -112,7 +112,7 @@ export default class CadastroPermissao extends Component {
                 />
               </div>
             </div>  
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label>Role</label>
                 <input
@@ -125,7 +125,7 @@ export default class CadastroPermissao extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label>Descrição</label>
                 <input
@@ -138,7 +138,7 @@ export default class CadastroPermissao extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label>Nome</label>
                 <input
@@ -151,7 +151,7 @@ export default class CadastroPermissao extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 <Link to={{pathname: "/ListaRelatorioPermissao"}} className="btn btn-danger" id="btn-danger-cadastro-permissao">Cancelar</Link>

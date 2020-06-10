@@ -168,7 +168,7 @@ export default class EditarAdicional extends Component {
                 </select>
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 <Link to={{pathname: "/ListaAdicional"}} className="btn btn-danger" id="btn-danger-editar-adicional">Cancelar</Link>

@@ -106,7 +106,7 @@ export default class CadastroGrupoUsuario extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 <Link to={{pathname: "/ListaRelatorioGrupoUsuario"}} className="btn btn-danger" id="btn-danger-cadastro-grupo-usuario">Cancelar</Link>

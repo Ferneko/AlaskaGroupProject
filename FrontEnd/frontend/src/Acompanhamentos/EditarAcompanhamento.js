@@ -124,7 +124,7 @@ export default class EditarAcompanhamento extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Imagem </label>
                 <input
@@ -137,7 +137,7 @@ export default class EditarAcompanhamento extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label>Nome</label>
                 <input
@@ -150,7 +150,7 @@ export default class EditarAcompanhamento extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Descrição </label>
                 <input
@@ -163,7 +163,7 @@ export default class EditarAcompanhamento extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Valor </label>
                 <input
@@ -176,7 +176,7 @@ export default class EditarAcompanhamento extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Ativo: </label>
                 <select className="form-control" onChange={this.setAtivo}>
@@ -185,7 +185,7 @@ export default class EditarAcompanhamento extends Component {
                 </select>
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 <Link to={{pathname: "/ListaAcompanhamentos"}} className="btn btn-danger" id="btn-danger-editar-acompanhamentos">Cancelar</Link>

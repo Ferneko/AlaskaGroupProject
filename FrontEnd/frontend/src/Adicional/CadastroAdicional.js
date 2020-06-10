@@ -148,7 +148,7 @@ export default class CadastroAdicional extends Component {
                 </select>
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 <Link to={{pathname: "/ListaAcompanhamentos"}} className="btn btn-danger" id="btn-danger-cadastro-adicional">Cancelar</Link>

@@ -138,7 +138,7 @@ export default class CadastroCliente extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Nome </label>
                 <input
@@ -151,7 +151,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> CPF </label>
                 <input
@@ -164,7 +164,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Telefone </label>
                 <input
@@ -176,7 +176,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Endereço </label>
                 <input
@@ -188,7 +188,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Bairro </label>
                 <input
@@ -200,7 +200,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> CEP </label>
                 <input
@@ -212,7 +212,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Cidade </label>
                 <input
@@ -224,7 +224,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Estado </label>
                 <input
@@ -236,7 +236,7 @@ export default class CadastroCliente extends Component {
                 />
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <label> Ativo: </label>
                 <select
@@ -249,7 +249,7 @@ export default class CadastroCliente extends Component {
                 </select>
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
                 <Link to={{pathname: "/ListaClientes"}} className="btn btn-danger" id="btn-danger-cadastro-cliente">Cancelar</Link>
