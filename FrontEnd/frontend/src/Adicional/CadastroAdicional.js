@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
+import { Link } from "react-router-dom";
 
 export default class CadastroAdicional extends Component {
   constructor(props) {
@@ -147,9 +148,10 @@ export default class CadastroAdicional extends Component {
                 </select>
               </div>
             </div>
-            <div className="row">
+            <div class="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                <Link to={{pathname: "/ListaAcompanhamentos"}} className="btn btn-danger" id="btn-danger-cadastro-adicional">Cancelar</Link>
               </div>
             </div>
           </div>

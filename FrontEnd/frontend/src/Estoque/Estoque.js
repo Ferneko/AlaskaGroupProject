@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
+import { Link } from "react-router-dom";
 
 export default class Estoque extends Component {
   constructor(props) {
@@ -340,11 +341,12 @@ export default class Estoque extends Component {
             />
           </div>
         </div>
-        <div className="row">
-          <div className="form-group col-md-3">
-            <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
-          </div>
-        </div>
+        <div class="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                <Link to={{pathname: "/ListaRelatorioEstoque"}} className="btn btn-danger" id="btn-danger-cadastro-estoque">Cancelar</Link>
+              </div>
+            </div>
       </Layout>
     );
   }

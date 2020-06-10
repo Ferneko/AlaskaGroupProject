@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
+import { Link } from "react-router-dom";
 
 export default class EditarPermissao extends Component {
   constructor(props) {
@@ -167,6 +168,7 @@ export default class EditarPermissao extends Component {
             <div class="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                <Link to={{pathname: "/ListaRelatorioPermissao"}} className="btn btn-danger" id="btn-danger-editar-permissao">Cancelar</Link>
               </div>
             </div>
           </div>

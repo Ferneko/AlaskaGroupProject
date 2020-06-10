@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
+import { Link } from "react-router-dom";
 
 export default class ControleCaixa extends Component {
   constructor(props) {
@@ -168,11 +169,12 @@ export default class ControleCaixa extends Component {
                     />
                  </div>
               </div> 
-              <div className="row">
-                <div className="form-group col-md-12">
-                  <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
-                </div>
+              <div class="row">
+              <div className="form-group col-md-12">
+                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                <Link to={{pathname: "/ListaRelatorioCaixa"}} className="btn btn-danger" id="btn-danger-cadastro-controle-caixa">Cancelar</Link>
               </div>
+            </div>
             </div>
           </div>
       </Layout>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Layout from "../Layout/Layout";
 import Conexao from "../Conexao/Conexao";
+import { Link } from "react-router-dom";
 
 export default class EditarAcompanhamento extends Component {
   constructor(props) {
@@ -187,6 +188,7 @@ export default class EditarAcompanhamento extends Component {
             <div class="row">
               <div className="form-group col-md-12">
                 <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                <Link to={{pathname: "/ListaAcompanhamentos"}} className="btn btn-danger" id="btn-danger-editar-acompanhamentos">Cancelar</Link>
               </div>
             </div>
           </div>
