@@ -13,7 +13,6 @@ export default class ControleCaixa extends Component {
       descricao: "",
       erro: null,
     };
-
     this.setData = this.setData.bind(this);
     this.setTipoMovimentacao = this.setTipoMovimentacao.bind(this);
     this.setValor = this.setValor.bind(this);
@@ -38,12 +37,12 @@ export default class ControleCaixa extends Component {
         valor = valor * -1;
       }
     }
-
     this.setState({
       tipoMovimentacao: Number(e.target.value),
       valor: valor,
     });
   }
+
   setValor(e) {
     let valorOk = e.target.value;
     if (this.state.tipoMovimentacao === 1) {
@@ -59,6 +58,7 @@ export default class ControleCaixa extends Component {
       valor: valorOk,
     });
   }
+
   setDescricao(e) {
     this.setState({
       descricao: e.target.value,
@@ -112,10 +112,10 @@ export default class ControleCaixa extends Component {
         )}
 
         <div className="row" id="titulo-controle-caixa">
-            <h4>Controle de Caixa</h4>
+          <div className="form-group col-md-12">
+              <h4>Controle de Caixa</h4>
+          </div>
         </div>
-
-        <br></br>
 
         <div className="row">
           <div className="col-4"></div>
@@ -170,10 +170,10 @@ export default class ControleCaixa extends Component {
                  </div>
               </div> 
               <div className="row">
-              <div className="form-group col-md-12">
-                <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
-                <Link to={{pathname: "/ListaRelatorioCaixa"}} className="btn btn-danger" id="btn-danger-cadastro-controle-caixa">Cancelar</Link>
-              </div>
+                <div className="form-group col-md-12">
+                  <button className="btn btn-success" onClick={this.enviarParaBackEnd}> Salvar </button>
+                  <Link to={{pathname: "/ListaRelatorioCaixa"}} className="btn btn-danger" id="btn-danger-cadastro-controle-caixa">Cancelar</Link>
+                </div>
             </div>
             </div>
           </div>
