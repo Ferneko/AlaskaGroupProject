@@ -15,6 +15,15 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return new string[] { "value1", "value2" };
         }
 

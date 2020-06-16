@@ -4,43 +4,93 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Model;
+using WebApi.Service;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosGrupoUsuariosController : ControllerBase
+    public class UsuariosGrupoUsuariosController : Controller
     {
-        // GET: api/UsuariosGrupoUsuarios
+        private ServiceUsuariosGrupoUsuarios service;
+        public UsuariosGrupoUsuariosController(Contexto db)
+        {
+            service = new ServiceUsuariosGrupoUsuarios(db);
+        }
+
+        // GET: api/Usuarios
         [HttpGet]
-        public IEnumerable<string> Get()
+        public JsonResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return Json(service.ListaTodos());
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
 
-        // GET: api/UsuariosGrupoUsuarios/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: api/Usuarios/5
+        [HttpGet("{id}", Name = "GetGrupoUsuario")]
+        public JsonResult Get(int id)
         {
-            return "value";
+            try
+            {
+                return Json(service.PesquisarId(id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
 
-        // POST: api/UsuariosGrupoUsuarios
+        [HttpGet("PesquisarGrupoUsuario/{query}", Name = "PesquisarGrupoUsuario")]
+        public JsonResult PesquisarGrupoUsuario(string query)
+        {
+            try
+            {
+
+                return Json(service.Pesquisar(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        // POST: api/Usuarios
         [HttpPost]
-        public void Post([FromBody] string value)
+        public JsonResult Post([FromBody] UsuariosGrupoUsuarios objeto)
         {
-        }
+            try
+            {
+                return Json(service.Gravar(objeto));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
 
-        // PUT: api/UsuariosGrupoUsuarios/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
         }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public JsonResult Delete(int id)
         {
+            try
+            {
+                return Json(service.Delete(id));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
     }
 }
