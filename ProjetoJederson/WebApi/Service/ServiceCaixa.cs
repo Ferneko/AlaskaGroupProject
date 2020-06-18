@@ -18,6 +18,13 @@ namespace WebApi.Service
 
         public void Gravar(Caixa objeto)
         {
+            if (objeto.tipoMovimentacao == 0){
+                if(CaixaInicial() > objeto.valor){
+                    throw new Exception(
+                        "O caixa nao tem esse valor"
+                    );
+                }
+            }
             dao.Gravar(objeto);
         }
 
