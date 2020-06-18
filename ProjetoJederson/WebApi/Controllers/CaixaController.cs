@@ -25,6 +25,7 @@ namespace WebApi.Controllers
         {
             try
             {
+                decimal valor = service.CaixaInicial();
                 return Json(service.ListaTodos());
             }
             catch (Exception ex)
@@ -91,5 +92,6 @@ namespace WebApi.Controllers
             }
 
         }
+        
     }
 }

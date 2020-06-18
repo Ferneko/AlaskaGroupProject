@@ -55,5 +55,9 @@ namespace WebApi.Service
         {
             return dao.Pesquisar(query);
         }
+
+        public decimal CaixaInicial(){
+            return dao.CaixaInicial();
+        }
     }
 }
