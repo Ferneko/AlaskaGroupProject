@@ -16,6 +16,7 @@ export default class EditarPermissao extends Component {
     this.setRole = this.setRole.bind(this);
     this.setDescricao = this.setDescricao.bind(this);
     this.setNome = this.setNome.bind(this);
+    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
   }
 
   componentDidMount() {
@@ -59,7 +60,6 @@ export default class EditarPermissao extends Component {
   }
 
   enviarParaBackEnd() {
-    console.log(this.state);
     Conexao.post("/Permissao", {
       id: this.state.id,
       role: this.state.role,
@@ -122,7 +122,7 @@ export default class EditarPermissao extends Component {
                   className="form-control"
                   id="id"
                   name="id"
-                  value={this.state.SetId}
+                  value={this.state.id}
                 />
               </div>
             </div>  

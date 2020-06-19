@@ -7,12 +7,12 @@ export default class CadastroGrupoUsuario extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
       nome: "",
       erro: null,
     };
     this.setId = this.setId.bind(this);
     this.setNome = this.setNome.bind(this);
+    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
   }
 
   setId(e) {
@@ -22,8 +22,7 @@ export default class CadastroGrupoUsuario extends Component {
   }
   setNome(e) {
     this.setState({
-      id: e.target.id,
-      nome: e.target.nome,
+      nome: e.target.value,
     });
   }
 
@@ -38,7 +37,7 @@ export default class CadastroGrupoUsuario extends Component {
         if (dados.erro != null) {
           this.setState({ erro: dados.erro });
         } else {
-          this.props.history.push("/ListaGrupoUsuario");
+          this.props.history.push("/ListaRelatorioGrupoUsuario");
         }
       })
       .catch((error) => {
@@ -80,19 +79,6 @@ export default class CadastroGrupoUsuario extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-4">
-            <div className="row">
-              <div className="form-group col-md-12">
-                <label>Id</label>
-                <input
-                  type="text"
-                  readOnly={true}
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={this.state.SetId}
-                />
-              </div>
-            </div>
             <div className="row">
               <div className="form-group col-md-12">
                 <label>Nome</label>

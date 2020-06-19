@@ -109,7 +109,7 @@ export default class ListaRelatorioGrupoUsuario extends Component {
                   <div className="col-10">
                     <div className="input-group">
                       <input
-                        type="date"
+                        type="text"
                         className="form-control"
                         placeholder="Digite aqui sua pesquisa"
                         onChange={this.atualizaQuery}

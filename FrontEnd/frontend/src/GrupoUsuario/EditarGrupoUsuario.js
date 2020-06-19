@@ -13,6 +13,7 @@ export default class EditarGrupoUsuario extends Component {
     };
     this.setId = this.setId.bind(this);
     this.setNome = this.setNome.bind(this);
+    this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
   }
 
   componentDidMount() {
@@ -103,7 +104,7 @@ export default class EditarGrupoUsuario extends Component {
                   className="form-control"
                   id="id"
                   name="id"
-                  value={this.state.SetId}
+                  value={this.state.id}
                 />
               </div>
             </div>

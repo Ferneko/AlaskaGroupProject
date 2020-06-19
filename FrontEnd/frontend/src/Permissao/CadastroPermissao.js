@@ -48,7 +48,6 @@ export default class CadastroPermissao extends Component {
   enviarParaBackEnd() {
     console.log(this.state);
     Conexao.post("/Permissao", {
-      id: this.state.id,
       role: this.state.role,
       descricao: this.state.descricao,
       nome: this.state.nome,
