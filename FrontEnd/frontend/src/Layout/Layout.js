@@ -56,6 +56,9 @@ export default class extends Component {
                                     <Link to="/ListaCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Lista Caixa</Link>      
                                 </li>
                              
+                                <li className="nav-item">   
+                                    <Link to="/CaixaInicial" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Abertura de Caixa</Link>      
+                                </li>
                              
                          
 

@@ -27,7 +27,34 @@ namespace WebApi.Service
 
         public void Gravar(Estoque objeto)
         {
+               if (objeto.tipoMovimentacao == 0){
+                if(qtdCasquinha() < 0){
+                    throw new Exception(
+                        "Estamos sem casquinhas"
+                    );
+                }
+                 if(qtdAdicional() < 0){
+                    throw new Exception(
+                        "Estamos sem adicionais"
+                    );
+                }
+                 if(qtdAcompanhamento() < 0){
+                    throw new Exception(
+                        "Estamos sem acompanhamentos"
+                    );
+                }
+                 if(qtdSabores() < 0){
+                    throw new Exception(
+                        "Estamos sem Sabores"
+                    );
+                }
+
+
+            }
+        
+
             dao.Gravar(objeto);
+
         }
 
         public List<Estoque> ListaTodos()

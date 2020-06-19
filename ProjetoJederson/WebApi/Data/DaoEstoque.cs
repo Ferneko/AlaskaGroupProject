@@ -54,5 +54,26 @@ namespace WebApi.Data
         {
             return db.ESTOQUE.Where(a => a.data == date).ToList();
         }
+
+        public decimal qtdCasquinha(){
+        decimal casquinha = db.ESTOQUE.Sum(c => c.quantidadeCasquinha);
+        return casquinha;
+        }
+        public decimal qtdAdicional(){
+         decimal adicional = db.ESTOQUE.Sum(c => c.quantidadeAdicional);
+        return adicional;
+        }
+
+         public decimal qtdAcompanhamento() {
+         decimal acompanhamento = db.ESTOQUE.Sum(c => c.quantidadeAcompanhamento);
+        return acompanhamento;
+         }
+
+         public decimal qtdsSabores(){
+        decimal sabores = db.ESTOQUE.Sum(c => c.quantidadeSabores);
+        return sabores;
+         }
+
+
     }
 }
