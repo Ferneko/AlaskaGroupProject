@@ -97,20 +97,7 @@ export default class CadastroPermissao extends Component {
 
         <div className="row">
           <div className="col-4"></div>
-          <div className="col-4">
-            <div className="row">
-              <div className="form-group col-md-12">
-                <label>Id</label>
-                <input
-                  type="text"
-                  readOnly={true}
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={this.state.SetId}
-                />
-              </div>
-            </div>  
+          <div className="col-4">  
             <div className="row">
               <div className="form-group col-md-12">
                 <label>Role</label>
