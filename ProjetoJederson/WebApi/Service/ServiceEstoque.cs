@@ -27,31 +27,28 @@ namespace WebApi.Service
 
         public void Gravar(Estoque objeto)
         {
-               if (objeto.tipoMovimentacao == 0){
-                if(qtdCasquinha() < 0){
-                    throw new Exception(
-                        "Estamos sem casquinhas"
-                    );
+            if (objeto.tipoMovimentacao == 0)
+            {
+                if (dao.qtdCasquinha(objeto.casquinhaId) > objeto.quantidadeCasquinha)
+                {
+                    throw new Exception("Quantidade não disponivel desta Casquinha");
                 }
-                 if(qtdAdicional() < 0){
-                    throw new Exception(
-                        "Estamos sem adicionais"
-                    );
+                if (dao.qtdAdicional(objeto.id) > objeto.quantidadeAdicional)
+                {
+                    throw new Exception("Quantidade não disponivel desta Casquinha");
                 }
-                 if(qtdAcompanhamento() < 0){
-                    throw new Exception(
-                        "Estamos sem acompanhamentos"
-                    );
+                if (dao.qtdAcompanhamento(objeto.acompanhamentoId) > objeto.acompanhamentoId)
+                {
+                    throw new Exception("Quantidade não disponivel desta Casquinha");
                 }
-                 if(qtdSabores() < 0){
-                    throw new Exception(
-                        "Estamos sem Sabores"
-                    );
+                if (dao.qtdsSabores(objeto.saboresId) > objeto.saboresId)
+                {
+                    throw new Exception("Quantidade não disponivel desta Casquinha");
                 }
 
 
             }
-        
+
 
             dao.Gravar(objeto);
 

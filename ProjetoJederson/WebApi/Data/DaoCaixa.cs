@@ -55,8 +55,10 @@ namespace WebApi.Data
             return db.CAIXA.Where(a => a.data == query).ToList();
         }
 
-        public decimal CaixaInicial(){
-        decimal soma = db.CAIXA.Sum(c => c.valor);
-        return soma;
+        public decimal CaixaInicial()
+        {
+            decimal soma = db.CAIXA.Sum(c => c.valor);
+            return soma;
         }
-}}
+    }
+}

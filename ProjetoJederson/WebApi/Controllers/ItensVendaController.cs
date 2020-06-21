@@ -11,12 +11,13 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GrupoUsuarioPermissaoController : Controller
+    public class ItensVendaController : Controller
     {
-        private ServiceGrupoUsuarioPermissao service;
-        public GrupoUsuarioPermissaoController(Contexto db)
+        // GET: api/UsuariosPermissao
+        private ServiceItensVenda service;
+        public ItensVendaController(Contexto db)
         {
-            service = new ServiceGrupoUsuarioPermissao(db);
+            service = new ServiceItensVenda(db);
         }
 
         // GET: api/Usuarios
@@ -35,7 +36,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "GrupoUsuarioPermissao")]
+        [HttpGet("{id}", Name = "ItensVenda")]
         public JsonResult Get(int id)
         {
             try
@@ -49,13 +50,13 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarGrupoUsuarioPermissao/{query}", Name = "PesquisarGrupoUsuarioPermissao")]
-        public JsonResult PesquisarGrupoUsuarioPermissao(string query)
+        [HttpGet("PesquisarItensVenda/{query}", Name = "PesquisarItensVenda")]
+        public JsonResult PesquisarItensVenda(int query)
         {
             try
             {
 
-                return Json(service.Pesquisar(query));
+                return Json(service.PesquisarId(query));
             }
             catch (Exception ex)
             {
@@ -67,7 +68,7 @@ namespace WebApi.Controllers
 
         // POST: api/Usuarios
         [HttpPost]
-        public JsonResult Post([FromBody] GrupoUsuarioPermissao objeto)
+        public JsonResult Post([FromBody] ItensVenda objeto)
         {
             try
             {
@@ -80,8 +81,9 @@ namespace WebApi.Controllers
 
         }
 
+        // POST: api/Usuarios
         [HttpPut]
-        public JsonResult Put([FromBody] GrupoUsuarioPermissao objeto)
+        public JsonResult Put([FromBody] ItensVenda objeto)
         {
             try
             {
@@ -95,7 +97,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(long id)
         {
             try
             {

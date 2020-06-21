@@ -11,12 +11,12 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GrupoUsuarioPermissaoController : Controller
+    public class VendasController : Controller
     {
-        private ServiceGrupoUsuarioPermissao service;
-        public GrupoUsuarioPermissaoController(Contexto db)
+        private ServiceVenda service;
+        public VendasController(Contexto db)
         {
-            service = new ServiceGrupoUsuarioPermissao(db);
+            service = new ServiceVenda(db);
         }
 
         // GET: api/Usuarios
@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "GrupoUsuarioPermissao")]
+        [HttpGet("{id}", Name = "getVendas")]
         public JsonResult Get(int id)
         {
             try
@@ -49,13 +49,13 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarGrupoUsuarioPermissao/{query}", Name = "PesquisarGrupoUsuarioPermissao")]
-        public JsonResult PesquisarGrupoUsuarioPermissao(string query)
+        [HttpGet("PesquisarVendas/{query}", Name = "PesquisarVendas")]
+        public JsonResult PesquisarVendas(int query)
         {
             try
             {
 
-                return Json(service.Pesquisar(query));
+                return Json(service.PesquisarId(query));
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace WebApi.Controllers
 
         // POST: api/Usuarios
         [HttpPost]
-        public JsonResult Post([FromBody] GrupoUsuarioPermissao objeto)
+        public JsonResult Post([FromBody] Venda objeto)
         {
             try
             {
@@ -80,8 +80,9 @@ namespace WebApi.Controllers
 
         }
 
+        // POST: api/Usuarios
         [HttpPut]
-        public JsonResult Put([FromBody] GrupoUsuarioPermissao objeto)
+        public JsonResult Put([FromBody] Venda objeto)
         {
             try
             {
@@ -95,7 +96,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(long id)
         {
             try
             {

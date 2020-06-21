@@ -50,6 +50,8 @@ namespace WebApi.Controllers
         }
 
 
+
+
         [HttpPost]
         public JsonResult Post([FromBody] Estoque estoque)
         {

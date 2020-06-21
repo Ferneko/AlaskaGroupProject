@@ -33,7 +33,7 @@ namespace WebApi.Controllers
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "Get1")]
         public JsonResult Get(int id)
         {
 

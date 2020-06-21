@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "GetGrupoUsuario")]
+        [HttpGet("{id}", Name = "UsuariosGrupoUsuarios")]
         public JsonResult Get(int id)
         {
             try
@@ -49,8 +49,8 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarGrupoUsuario/{query}", Name = "PesquisarGrupoUsuario")]
-        public JsonResult PesquisarGrupoUsuario(string query)
+        [HttpGet("PesquisarUsuariosGrupoUsuarios/{query}", Name = "PesquisarUsuariosGrupoUsuarios")]
+        public JsonResult PesquisarUsuariosGrupoUsuarios(string query)
         {
             try
             {
@@ -79,7 +79,23 @@ namespace WebApi.Controllers
             }
 
         }
-        [HttpDelete]
+
+        // POST: api/Usuarios
+        [HttpPut]
+        public JsonResult Put([FromBody] UsuariosGrupoUsuarios objeto)
+        {
+            try
+            {
+                return Json(service.Gravar(objeto));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
             try
