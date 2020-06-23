@@ -5,13 +5,13 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class Estoque extends Component {
-   
+
     constructor(props) {
         super(props)
-       
+
         this.state = {
 
-          
+
             data: new Date(),
             tipoMovimentacao: 1,//entrada ==1 saida ==0
             casquinhaId: "",
@@ -23,10 +23,11 @@ export default class Estoque extends Component {
             saboresid: "",
             quantidadeSabores: 0,
             erro: null,
-            todasCasquinhas:[],
-            todosAdicionais:[],
-            todosAcompanhamentos:[],
-            todosSabores:[]
+            todasCasquinhas: [],
+            todosAdicionais: [],
+            todosAcompanhamentos: [],
+            todosSabores: [],
+            estoqueCasquinha: 0
         }
 
         //this.setId= this.setId.bind(this)
@@ -41,11 +42,11 @@ export default class Estoque extends Component {
         this.setSaboresid = this.setSaboresid.bind(this)
         this.setQuantidadeSabores = this.setQuantidadeSabores.bind(this)
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
-
+        this.getEstoqueCasquinha = this.getEstoqueCasquinha.bind(this)
     }
-   
+
     componentDidMount() {
-       
+
 
         Conexao.get("/Estoque/NovaEntrada").then(resposta => {
             const dados = resposta.data;
@@ -54,17 +55,59 @@ export default class Estoque extends Component {
             } else {
                 this.setState({
 
-                    todasCasquinhas:dados.todasCasquinhas,
-                    casquinhaId:dados.todasCasquinhas[0].id,
+                    todasCasquinhas: dados.todasCasquinhas,
+                    casquinhaId: dados.todasCasquinhas[0].id,
 
-                    todosAdicionais:dados.todosAdicionais,
-                    adicionalid:dados.todosAdicionais[0].id,
+                    todosAdicionais: dados.todosAdicionais,
+                    adicionalid: dados.todosAdicionais[0].id,
 
-                    todosAcompanhamentos:dados.todosAcompanhamentos,
-                    acompanhamentoId:dados.todosAcompanhamentos[0].id,
+                    todosAcompanhamentos: dados.todosAcompanhamentos,
+                    acompanhamentoId: dados.todosAcompanhamentos[0].id,
 
-                    todosSabores:dados.todosSabores,
-                    saboresid:dados.todosSabores[0].id
+                    todosSabores: dados.todosSabores,
+                    saboresid: dados.todosSabores[0].id
+                });
+            }
+        });
+    }
+
+    componentDidMount() {
+
+
+        Conexao.get("/Estoque/NovaEntrada").then(resposta => {
+            const dados = resposta.data;
+            if (dados.erro != null) {
+                this.setState({ erro: dados.erro });
+            } else {
+                this.setState({
+
+                    todasCasquinhas: dados.todasCasquinhas,
+                    casquinhaId: dados.todasCasquinhas[0].id,
+
+                    todosAdicionais: dados.todosAdicionais,
+                    adicionalid: dados.todosAdicionais[0].id,
+
+                    todosAcompanhamentos: dados.todosAcompanhamentos,
+                    acompanhamentoId: dados.todosAcompanhamentos[0].id,
+
+                    todosSabores: dados.todosSabores,
+                    saboresid: dados.todosSabores[0].id
+                });
+            }
+        });
+    }
+
+    getEstoqueCasquinha(idCasquinha) {
+
+
+        Conexao.get("/Estoque/SaldoCasquinha/" + this.state.casquinhaId).then(resposta => {
+            const dados = resposta.data;
+            if (dados.erro != null) {
+                this.setState({ erro: dados.erro });
+            } else {
+                this.setState({
+
+                    estoqueCasquinha: dados
                 });
             }
         });
@@ -79,26 +122,21 @@ export default class Estoque extends Component {
     }
 
     setTipoMovimentacao(e) {
-      
-      let arrayValores = [this.state.quantidadeCasquinha,this.state.quantidadeAdicional,this.state.quantidadeAcompanhamento,this.state.quantidadeSabores]
-      var i = 0 ;
-        if (Number(e.target.value) === 1) 
-        {
-         
-            for(i = 0; i < arrayValores.length; i++)
-            {
-                if (arrayValores[i] < 0) 
-                {
+
+        let arrayValores = [this.state.quantidadeCasquinha, this.state.quantidadeAdicional, this.state.quantidadeAcompanhamento, this.state.quantidadeSabores]
+        var i = 0;
+        if (Number(e.target.value) === 1) {
+
+            for (i = 0; i < arrayValores.length; i++) {
+                if (arrayValores[i] < 0) {
                     arrayValores[i] = arrayValores[i] * -1;
                 }
             }
-            
+
         } else {
-           
-            for(i = 0; i < arrayValores.length; i++)
-            {
-                if (arrayValores[i] > 0) 
-                {
+
+            for (i = 0; i < arrayValores.length; i++) {
+                if (arrayValores[i] > 0) {
                     arrayValores[i] = arrayValores[i] * -1;
                 }
             }
@@ -107,18 +145,19 @@ export default class Estoque extends Component {
         this.setState({
             tipoMovimentacao: Number(e.target.value),
             quantidadeCasquinha: arrayValores[0],
-            quantidadeAdicional:arrayValores[1],
-            quantidadeAcompanhamento:arrayValores[2],
-            quantidadeSabores : arrayValores[3]
+            quantidadeAdicional: arrayValores[1],
+            quantidadeAcompanhamento: arrayValores[2],
+            quantidadeSabores: arrayValores[3]
         });
 
 
         this.setState({
-            tipoMovimentacao: e.target.value 
+            tipoMovimentacao: e.target.value
         });
     }
 
     setCasquinhaid(e) {
+       this.getEstoqueCasquinha(e.target.value)
         this.setState({
             casquinhaId: e.target.value,
         })
@@ -159,10 +198,10 @@ export default class Estoque extends Component {
         })
     }
 
-   
+
     enviarParaBackEnd() {
         console.log(this.state)
-        let enviarDados =  {
+        let enviarDados = {
 
             data: this.state.data,
 
@@ -179,11 +218,11 @@ export default class Estoque extends Component {
 
             saboresId: Number(this.state.saboresid),
             quantidadeSabores: Number(this.state.quantidadeSabores),
-           
+
 
         }
         console.log(enviarDados)
-        Conexao.post("/Estoque",enviarDados).then(resposta => {
+        Conexao.post("/Estoque", enviarDados).then(resposta => {
             // console.log('entrou aqui');
             const dados = resposta.data;
             console.log(dados.erro)
@@ -212,12 +251,12 @@ export default class Estoque extends Component {
                 <div className="row">
 
                     <div className="form-group col-md-3">
-                        <label>Data</label><br/>
-                        <DatePicker className="form-control" style={{width:'100%'}}
+                        <label>Data</label><br />
+                        <DatePicker className="form-control" style={{ width: '100%' }}
                             selected={this.state.data}
                             onChange={this.setData}
-                         />
-                      
+                        />
+
                     </div>
 
 
@@ -235,11 +274,11 @@ export default class Estoque extends Component {
                     <div className="form-group col-md-3">
                         <label>Casquinha</label>
                         <select className="form-control" name="casquinhaid" value={this.state.casquinhaId} onChange={this.setCasquinhaid}>
-                           {this.state.todasCasquinhas.map((item) =>(
-                               <option key={item.id} value={item.id}>{item.nome}</option>
-                           ))}
+                            {this.state.todasCasquinhas.map((item) => (
+                                <option key={item.id} value={item.id}>{item.nome}</option>
+                            ))}
                         </select>
-                       
+                        {this.state.estoqueCasquinha} em estoque
                     </div>
 
                     <div className="form-group col-md-3">
@@ -253,11 +292,11 @@ export default class Estoque extends Component {
 
                     <div className="form-group col-md-3">
                         <label>Adicional</label>
-                       
+
                         <select className="form-control" name="adicionalid" defaultValue={this.state.Adicionalid} onChange={this.setAdicionalid}>
-                           {this.state.todosAdicionais.map((item) =>(
-                               <option key={item.id} value={item.id}>{item.nome}</option>
-                           ))}
+                            {this.state.todosAdicionais.map((item) => (
+                                <option key={item.id} value={item.id}>{item.nome}</option>
+                            ))}
                         </select>
                     </div>
 
@@ -270,11 +309,11 @@ export default class Estoque extends Component {
                 <div className="row">
                     <div className="form-group col-md-3">
                         <label>Acompanhamento</label>
-                        
+
                         <select className="form-control" name="acompanhamentoId" defaultValue={this.state.acompanhamentoId} onChange={this.setAcompanhamentoid}>
-                           {this.state.todosAcompanhamentos.map((item) =>(
-                               <option key={item.id} value={item.id}>{item.nome}</option>
-                           ))}
+                            {this.state.todosAcompanhamentos.map((item) => (
+                                <option key={item.id} value={item.id}>{item.nome}</option>
+                            ))}
                         </select>
                     </div>
 
@@ -289,9 +328,9 @@ export default class Estoque extends Component {
                     <div className="form-group col-md-3">
                         <label>Sabor</label>
                         <select className="form-control" name="saborid" defaultValue={this.state.saboresid} onChange={this.setSaboresid}>
-                           {this.state.todosSabores.map((item) =>(
-                               <option key={item.id} value={item.id}>{item.name}</option>
-                           ))}
+                            {this.state.todosSabores.map((item) => (
+                                <option key={item.id} value={item.id}>{item.name}</option>
+                            ))}
                         </select>
                     </div>
 
@@ -307,7 +346,7 @@ export default class Estoque extends Component {
                     <button className="btn btn-success" onClick={this.enviarParaBackEnd}>Salvar</button>
                 </div>
 
-              
+
 
 
             </Layout>);
