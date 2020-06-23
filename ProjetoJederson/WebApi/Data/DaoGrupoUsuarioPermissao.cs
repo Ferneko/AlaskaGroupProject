@@ -44,6 +44,11 @@ namespace WebApi.Data
 
         }
 
+        public GrupoUsuarioPermissao PesquisarIdPermissaoIdGrupoUsuario(long idPermissao, long idGrupoUsuario)
+        {
+            return db.GRUPO_USUARIO_PERMISSAO.Where(a => a.permissaoId == idPermissao && a.grupoUsuarioId == idGrupoUsuario).FirstOrDefault();
+        }
+
         public List<GrupoUsuarioPermissao> Pesquisar(string texto)
         {
             return db.GRUPO_USUARIO_PERMISSAO.Where(a => texto.Contains(a.id.ToString()) || a.permissao.nome.Contains(texto) || a.grupoUsuario.nome.Contains(texto)).ToList();
@@ -53,6 +58,11 @@ namespace WebApi.Data
         public GrupoUsuarioPermissao PesquisarId(long id)
         {
             return db.GRUPO_USUARIO_PERMISSAO.Where(a => a.id == id).FirstOrDefault();
+        }
+
+        public List<GrupoUsuarioPermissao> PesquisarIdGrupoUsuario(long id)
+        {
+            return db.GRUPO_USUARIO_PERMISSAO.Where(a => a.grupoUsuarioId == id).ToList();
         }
     }
 }

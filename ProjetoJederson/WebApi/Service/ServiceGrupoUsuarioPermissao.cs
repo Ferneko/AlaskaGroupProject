@@ -10,30 +10,39 @@ namespace WebApi.Service
     public class ServiceGrupoUsuarioPermissao
     {
         private DaoGrupoUsuarioPermissao dao;
+        private ServicePermissao servicePermissao;
 
         public ServiceGrupoUsuarioPermissao(Contexto db)
         {
             dao = new DaoGrupoUsuarioPermissao(db);
+            servicePermissao = new ServicePermissao(db);
         }
 
-        public List<GrupoUsuarioPermissao> Delete(long id)
+        public void Delete(long idPermissao, long idGrupoUsuario)
         {
-            GrupoUsuarioPermissao cliente = PesquisarId(id);
+            GrupoUsuarioPermissao objeto = PesquisarIdPermissaoIdGrupoUsuario(idPermissao, idGrupoUsuario);
 
-            if (cliente != null)
+            if (objeto != null)
             {
-                dao.Delete(cliente);
-                return ListaTodos();
+                dao.Delete(objeto);
             }
             else
             {
-                throw new Exception("Não encontrado");
+                throw new Exception("Não encontrado. Erro ao deletar");
             }
         }
 
-        public GrupoUsuarioPermissao Gravar(GrupoUsuarioPermissao objeto)
+        private GrupoUsuarioPermissao PesquisarIdPermissaoIdGrupoUsuario(long idPermissao, long idGrupoUsuario)
         {
-            return dao.Gravar(objeto);
+            return dao.PesquisarIdPermissaoIdGrupoUsuario(idPermissao, idGrupoUsuario);
+        }
+
+        public GrupoUsuarioPermissao Gravar(GrupoUsuarioPermissaoModel objeto)
+        {
+            GrupoUsuarioPermissao novo = new GrupoUsuarioPermissao();
+            novo.grupoUsuarioId = objeto.idGrupoUsuario;
+            novo.permissaoId = objeto.idPermissao;
+            return dao.Gravar(novo);
         }
 
         public List<GrupoUsuarioPermissao> ListaTodos()
@@ -44,6 +53,27 @@ namespace WebApi.Service
         public List<GrupoUsuarioPermissao> Pesquisar(string texto)
         {
             return dao.Pesquisar(texto);
+        }
+
+        public List<GrupoUsuarioPermissaoModel> ListarTodosPorGrupoUsuario(long id)
+        {
+            List<GrupoUsuarioPermissaoModel> retorno = new List<GrupoUsuarioPermissaoModel>();
+            List<GrupoUsuarioPermissao> permissoesGrupo = dao.PesquisarIdGrupoUsuario(id);
+          
+            foreach (var item in servicePermissao.ListaTodos())
+            {
+                retorno.Add(new GrupoUsuarioPermissaoModel()
+                {
+                    idGrupoUsuario = id,
+                    idPermissao = item.id,
+                    descricao = item.descricao,
+                    nome = item.nome,
+                    ativo = permissoesGrupo.Where(a => a.id == item.id).Count() == 1 ? true : false
+                }) ;
+            }
+
+            return retorno;
+
         }
 
         public GrupoUsuarioPermissao PesquisarId(long id)
