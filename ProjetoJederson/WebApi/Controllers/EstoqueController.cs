@@ -49,6 +49,21 @@ namespace WebApi.Controllers
 
         }
 
+              [HttpGet("SaldoCasquinha/{query}", Name = "SaldoCasquinha")]
+        public JsonResult SaldoCasquinha(int query)
+        {
+            try
+            {
+                return Json(service.saldoCasquinha(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
 
 
 
