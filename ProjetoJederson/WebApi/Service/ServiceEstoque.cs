@@ -104,5 +104,30 @@ namespace WebApi.Service
 
             return retorno;
         }
+
+
+        public decimal saldoCasquinha(long idCasquinha)
+        {
+            return dao.qtdCasquinha(idCasquinha);
+        }
+        
+          public decimal saldoAcompanhamento(long idAcompanhamento)
+        {
+            return dao.qtdAcompanhamento(idAcompanhamento);
+        }
+
+          
+          public decimal saldoAdicional(long idAdicional)
+        {
+            return dao.qtdAdicional(idAdicional);
+        }
+
+
+          
+          public decimal saldoSabores(long idSabores)
+        {
+            return dao.qtdsSabores(idSabores);
+        }
+
     }
 }
