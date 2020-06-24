@@ -34,6 +34,21 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpGet("CaixaSaldo", Name = "CaixaSaldo")]
+        public JsonResult CaixaSaldo()
+        {
+            try
+            {
+                return Json(service.CaixaInicial());
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
         [HttpPost]
         public JsonResult Post([FromBody] Caixa caixa)
         {

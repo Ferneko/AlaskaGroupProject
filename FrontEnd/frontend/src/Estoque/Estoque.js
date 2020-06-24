@@ -150,7 +150,7 @@ export default class Estoque extends Component {
 
     setData(e) {
         this.setState({
-            data: e.target.value,
+            data: e,
         })
 
     }
@@ -185,9 +185,7 @@ export default class Estoque extends Component {
         });
 
 
-        this.setState({
-            tipoMovimentacao: e.target.value
-        });
+       
     }
 
     setCasquinhaid(e) {
@@ -200,12 +198,30 @@ export default class Estoque extends Component {
     }
     setQuantidadeCasquinha(e) {
 
+        let valorOk = e.target.value // -10
+       
+        if (Number(this.state.tipoMovimentacao) === 1) {
+           
+            if (valorOk < 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+
+        } else {
+
+            if (valorOk > 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+        }
+
         this.setState({
-            quantidadeCasquinha: e.target.value,
+            quantidadeCasquinha: valorOk,
         })
         
     }
     setAdicionalid(e) {
+        
         this.setState({
             adicionalid: e.target.value,
         })
@@ -213,8 +229,26 @@ export default class Estoque extends Component {
 
     }
     setQuantidadeAdicional(e) {
+
+        let valorOk = e.target.value // -10
+       
+        if (Number(this.state.tipoMovimentacao) === 1) {
+           
+            if (valorOk < 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+
+        } else {
+
+            if (valorOk > 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+        }
+
         this.setState({
-            quantidadeAdicional: e.target.value,
+            quantidadeAdicional: valorOk,
         })
 
     }
@@ -226,8 +260,26 @@ export default class Estoque extends Component {
 
     }
     setQuantidadeAcompanhamento(e) {
+
+        let valorOk = e.target.value // -10
+       
+        if (Number(this.state.tipoMovimentacao) === 1) {
+           
+            if (valorOk < 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+
+        } else {
+
+            if (valorOk > 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+        }
+
         this.setState({
-            quantidadeAcompanhamento: e.target.value,
+            quantidadeAcompanhamento: valorOk,
         })
     }
     setSaboresid(e) {
@@ -237,8 +289,26 @@ export default class Estoque extends Component {
         this.setSaboresid(e.target.value)
     }
     setQuantidadeSabores(e) {
+
+        let valorOk = e.target.value // -10
+       
+        if (Number(this.state.tipoMovimentacao) === 1) {
+           
+            if (valorOk < 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+
+        } else {
+
+            if (valorOk > 0) 
+            {
+                valorOk = valorOk * -1;
+            }
+        }
+
         this.setState({
-            quantidadeSabores: e.target.value,
+            quantidadeSabores: valorOk,
         })
     }
 
@@ -299,6 +369,7 @@ export default class Estoque extends Component {
                         <DatePicker className="form-control" style={{ width: '100%' }}
                             selected={this.state.data}
                             onChange={this.setData}
+                            dateFormat="dd/MM/yyyy"
                         />
 
                     </div>

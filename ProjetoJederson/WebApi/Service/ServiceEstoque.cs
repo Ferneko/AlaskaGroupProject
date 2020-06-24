@@ -34,21 +34,25 @@ namespace WebApi.Service
         {
             if (objeto.tipoMovimentacao == 0)
             {
-                if (dao.qtdCasquinha(objeto.casquinhaId) > objeto.quantidadeCasquinha)
+                decimal teste = dao.qtdCasquinha(objeto.casquinhaId);
+                if (teste < (objeto.quantidadeCasquinha*-1))
                 {
                     throw new Exception("Quantidade não disponivel desta Casquinha");
                 }
-                if (dao.qtdAdicional(objeto.id) > objeto.quantidadeAdicional)
+
+                if (dao.qtdAdicional(objeto.adicionalId) < (objeto.quantidadeAdicional * -1))
                 {
-                    throw new Exception("Quantidade não disponivel desta Casquinha");
+                    throw new Exception("Quantidade não disponivel deste Adicional");
                 }
-                if (dao.qtdAcompanhamento(objeto.acompanhamentoId) > objeto.acompanhamentoId)
+
+                if (dao.qtdAcompanhamento(objeto.acompanhamentoId) < (objeto.quantidadeAcompanhamento * -1))
                 {
-                    throw new Exception("Quantidade não disponivel desta Casquinha");
+                    throw new Exception("Quantidade não disponivel deste Acompanhamento");
                 }
-                if (dao.qtdsSabores(objeto.saboresId) > objeto.saboresId)
+
+                if (dao.qtdsSabores(objeto.saboresId) < (objeto.quantidadeSabores * -1))
                 {
-                    throw new Exception("Quantidade não disponivel desta Casquinha");
+                    throw new Exception("Quantidade não disponivel deste sabor");
                 }
 
 

@@ -22,7 +22,7 @@ import EditarAdicional from "../Adicional/EditarAdicional";
 import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
 import ListaCaixa from "../Caixa/ListaCaixa";
-import CaixaInicial from "../Caixa/CaixaInicial";
+
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
@@ -69,11 +69,11 @@ const Routes = () => (
                 <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
                 <Route path="/ListaAdicional" component={ListaAdicional} />
               
-                <Route path="/CaixaInicial" component={CaixaInicial} />
+               
                
                 <Route path="/ListaCaixa" component={ListaCaixa} />
                 <Route path="/ControleCaixa" component={ControleCaixa} />
-                <Route path="/CaixaInicial" component={CaixaInicial} />
+               
                 
                
             <Route path="/CadastroPermissao" component={CadastroPermissao}/>

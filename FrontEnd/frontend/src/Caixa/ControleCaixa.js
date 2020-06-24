@@ -13,7 +13,8 @@ export default class ControleCaixa extends Component {
             tipoMovimentacao: 1,
             valor: "",
             descricao: "",
-            erro: null
+            erro: null,
+            saldoCaixa:0
         }
 
         this.setData = this.setData.bind(this)
@@ -23,12 +24,22 @@ export default class ControleCaixa extends Component {
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
     }
 
-
+    componentDidMount() {
+        Conexao.get("/Caixa/CaixaSaldo").then(resposta => {
+            const dados = resposta.data;
+            if(dados.erro != null){
+                this.setState({ erro : dados.erro });
+            }else{
+                this.setState({ saldoCaixa : dados });
+            }
+        });
+    }
 
 
     setData(e) {
+        
         this.setState({
-            data: e.target.value,
+            data: e,
         })
     }
 
@@ -111,14 +122,15 @@ export default class ControleCaixa extends Component {
 
                 <div className="col-4"></div>
                 <div className="col-4">
-
+                <h1>Saldo Caixa  R$ {this.state.saldoCaixa}</h1>
 
                     <div className="form-group">
                         <label>Data</label><br/>
                         {/*<input type="date" className="form-control" id="nome" name="date" value={this.state.data} onChange={this.setData} />*/}
-                        <DatePicker className="form-control" style={{width:'100%'}}
+                        <DatePicker className="form-control" style={{width:'100%'}}  
                             selected={this.state.data}
                             onChange={this.setData}
+                            dateFormat="dd/MM/yyyy"
                          />
                     </div>
                     <div className="form-group ">
