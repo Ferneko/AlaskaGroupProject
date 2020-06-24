@@ -57,24 +57,24 @@ namespace WebApi.Data
 
         public decimal qtdCasquinha(long Id)
         {
-            decimal casquinha = db.ESTOQUE.Where(a => a.id == Id).Sum(c => c.quantidadeCasquinha);
+            decimal casquinha = db.ESTOQUE.Where(a => a.casquinhaId == Id).Sum(c => c.quantidadeCasquinha);
             return casquinha;
         }
         public decimal qtdAdicional(long Id)
         {
-            decimal adicional = db.ESTOQUE.Where(a => a.id == Id).Sum(c => c.quantidadeAdicional);
+            decimal adicional = db.ESTOQUE.Where(a => a.adicionalId == Id).Sum(c => c.quantidadeAdicional);
             return adicional;
         }
 
         public decimal qtdAcompanhamento(long Id)
         {
-            decimal acompanhamento = db.ESTOQUE.Where(a => a.id == Id).Sum(c => c.quantidadeAcompanhamento);
+            decimal acompanhamento = db.ESTOQUE.Where(a => a.acompanhamentoId == Id).Sum(c => c.quantidadeAcompanhamento);
             return acompanhamento;
         }
 
         public decimal qtdsSabores(long Id)
         {
-            decimal sabores = db.ESTOQUE.Where(a => a.id == Id).Sum(c => c.quantidadeSabores);
+            decimal sabores = db.ESTOQUE.Where(a => a.saboresId == Id).Sum(c => c.quantidadeSabores);
             return sabores;
         }
 

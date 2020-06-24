@@ -106,12 +106,9 @@ namespace WebApi.Service
         }
 
 
-        public decimal saldoCasquinha(long idCasquinha)
-        {
-            return dao.qtdCasquinha(idCasquinha);
-        }
+     
         
-          public decimal saldoAcompanhamento(long idAcompanhamento)
+        public decimal saldoAcompanhamento(long idAcompanhamento)
         {
             return dao.qtdAcompanhamento(idAcompanhamento);
         }

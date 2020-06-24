@@ -64,7 +64,7 @@ namespace WebApi.Controllers
 
         }
 
-               [HttpGet("SaldoAcompanhamento{query}", Name = "SaldoAcompanhamento")]
+               [HttpGet("SaldoAcompanhamento/{query}", Name = "SaldoAcompanhamento")]
         public JsonResult SaldoAcompanhamento(int query)
         {
             try
@@ -79,7 +79,7 @@ namespace WebApi.Controllers
 
         }
 
-                [HttpGet("SaldoAdicional{query}", Name = "SaldoAdicional")]
+                [HttpGet("SaldoAdicional/{query}", Name = "SaldoAdicional")]
         public JsonResult SaldoAdicional(int query)
         {
             try
@@ -94,7 +94,7 @@ namespace WebApi.Controllers
 
         }
 
-                [HttpGet("SaldoSabores{query}", Name = "SaldoSabores")]
+                [HttpGet("SaldoSabores/{query}", Name = "SaldoSabores")]
         public JsonResult SaldoSabores(int query)
         {
             try

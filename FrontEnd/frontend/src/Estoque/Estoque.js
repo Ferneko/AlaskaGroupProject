@@ -74,39 +74,22 @@ export default class Estoque extends Component {
                     saboresid: dados.todosSabores[0].id
                 });
             }
+
+            this.getEstoqueCasquinha(this.state.casquinhaId)
+            this.getEstoqueAcompanhamento(this.state.acompanhamentoId)
+            this.getEstoqueAdicional(this.state.adicionalid)
+            this.getEstoqueSabores(this.state.saboresid)
         });
+
+
     }
 
-    componentDidMount() {
 
-
-        Conexao.get("/Estoque/NovaEntrada").then(resposta => {
-            const dados = resposta.data;
-            if (dados.erro != null) {
-                this.setState({ erro: dados.erro });
-            } else {
-                this.setState({
-
-                    todasCasquinhas: dados.todasCasquinhas,
-                    casquinhaId: dados.todasCasquinhas[0].id,
-
-                    todosAdicionais: dados.todosAdicionais,
-                    adicionalid: dados.todosAdicionais[0].id,
-
-                    todosAcompanhamentos: dados.todosAcompanhamentos,
-                    acompanhamentoId: dados.todosAcompanhamentos[0].id,
-
-                    todosSabores: dados.todosSabores,
-                    saboresid: dados.todosSabores[0].id
-                });
-            }
-        });
-    }
 
     getEstoqueCasquinha(idCasquinha) {
 
-
-        Conexao.get("/Estoque/SaldoCasquinha/" + this.state.casquinhaId).then(resposta => {
+        console.log(idCasquinha)
+        Conexao.get("/Estoque/SaldoCasquinha/" + idCasquinha).then(resposta => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
@@ -121,8 +104,7 @@ export default class Estoque extends Component {
 
     getEstoqueAcompanhamento(idAcompanhamento) {
 
-
-        Conexao.get("/Estoque/SaldoAcompanhamento/" + this.state.acompanhamentoId).then(resposta => {
+        Conexao.get("/Estoque/SaldoAcompanhamento/" + idAcompanhamento).then(resposta => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
@@ -138,7 +120,7 @@ export default class Estoque extends Component {
     getEstoqueAdicional(idAdicional) {
 
 
-        Conexao.get("/Estoque/SaldoAdicional/" + this.state.adicionalId).then(resposta => {
+        Conexao.get("/Estoque/SaldoAdicional/" + idAdicional).then(resposta => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
@@ -152,8 +134,7 @@ export default class Estoque extends Component {
     }
     getEstoqueSabores(idSabores) {
 
-
-        Conexao.get("/Estoque/SaldoSabores/" + this.state.saboresId).then(resposta => {
+        Conexao.get("/Estoque/SaldoSabores/" + idSabores).then(resposta => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
@@ -210,30 +191,39 @@ export default class Estoque extends Component {
     }
 
     setCasquinhaid(e) {
-       this.getEstoqueCasquinha(e.target.value)
+
         this.setState({
             casquinhaId: e.target.value,
         })
+        this.getEstoqueCasquinha(e.target.value)
+
     }
     setQuantidadeCasquinha(e) {
+
         this.setState({
             quantidadeCasquinha: e.target.value,
         })
+        
     }
     setAdicionalid(e) {
         this.setState({
             adicionalid: e.target.value,
         })
+        this.getEstoqueAdicional(e.target.value)
+
     }
     setQuantidadeAdicional(e) {
         this.setState({
             quantidadeAdicional: e.target.value,
         })
+
     }
     setAcompanhamentoid(e) {
         this.setState({
             acompanhamentoId: e.target.value,
         })
+        this.getEstoqueAcompanhamento(e.target.value)
+
     }
     setQuantidadeAcompanhamento(e) {
         this.setState({
@@ -244,6 +234,7 @@ export default class Estoque extends Component {
         this.setState({
             saboresid: e.target.value,
         })
+        this.setSaboresid(e.target.value)
     }
     setQuantidadeSabores(e) {
         this.setState({
