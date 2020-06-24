@@ -27,7 +27,10 @@ export default class Estoque extends Component {
             todosAdicionais: [],
             todosAcompanhamentos: [],
             todosSabores: [],
-            estoqueCasquinha: 0
+            estoqueCasquinha: 0,
+            estoqueAcompanhamento: 0,
+            estoqueAdicional: 0,
+            estoqueSabores: 0
         }
 
         //this.setId= this.setId.bind(this)
@@ -43,6 +46,9 @@ export default class Estoque extends Component {
         this.setQuantidadeSabores = this.setQuantidadeSabores.bind(this)
         this.enviarParaBackEnd = this.enviarParaBackEnd.bind(this);
         this.getEstoqueCasquinha = this.getEstoqueCasquinha.bind(this)
+        this.getEstoqueAcompanhamento = this.getEstoqueAcompanhamento.bind(this)
+        this.getEstoqueAdicional = this.getEstoqueAdicional.bind(this)
+        this.getEstoqueSabores = this.getEstoqueSabores.bind(this)
     }
 
     componentDidMount() {
@@ -108,6 +114,53 @@ export default class Estoque extends Component {
                 this.setState({
 
                     estoqueCasquinha: dados
+                });
+            }
+        });
+    }
+
+    getEstoqueAcompanhamento(idAcompanhamento) {
+
+
+        Conexao.get("/Estoque/SaldoAcompanhamento/" + this.state.acompanhamentoId).then(resposta => {
+            const dados = resposta.data;
+            if (dados.erro != null) {
+                this.setState({ erro: dados.erro });
+            } else {
+                this.setState({
+
+                    estoqueAcompanhamento: dados
+                });
+            }
+        });
+    }
+
+    getEstoqueAdicional(idAdicional) {
+
+
+        Conexao.get("/Estoque/SaldoAdicional/" + this.state.adicionalId).then(resposta => {
+            const dados = resposta.data;
+            if (dados.erro != null) {
+                this.setState({ erro: dados.erro });
+            } else {
+                this.setState({
+
+                    estoqueAdicional: dados
+                });
+            }
+        });
+    }
+    getEstoqueSabores(idSabores) {
+
+
+        Conexao.get("/Estoque/SaldoSabores/" + this.state.saboresId).then(resposta => {
+            const dados = resposta.data;
+            if (dados.erro != null) {
+                this.setState({ erro: dados.erro });
+            } else {
+                this.setState({
+
+                    estoqueSabores: dados
                 });
             }
         });
@@ -298,6 +351,7 @@ export default class Estoque extends Component {
                                 <option key={item.id} value={item.id}>{item.nome}</option>
                             ))}
                         </select>
+                        {this.state.estoqueAdicional} em estoque
                     </div>
 
                     <div className="form-group col-md-3">
@@ -315,6 +369,7 @@ export default class Estoque extends Component {
                                 <option key={item.id} value={item.id}>{item.nome}</option>
                             ))}
                         </select>
+                        {this.state.estoqueAcompanhamento} em estoque
                     </div>
 
 
@@ -332,6 +387,7 @@ export default class Estoque extends Component {
                                 <option key={item.id} value={item.id}>{item.name}</option>
                             ))}
                         </select>
+                        {this.state.estoqueSabores} em estoque
                     </div>
 
                     <div className="form-group col-md-3">
