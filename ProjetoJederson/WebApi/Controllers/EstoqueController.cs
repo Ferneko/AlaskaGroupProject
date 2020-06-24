@@ -49,7 +49,7 @@ namespace WebApi.Controllers
 
         }
 
-              [HttpGet("SaldoCasquinha/{query}", Name = "SaldoCasquinha")]
+        [HttpGet("SaldoCasquinha/{query}", Name = "SaldoCasquinha")]
         public JsonResult SaldoCasquinha(int query)
         {
             try

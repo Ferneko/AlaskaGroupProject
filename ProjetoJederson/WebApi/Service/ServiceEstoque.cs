@@ -25,6 +25,11 @@ namespace WebApi.Service
 
         }
 
+        public decimal saldoCasquinha(long idCasquinha)
+        {
+            return dao.qtdCasquinha(idCasquinha);
+        }
+
         public void Gravar(Estoque objeto)
         {
             if (objeto.tipoMovimentacao == 0)
