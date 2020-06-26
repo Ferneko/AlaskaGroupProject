@@ -58,7 +58,7 @@ export default class CadastroPermissao extends Component {
         if (dados.erro != null) {
           this.setState({ erro: dados.erro });
         } else {
-          this.props.history.push("/ListaRelatorioPermissao");
+          this.props.history.push("/Permissao");
         }
       })
       .catch((error) => {

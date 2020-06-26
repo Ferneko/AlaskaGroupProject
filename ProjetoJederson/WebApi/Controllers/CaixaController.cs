@@ -25,12 +25,28 @@ namespace WebApi.Controllers
         {
             try
             {
+                decimal valor = service.CaixaInicial();
                 return Json(service.ListaTodos());
             }
             catch (Exception ex)
             {
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
+        }
+
+        [HttpGet("CaixaSaldo", Name = "CaixaSaldo")]
+        public JsonResult CaixaSaldo()
+        {
+            try
+            {
+                return Json(service.CaixaInicial());
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
         }
 
         [HttpPost]
@@ -91,5 +107,6 @@ namespace WebApi.Controllers
             }
 
         }
+        
     }
 }

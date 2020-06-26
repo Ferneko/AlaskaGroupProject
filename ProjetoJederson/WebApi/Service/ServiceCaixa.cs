@@ -18,6 +18,13 @@ namespace WebApi.Service
 
         public void Gravar(Caixa objeto)
         {
+            if (objeto.tipoMovimentacao == 0){
+                if(CaixaInicial() > objeto.valor){
+                    throw new Exception(
+                        "O caixa nao tem esse valor"
+                    );
+                }
+            }
             dao.Gravar(objeto);
         }
 
@@ -54,6 +61,10 @@ namespace WebApi.Service
         public List<Caixa> Pesquisar(DateTime query)
         {
             return dao.Pesquisar(query);
+        }
+
+        public decimal CaixaInicial(){
+            return dao.CaixaInicial();
         }
     }
 }

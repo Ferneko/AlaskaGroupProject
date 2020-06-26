@@ -11,10 +11,7 @@ export default class extends Component {
                 <div className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Alaska Sorveteria</div>
                 <ul className="navbar-nav px-3">
                     <li className="nav-item text-nowrap">
-                        <div className="nav-link" href="#" 
-                            title="Clique para Sair do Sistema" alt="Clique para Sair do Sistema">
-                                Sair do Sistema
-                        </div>
+                        <div className="nav-link" href="#">Sair do sistema</div>
                     </li>
                 </ul>
             </nav>
@@ -36,48 +33,32 @@ export default class extends Component {
                                 <li className="nav-item">
                                     <Link to="/ListaClientes" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Clientes</Link>
                                 </li>
+                             
                                 <li className="nav-item">
-                                    <Link to="/ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
+                                    <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinha</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link to="/ListaCasquinha" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Casquinhas</Link>
-                                </li>
-
-                               
                                 <li className="nav-item">
                                     <Link to="/Estoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Movimentar Estoque</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/ListaRelatorioEstoque" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatório de Estoque</Link>
                                 </li>
-
-                               
                                 <li className="nav-item">
-                                    <Link to="/ControleCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Controle de Caixa</Link>
+                                    <Link to="/ControleCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Caixa</Link>
                                 </li>
                                 <li className="nav-item">   
-                                    <Link to="/ListaRelatorioCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatório de Caixa</Link>      
+                                    <Link to="/ListaCaixa" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Lista Caixa</Link>      
                                 </li>
-
-
+                               
+                                <li className="nav-item">
+                                    <Link to="/ListaUsuarios" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Usuários</Link>
+                                </li>
                                 <li className="nav-item">   
                                     <Link to="/Permissao" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Permissão</Link>      
                                 </li>
                                 <li className="nav-item">   
-                                    <Link to="/ListaRelatorioPermissao" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatorio de Permissão</Link>      
-                                </li>
-
-
-                                <li className="nav-item">   
                                     <Link to="/GrupoUsuario" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Grupo Usuário</Link>      
                                 </li>
-                                <li className="nav-item">   
-                                    <Link to="/ListaRelatorioGrupoUsuario" className="nav-link" style={{ cursor: 'pointer' }}> <span data-feather="layers"></span>Relatorio do Grupo Usuário</Link>      
-                                </li>
-
-
-                                
-
                             </ul>
                         </div>
                     </nav>

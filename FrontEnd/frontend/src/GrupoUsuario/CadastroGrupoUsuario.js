@@ -37,7 +37,7 @@ export default class CadastroGrupoUsuario extends Component {
         if (dados.erro != null) {
           this.setState({ erro: dados.erro });
         } else {
-          this.props.history.push("/ListaRelatorioGrupoUsuario");
+          this.props.history.push("/GrupoUsuario");
         }
       })
       .catch((error) => {

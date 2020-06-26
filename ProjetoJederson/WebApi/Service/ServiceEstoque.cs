@@ -25,9 +25,42 @@ namespace WebApi.Service
 
         }
 
+        public decimal saldoCasquinha(long idCasquinha)
+        {
+            return dao.qtdCasquinha(idCasquinha);
+        }
+
         public void Gravar(Estoque objeto)
         {
+            if (objeto.tipoMovimentacao == 0)
+            {
+                decimal teste = dao.qtdCasquinha(objeto.casquinhaId);
+                if (teste < (objeto.quantidadeCasquinha*-1))
+                {
+                    throw new Exception("Quantidade não disponivel desta Casquinha");
+                }
+
+                if (dao.qtdAdicional(objeto.adicionalId) < (objeto.quantidadeAdicional * -1))
+                {
+                    throw new Exception("Quantidade não disponivel deste Adicional");
+                }
+
+                if (dao.qtdAcompanhamento(objeto.acompanhamentoId) < (objeto.quantidadeAcompanhamento * -1))
+                {
+                    throw new Exception("Quantidade não disponivel deste Acompanhamento");
+                }
+
+                if (dao.qtdsSabores(objeto.saboresId) < (objeto.quantidadeSabores * -1))
+                {
+                    throw new Exception("Quantidade não disponivel deste sabor");
+                }
+
+
+            }
+
+
             dao.Gravar(objeto);
+
         }
 
         public List<Estoque> ListaTodos()
@@ -75,5 +108,27 @@ namespace WebApi.Service
 
             return retorno;
         }
+
+
+     
+        
+        public decimal saldoAcompanhamento(long idAcompanhamento)
+        {
+            return dao.qtdAcompanhamento(idAcompanhamento);
+        }
+
+          
+          public decimal saldoAdicional(long idAdicional)
+        {
+            return dao.qtdAdicional(idAdicional);
+        }
+
+
+          
+          public decimal saldoSabores(long idSabores)
+        {
+            return dao.qtdsSabores(idSabores);
+        }
+
     }
 }

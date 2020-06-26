@@ -11,35 +11,36 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdicionalController : Controller
+    public class VendasController : Controller
     {
-
-        private ServiceAdicional serviceAdicional;
-        public AdicionalController(Contexto db)
+        private ServiceVenda service;
+        public VendasController(Contexto db)
         {
-            serviceAdicional = new ServiceAdicional(db);
+            service = new ServiceVenda(db);
         }
 
+        // GET: api/Usuarios
         [HttpGet]
-
         public JsonResult Get()
         {
             try
             {
-                return Json(serviceAdicional.ListaTodos());
+                return Json(service.ListaTodos());
             }
             catch (Exception ex)
             {
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
+
         }
-        [HttpGet("{id}", Name = "Get1")]
+
+        // GET: api/Usuarios/5
+        [HttpGet("{id}", Name = "getVendas")]
         public JsonResult Get(int id)
         {
-
             try
             {
-                return Json(serviceAdicional.PesquisarPorId(id));
+                return Json(service.PesquisarId(id));
             }
             catch (Exception ex)
             {
@@ -48,27 +49,29 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("PesquisarVendas/{query}", Name = "PesquisarVendas")]
+        public JsonResult PesquisarVendas(int query)
+        {
+            try
+            {
+
+                return Json(service.PesquisarId(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        // POST: api/Usuarios
         [HttpPost]
-
-        public JsonResult Post([FromBody] Adicional objeto)
+        public JsonResult Post([FromBody] Venda objeto)
         {
             try
             {
-                return Json(serviceAdicional.Gravar(objeto));
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Erro = ex.Message + " " + ex.InnerException });
-            }
-        }
-
-
-        [HttpDelete]
-        public JsonResult Delete(int id)
-        {
-            try
-            {
-                return Json(serviceAdicional.Delete(id));
+                return Json(service.Gravar(objeto));
             }
             catch (Exception ex)
             {
@@ -77,17 +80,30 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarAdicional/{query}", Name = "PesquisarAdicional")]
-        public JsonResult PesquisarAdicional(string query)
+        // POST: api/Usuarios
+        [HttpPut]
+        public JsonResult Put([FromBody] Venda objeto)
         {
             try
             {
-
-                return Json(serviceAdicional.Pesquisar(query));
+                return Json(service.Gravar(objeto));
             }
             catch (Exception ex)
             {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
 
+        }
+
+        [HttpDelete("{id}")]
+        public JsonResult Delete(long id)
+        {
+            try
+            {
+                return Json(service.Delete(id));
+            }
+            catch (Exception ex)
+            {
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 

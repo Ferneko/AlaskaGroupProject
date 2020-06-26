@@ -49,6 +49,66 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("SaldoCasquinha/{query}", Name = "SaldoCasquinha")]
+        public JsonResult SaldoCasquinha(int query)
+        {
+            try
+            {
+                return Json(service.saldoCasquinha(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+               [HttpGet("SaldoAcompanhamento/{query}", Name = "SaldoAcompanhamento")]
+        public JsonResult SaldoAcompanhamento(int query)
+        {
+            try
+            {
+                return Json(service.saldoAcompanhamento(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+                [HttpGet("SaldoAdicional/{query}", Name = "SaldoAdicional")]
+        public JsonResult SaldoAdicional(int query)
+        {
+            try
+            {
+                return Json(service.saldoAdicional(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+                [HttpGet("SaldoSabores/{query}", Name = "SaldoSabores")]
+        public JsonResult SaldoSabores(int query)
+        {
+            try
+            {
+                return Json(service.saldoSabores(query));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
 
         [HttpPost]
         public JsonResult Post([FromBody] Estoque estoque)
