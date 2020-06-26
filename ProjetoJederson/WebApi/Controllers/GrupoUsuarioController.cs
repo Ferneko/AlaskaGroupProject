@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -21,6 +22,7 @@ namespace WebApi.Controllers
 
         // GET: api/Usuarios
         [HttpGet]
+        [Authorize(Roles = "acessarListaGrupoUsuario")]
         public JsonResult Get()
         {
             try
@@ -36,6 +38,7 @@ namespace WebApi.Controllers
 
         // GET: api/Usuarios/5
         [HttpGet("{id}", Name = "GetGrupoUsuario")]
+        [Authorize(Roles = "acessarListaGrupoUsuario")]
         public JsonResult Get(int id)
         {
             try
@@ -67,6 +70,7 @@ namespace WebApi.Controllers
 
         // POST: api/Usuarios
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovoGrupoUsuario")]
         public JsonResult Post([FromBody] GrupoUsuario objeto)
         {
             try
@@ -80,6 +84,7 @@ namespace WebApi.Controllers
 
         }
         [HttpDelete]
+        [Authorize(Roles = "excluirGrupoUsuario")]
         public JsonResult Delete(int id)
         {
             try

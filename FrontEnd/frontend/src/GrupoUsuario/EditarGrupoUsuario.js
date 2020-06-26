@@ -55,7 +55,7 @@ export default class EditarGrupoUsuario extends Component {
           this.setState({ erro: dados.erro });
         } else {
           //alert("deu");
-          this.props.history.push("/ListaRelatorioGrupoUsuario");
+          this.props.history.push("/GrupoUsuario");
         }
       })
       .catch((error) => {

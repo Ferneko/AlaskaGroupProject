@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -20,7 +21,7 @@ namespace WebApi.Controllers
             serviceAcompanhamentos = new ServiceAcompanhamentos(db);
         }
 
-        // GET: api/Acompanhamentos
+        [Authorize(Roles = "acessarListaAcompanhamentos")]
         [HttpGet]
         public JsonResult Get()
         {
@@ -35,7 +36,7 @@ namespace WebApi.Controllers
 
         }
 
-        // GET: api/Acompanhamentos/5
+        [Authorize(Roles = "acessarListaAcompanhamentos")]
         [HttpGet("{id}", Name = "GetAcompanhamentos")]
         public JsonResult Get(int id)
         {
@@ -48,9 +49,10 @@ namespace WebApi.Controllers
 
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
-          
+
         }
 
+        [Authorize(Roles = "acessarListaAcompanhamentos")]
         [HttpGet("PesquisarAcompanhamentos/{query}", Name = "PesquisarAcompanhamentos")]
         public JsonResult PesquisarAcompanhamentos(string query)
         {
@@ -64,7 +66,7 @@ namespace WebApi.Controllers
             }
         }
 
-        // POST: api/Acompanhamentos
+        [Authorize(Roles = "cadastrarNovoAcompanhamento")]
         [HttpPost]
         public JsonResult Post([FromBody] Acompanhamentos objeto)
         {
@@ -76,10 +78,10 @@ namespace WebApi.Controllers
             {
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
-   
+
         }
 
-
+        [Authorize(Roles = "excluirAcompanhamento")]
         [HttpDelete]
         public JsonResult Delete(int id)
         {
@@ -94,7 +96,7 @@ namespace WebApi.Controllers
 
         }
 
-       
+
 
     }
 }

@@ -142,8 +142,9 @@ export default class UsuarioPermissoes extends Component {
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Descrição</th>
+                                           
                                             <th>Nome</th>
+                                            <th>Descrição</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,8 +158,9 @@ export default class UsuarioPermissoes extends Component {
                                                         <button className="btn btn-success" onClick={() => this.salvar(item.idUsuario, item.idPermissao)}>Conceder Permissão</button>
                                                     }
                                                 </td>
-                                                <td>{item.descricao}</td>
+                                                
                                                 <td>{item.nome}</td>
+                                                <td>{item.descricao}</td>
                                             </tr>
                                         ))}
                                     </tbody>

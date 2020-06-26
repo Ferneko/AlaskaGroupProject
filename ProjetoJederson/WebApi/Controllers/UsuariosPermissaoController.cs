@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -25,6 +26,7 @@ namespace WebApi.Controllers
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "acessarListaUsuariosPermissao")]
         public JsonResult Get(long id)
         {
             try
@@ -42,6 +44,7 @@ namespace WebApi.Controllers
 
         // POST: api/Usuarios
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovoUsuariosPermissao")]
         public JsonResult Post([FromBody] UsuarioPermissaoModel objeto)
         {
             try
@@ -58,6 +61,7 @@ namespace WebApi.Controllers
 
 
         [HttpDelete("{idPermissao}/{idUsuario}")]
+        [Authorize(Roles = "excluirUsuariosPermissao")]
         public JsonResult Delete(long idUsuario, long idPermissao)
         {
             try

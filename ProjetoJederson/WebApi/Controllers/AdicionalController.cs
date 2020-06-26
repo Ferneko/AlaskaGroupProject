@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -21,7 +22,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-
+        [Authorize(Roles = "acessarListaAdicional")]
         public JsonResult Get()
         {
             try
@@ -33,6 +34,8 @@ namespace WebApi.Controllers
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
+
+        [Authorize(Roles = "acessarListaAdicional")]
         [HttpGet("{id}", Name = "Get1")]
         public JsonResult Get(int id)
         {
@@ -49,7 +52,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-
+        [Authorize(Roles = "cadastrarNovoAdicional")]
         public JsonResult Post([FromBody] Adicional objeto)
         {
             try
@@ -62,7 +65,7 @@ namespace WebApi.Controllers
             }
         }
 
-
+        [Authorize(Roles = "excluirAdicional")]
         [HttpDelete]
         public JsonResult Delete(int id)
         {

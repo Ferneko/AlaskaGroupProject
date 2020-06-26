@@ -28,7 +28,7 @@ namespace WebApi.Service
             }
             else
             {
-                throw new Exception("Não encontrado. Erro ao deletar");
+                //throw new Exception("Não encontrado. Erro ao deletar");
             }
         }
 

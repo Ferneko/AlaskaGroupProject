@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -20,6 +21,7 @@ namespace WebApi.Controllers
         }
         // GET: api/Usuarios
         [HttpGet]
+        [Authorize(Roles = "acessarListaCliente")]
         public JsonResult Get()
         {
             try
@@ -36,6 +38,7 @@ namespace WebApi.Controllers
 
         // GET: api/Usuarios/5
         [HttpGet("{id}", Name = "GetCliente")]
+        [Authorize(Roles = "acessarListaCliente")]
         public JsonResult Get(int id)
         {
             try
@@ -67,6 +70,7 @@ namespace WebApi.Controllers
 
         // POST: api/Usuarios
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovoCliente")]
         public JsonResult Post([FromBody] Cliente objeto)
         {
             try
@@ -81,6 +85,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "excluirCliente")]
         public JsonResult Delete(int id)
         {
             try

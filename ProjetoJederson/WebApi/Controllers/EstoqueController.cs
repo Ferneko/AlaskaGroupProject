@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -20,6 +21,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "acessarListaEstoque")]
 
         public JsonResult Get()
         {
@@ -111,6 +113,7 @@ namespace WebApi.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovoEstoque")]
         public JsonResult Post([FromBody] Estoque estoque)
         {
             try
@@ -125,21 +128,8 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("Movimentacao", Name = "Movimentacao")]
-        public JsonResult Movimentacao()
-        {
-            try
-            {
-                return Json(service.movimentaocao());
-            }
-            catch (Exception ex)
-            {
 
-                return Json(new { Erro = ex.Message + " " + ex.InnerException });
-            }
-
-        }
-
+        [Authorize(Roles = "acessarListaEstoque")]
         [HttpGet("NovaEntrada", Name = "NovaEntrada")]
         public JsonResult NovaEntrada()
         {
@@ -156,6 +146,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "excluirEstoque")]
         public JsonResult Delete(int id)
         {
             try

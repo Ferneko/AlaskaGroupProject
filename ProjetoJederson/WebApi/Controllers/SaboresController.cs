@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -21,6 +22,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "acessarListaSabores")]
         public JsonResult Get()
         {
             try
@@ -32,7 +34,10 @@ namespace WebApi.Controllers
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
+
+
         [HttpGet("{id}", Name = "GetSabores")]
+        [Authorize(Roles = "acessarListaSabores")]
         public JsonResult Get(int id)
         {
 
@@ -49,6 +54,7 @@ namespace WebApi.Controllers
         }
  
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovoSabor")]
 
         public JsonResult Post([FromBody]Sabores objeto)
         {
@@ -65,6 +71,7 @@ namespace WebApi.Controllers
 
 
         [HttpDelete]
+        [Authorize(Roles = "excluirSabores")]
         public JsonResult Delete(int id)
         {
             try

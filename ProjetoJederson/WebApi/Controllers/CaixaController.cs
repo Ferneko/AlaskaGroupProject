@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -20,7 +21,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-
+        [Authorize(Roles = "acessarListaCaixa")]
         public JsonResult Get()
         {
             try
@@ -33,6 +34,7 @@ namespace WebApi.Controllers
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
         }
+
 
         [HttpGet("CaixaSaldo", Name = "CaixaSaldo")]
         public JsonResult CaixaSaldo()
@@ -50,6 +52,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovoCaixa")]
         public JsonResult Post([FromBody] Caixa caixa)
         {
             try
@@ -64,6 +67,7 @@ namespace WebApi.Controllers
             }
         }
 
+       
         [HttpGet("Movimentacao", Name = "MovimentacaoCaixa")]
         public JsonResult MovimentacaoCaixa()
         {
@@ -94,6 +98,7 @@ namespace WebApi.Controllers
 
         }
 
+        [Authorize(Roles = "excluirCaixa")]
         [HttpDelete]
         public JsonResult Delete(int id)
         {

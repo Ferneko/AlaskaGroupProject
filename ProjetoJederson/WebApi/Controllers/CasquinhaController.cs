@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
@@ -20,7 +21,7 @@ namespace WebApi.Controllers
             serviceCasquinha = new ServiceCasquinha(db);
         }
 
-        // GET: api/Casquinha
+        [Authorize(Roles = "acessarListaCasquinhas")]
         [HttpGet]
         public JsonResult Get()
         {
@@ -40,6 +41,7 @@ namespace WebApi.Controllers
 
 
         // GET: api/Casquinha/5
+        [Authorize(Roles = "acessarListaCasquinhas")]
         [HttpGet("{id}", Name = "GetCasquinha")]
         public JsonResult Get(int Id)
         {
@@ -75,6 +77,7 @@ namespace WebApi.Controllers
 
         // POST: api/Casquinha
         [HttpPost]
+        [Authorize(Roles = "cadastrarNovaCasquinha")]
         public JsonResult Post([FromBody] Casquinha objeto)
         {
             try
@@ -93,6 +96,7 @@ namespace WebApi.Controllers
 
 
         [HttpDelete]
+        [Authorize(Roles = "excluirCasquinha")]
         public JsonResult Delete(int id)
         {
             try

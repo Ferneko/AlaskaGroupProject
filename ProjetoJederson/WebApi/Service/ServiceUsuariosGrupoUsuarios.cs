@@ -11,10 +11,14 @@ namespace WebApi.Service
     {
         private DaoUsuariosGrupoUsuarios dao;
         private ServiceGrupoUsuario serviceGrupoUsuario;
+        private ServiceUsuariosPermissao serviceUsuarioPermissao;
+        private ServiceGrupoUsuarioPermissao serviceGrupoUsuarioPermissao;
         public ServiceUsuariosGrupoUsuarios(Contexto db)
         {
             dao = new DaoUsuariosGrupoUsuarios(db);
             serviceGrupoUsuario = new ServiceGrupoUsuario(db);
+            serviceUsuarioPermissao = new ServiceUsuariosPermissao(db);
+            serviceGrupoUsuarioPermissao = new ServiceGrupoUsuarioPermissao(db);
         }
 
         public List<UsuariosGrupoUsuariosModel> ListarTodosPorUsuarioId(long usuarioId)
@@ -38,10 +42,19 @@ namespace WebApi.Service
 
         public void Delete(long idGrupoUsuario, long idUsuario)
         {
-            UsuariosGrupoUsuarios objeto = PesquisarPermissaoIdUsuarioId(idUsuario, idGrupoUsuario);
+            UsuariosGrupoUsuarios objeto = PesquisarIdPorUsuarioIdGrupoUsuaioId(idUsuario, idGrupoUsuario);
 
             if (objeto != null)
             {
+                
+                List<GrupoUsuarioPermissaoModel> listaPermissaoGrupo = serviceGrupoUsuarioPermissao.ListarTodosPorGrupoUsuario(idGrupoUsuario).Where(a => a.ativo == true).ToList();
+
+                foreach (var item in listaPermissaoGrupo)                                                                                     
+                {
+                    serviceUsuarioPermissao.Delete(idUsuario, item.idPermissao);
+
+                }
+
                 dao.Delete(objeto);
                
             }
@@ -51,7 +64,7 @@ namespace WebApi.Service
             }
         }
 
-        private UsuariosGrupoUsuarios PesquisarPermissaoIdUsuarioId(long idUsuario, long idGrupoUsuario)
+        private UsuariosGrupoUsuarios PesquisarIdPorUsuarioIdGrupoUsuaioId(long idUsuario, long idGrupoUsuario)
         {
             return dao.PesquisarIdPorUsuarioIdGrupoUsuaioId(idUsuario,idGrupoUsuario);
         }
@@ -61,7 +74,25 @@ namespace WebApi.Service
             UsuariosGrupoUsuarios novo = new UsuariosGrupoUsuarios();
             novo.usuarioId = objeto.idUsuario;
             novo.grupoUsuarioId = objeto.idGrupoUsuario;
-            return dao.Gravar(novo);
+            dao.Gravar(novo);
+
+            List<UsuarioPermissaoModel> listaPermissoesUsuario = serviceUsuarioPermissao.ListarTodosPorUsuarioId(objeto.idUsuario)                  .Where(a => a.ativo == true).ToList();
+            List<GrupoUsuarioPermissaoModel> listaPermissaoGrupo = serviceGrupoUsuarioPermissao.ListarTodosPorGrupoUsuario(objeto.idGrupoUsuario)   .Where(a => a.ativo == true).ToList();
+            
+            int teste = listaPermissaoGrupo.RemoveAll(a => listaPermissoesUsuario.Any(l => l.idPermissao == a.idPermissao));
+
+            foreach (var item in listaPermissaoGrupo)
+            {
+                serviceUsuarioPermissao.Gravar(new UsuarioPermissaoModel()
+                {
+                    idUsuario = objeto.idUsuario,
+                    idPermissao = item.idPermissao
+                });
+
+            }
+
+            return novo;
+               
         }
 
         public List<UsuariosGrupoUsuarios> ListaTodos()

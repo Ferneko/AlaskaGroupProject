@@ -93,10 +93,7 @@ namespace WebApi.Service
             }
         }
 
-        public ModelMovimentacaoEstoque movimentaocao()
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public ModelMovimentacaoEstoque novaEntrada()
         {
