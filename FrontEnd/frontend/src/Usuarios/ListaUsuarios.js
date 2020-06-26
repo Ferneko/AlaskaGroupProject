@@ -116,6 +116,8 @@ export default class ListaUsuario extends Component {
                                             <th>Ativo</th>
                                             <th></th>
                                             <th></th>
+                                            <th></th>
+                                            <th></th>
 
                                         </tr>
                                     </thead>
@@ -132,6 +134,8 @@ export default class ListaUsuario extends Component {
                                                 <td><Link Key={item.id} to={{ pathname: "/EditarUsuario/"+ item.id}} className="btn btn-warning" >Editar</Link></td>
                                                 
                                                 <td><button className="btn btn-danger" onClick={this.delete} data-objeto={item.id}>Excluir</button></td>
+                                                <td><Link key={item.id} to={{ pathname: "/PermissoesUsuario/" + item.id }} className="btn btn-primary"> Permissões </Link></td>
+                                                <td><Link key={item.id} to={{ pathname: "/GruposUsuario/" + item.id }} className="btn btn-primary"> Grupos </Link></td>
 
                                                
                                                 </tr>

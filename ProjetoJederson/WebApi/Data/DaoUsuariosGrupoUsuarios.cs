@@ -36,7 +36,10 @@ namespace WebApi.Data
             return objeto;
         }
 
-
+        internal List<UsuariosGrupoUsuarios> PesquisarIdPorUsuarioId(long usuarioId)
+        {
+            return db.USUARIOS_GRUPO_USUARIOS.Where(a => a.usuarioId == usuarioId).ToList();
+        }
 
         public List<UsuariosGrupoUsuarios> ListaTodos()
         {
@@ -53,6 +56,11 @@ namespace WebApi.Data
         public UsuariosGrupoUsuarios PesquisarId(long id)
         {
             return db.USUARIOS_GRUPO_USUARIOS.Where(a => a.id == id).FirstOrDefault();
+        }
+
+        internal UsuariosGrupoUsuarios PesquisarIdPorUsuarioIdGrupoUsuaioId(long idUsuario, long idGrupoUsuario)
+        {
+            return db.USUARIOS_GRUPO_USUARIOS.Where(a => a.grupoUsuarioId == idGrupoUsuario && a.usuarioId == idUsuario).FirstOrDefault();
         }
     }
 }

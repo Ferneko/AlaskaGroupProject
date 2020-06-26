@@ -19,28 +19,15 @@ namespace WebApi.Controllers
             service = new ServiceUsuariosGrupoUsuarios(db);
         }
 
-        // GET: api/Usuarios
-        [HttpGet]
-        public JsonResult Get()
-        {
-            try
-            {
-                return Json(service.ListaTodos());
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Erro = ex.Message + " " + ex.InnerException });
-            }
-
-        }
+      
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "UsuariosGrupoUsuarios")]
+        [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
             try
             {
-                return Json(service.PesquisarId(id));
+                return Json(service.ListarTodosPorUsuarioId(id));
             }
             catch (Exception ex)
             {
@@ -49,25 +36,11 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpGet("PesquisarUsuariosGrupoUsuarios/{query}", Name = "PesquisarUsuariosGrupoUsuarios")]
-        public JsonResult PesquisarUsuariosGrupoUsuarios(string query)
-        {
-            try
-            {
-
-                return Json(service.Pesquisar(query));
-            }
-            catch (Exception ex)
-            {
-
-                return Json(new { Erro = ex.Message + " " + ex.InnerException });
-            }
-
-        }
+       
 
         // POST: api/Usuarios
         [HttpPost]
-        public JsonResult Post([FromBody] UsuariosGrupoUsuarios objeto)
+        public JsonResult Post([FromBody] UsuariosGrupoUsuariosModel objeto)
         {
             try
             {
@@ -82,7 +55,7 @@ namespace WebApi.Controllers
 
         // POST: api/Usuarios
         [HttpPut]
-        public JsonResult Put([FromBody] UsuariosGrupoUsuarios objeto)
+        public JsonResult Put([FromBody] UsuariosGrupoUsuariosModel objeto)
         {
             try
             {
@@ -95,15 +68,32 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        [HttpDelete("{idGrupoUsuario}/{idUsuario}")]
+        public JsonResult Delete(long idGrupoUsuario, long idUsuario)
         {
             try
             {
-                return Json(service.Delete(id));
+                service.Delete(idGrupoUsuario, idUsuario);
+                return Json(StatusCode(200));
             }
             catch (Exception ex)
             {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+        [HttpGet("PesquisarUsuariosGrupoUsuarios/{idUsuario}/{query}", Name = "PesquisarUsuariosGrupoUsuarios")]
+        public JsonResult PesquisarUsuariosGrupoUsuarios(string query, long idUsuario)
+        {
+            try
+            {
+
+                return Json(service.ListarTodosPorUsuarioId(idUsuario).Where(a => a.nome.Contains(query)));
+            }
+            catch (Exception ex)
+            {
+
                 return Json(new { Erro = ex.Message + " " + ex.InnerException });
             }
 

@@ -19,7 +19,6 @@ namespace WebApi.Controllers
             service = new ServiceGrupoUsuarioPermissao(db);
         }
 
-
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
         public JsonResult Get(long id)
@@ -35,8 +34,6 @@ namespace WebApi.Controllers
 
         }
 
-     
-
         // POST: api/Usuarios
         [HttpPost]
         public JsonResult Post([FromBody] GrupoUsuarioPermissaoModel objeto)
@@ -51,8 +48,6 @@ namespace WebApi.Controllers
             }
 
         }
-
-      
 
         [HttpDelete("{idPermissao}/{idGrupoUsuario}")]
         public JsonResult Delete(long idPermissao, long idGrupoUsuario)

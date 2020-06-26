@@ -68,7 +68,7 @@ namespace WebApi.Service
                     idPermissao = item.id,
                     descricao = item.descricao,
                     nome = item.nome,
-                    ativo = permissoesGrupo.Where(a => a.id == item.id).Count() == 1 ? true : false
+                    ativo = permissoesGrupo.Where(a => a.permissaoId == item.id).Count() == 1 ? true : false
                 }) ;
             }
 

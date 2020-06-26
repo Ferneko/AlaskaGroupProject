@@ -22,7 +22,8 @@ import EditarAdicional from "../Adicional/EditarAdicional";
 import ControleCaixa from "../Caixa/ControleCaixa";
 import Estoque from "../Estoque/Estoque";
 import ListaCaixa from "../Caixa/ListaCaixa";
-
+import UsuarioPermissoes from "../Usuarios/UsuarioPermissoes"
+import UsuarioGruposPermissoes from "../Usuarios/UsuarioGruposPermissoes"
 
 import EditarAcompanhamento from "../Acompanhamentos/EditarAcompanhamento";
 import ListaRelatorioEstoque from "../Estoque/ListaRelatorioEstoque";
@@ -84,6 +85,8 @@ const Routes = () => (
             <Route path="/CadastroGrupoUsuario" component={CadastroGrupoUsuario}/>
             <Route path="/EditarGrupoUsuario/:id" component={EditarGrupoUsuario}/>
             <Route path="/PermissoesGrupoUsuario/:id" component={PermissoesGrupoUsuario}/>
+            <Route path="/PermissoesUsuario/:id" component={UsuarioPermissoes}/>
+            <Route path="/GruposUsuario/:id" component={UsuarioGruposPermissoes}/>
             <Route path="/GrupoUsuario" component={ListaGrupoUsuario}/>
 
                 <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />

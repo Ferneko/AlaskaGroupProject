@@ -3,12 +3,12 @@ import Layout from "../Layout/Layout";
 
 import Conexao from "../Conexao/Conexao";
 
-export default class PermissoesGrupoUsuario extends Component {
+export default class UsuarioPermissoes extends Component {
     constructor(props) {
         super(props);
         this.state = {
             idGrupoUsuario: this.props.match.params.id,
-            ListaPermissoesGrupoUsuario: [],
+            ListaUsuariosGrupoUsuarios: [],
             erro: null,
             query: "",
         };
@@ -28,12 +28,12 @@ export default class PermissoesGrupoUsuario extends Component {
     }
 
     getAll(){
-        Conexao.get("/GrupoUsuarioPermissao/" + this.state.idGrupoUsuario).then((resposta) => {
+        Conexao.get("/UsuariosGrupoUsuarios/" + this.state.idGrupoUsuario).then((resposta) => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                this.setState({ ListaPermissoesGrupoUsuario: dados });
+                this.setState({ ListaUsuariosGrupoUsuarios: dados });
             }
         });
     }
@@ -41,21 +41,21 @@ export default class PermissoesGrupoUsuario extends Component {
     pesquisar(e) {
         console.log(this.state.query);
         var data = this.state.query;
-        Conexao.get("/GrupoUsuarioPermissao/PesquisarGrupoUsuarioPermissao/" + this.state.idGrupoUsuario + "/" + data).then(
+        Conexao.get("/UsuariosGrupoUsuarios/PesquisarUsuariosGrupoUsuarios/" + this.state.idGrupoUsuario + "/" + data).then(
             (resposta) => {
                 const dados = resposta.data;
                 if (dados.erro != null) {
                     this.setState({ erro: dados.erro });
                 } else {
-                    this.setState({ ListaPermissoesGrupoUsuario: dados });
+                    this.setState({ ListaUsuariosGrupoUsuarios: dados });
                 }
             }
         );
     }
 
-    delete(idGrupoUsuario, idPermissao,item) {
+    delete(idGrupoUsuario, idUsuario,item) {
         //Conexao.delete("/GrupoUsuarioPermissao", { params: { id: e.target.dataset.objeto },
-        Conexao.delete("/GrupoUsuarioPermissao/" + idPermissao + "/" + idGrupoUsuario
+        Conexao.delete("/UsuariosGrupoUsuarios/" + idGrupoUsuario + "/" + idUsuario
         ).then((resposta) => {
             console.log(resposta.data);
             const dados = resposta.data;
@@ -71,11 +71,11 @@ export default class PermissoesGrupoUsuario extends Component {
 
     }
 
-    salvar(idGrupoUsuario, idPermissao, item) {
-        console.log("Salvar "+idGrupoUsuario + "," + idPermissao+"")
-        Conexao.post("/GrupoUsuarioPermissao", {
+    salvar(idGrupoUsuario, idUsuario, item) {
+        console.log("Salvar "+idGrupoUsuario + "," + idUsuario+"")
+        Conexao.post("/UsuariosGrupoUsuarios", {
             idGrupoUsuario: Number(idGrupoUsuario),
-            idPermissao: Number(idPermissao)
+            idUsuario: Number(idUsuario)
         })
             .then((resposta) => {
                 const dados = resposta.data;
@@ -142,22 +142,22 @@ export default class PermissoesGrupoUsuario extends Component {
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Descrição</th>
+                                           
                                             <th>Nome</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {this.state.ListaPermissoesGrupoUsuario.map((item, i) => (
+                                        {this.state.ListaUsuariosGrupoUsuarios.map((item, i) => (
                                             <tr key={i}>
                                                 <td> 
                                                     {item.ativo}
                                                     {item.ativo === true ?
-                                                        <button className="btn btn-danger" onClick={() => this.delete(item.idGrupoUsuario, item.idPermissao)}>Excluir Permissão</button>
+                                                        <button className="btn btn-danger" onClick={() => this.delete(item.idGrupoUsuario, item.idUsuario)}>Remover Grupo</button>
                                                         :
-                                                        <button className="btn btn-success" onClick={() => this.salvar(item.idGrupoUsuario, item.idPermissao)}>Conceder Permissão</button>
+                                                        <button className="btn btn-success" onClick={() => this.salvar(item.idGrupoUsuario, item.idUsuario)}>Adicionar Grupo</button>
                                                     }
                                                 </td>
-                                                <td>{item.descricao}</td>
+                                               
                                                 <td>{item.nome}</td>
                                             </tr>
                                         ))}

@@ -10,31 +10,62 @@ namespace WebApi.Service
     public class ServiceUsuariosPermissao
     {
         private DaoUsuariosPermissao dao;
-
+        private ServicePermissao servicePermissao;
         public ServiceUsuariosPermissao(Contexto db)
         {
             dao = new DaoUsuariosPermissao(db);
+            servicePermissao = new ServicePermissao(db);
         }
 
-        public List<UsuarioPermissao> Delete(long id)
+        public void Delete(long idUsuario, long idPermissao)
         {
-            UsuarioPermissao cliente = PesquisarId(id);
+            UsuarioPermissao objeto = PesquisarPermissaoIdUsuarioId(idUsuario, idPermissao);
 
-            if (cliente != null)
+            if (objeto != null)
             {
-                dao.Delete(cliente);
-                return ListaTodos();
+                dao.Delete(objeto);
+               
             }
             else
             {
-                throw new Exception("Não encontrado");
+                throw new Exception("Não encontrado. Erro ao deletar");
             }
         }
 
-        public UsuarioPermissao Gravar(UsuarioPermissao objeto)
+        private UsuarioPermissao PesquisarPermissaoIdUsuarioId(long idUsuario, long idPermissao)
         {
-            return dao.Gravar(objeto);
+            return dao.PesquisarPermissaoIdUsuarioId(idUsuario, idPermissao);
         }
+
+        public UsuarioPermissao Gravar(UsuarioPermissaoModel objeto)
+        {
+            UsuarioPermissao novo = new UsuarioPermissao();
+            novo.usuarioId = objeto.idUsuario;
+            novo.permissaoId = objeto.idPermissao;
+            return dao.Gravar(novo);
+        }
+
+        public List<UsuarioPermissaoModel> ListarTodosPorUsuarioId(long usuarioId)
+        {
+            List<UsuarioPermissaoModel> retorno = new List<UsuarioPermissaoModel>();
+            List<UsuarioPermissao> permissoesGrupo = dao.PesquisarIdPorUsuarioId(usuarioId);
+
+            foreach (var item in servicePermissao.ListaTodos())
+            {
+                retorno.Add(new UsuarioPermissaoModel()
+                {
+                    idUsuario = usuarioId,
+                    idPermissao = item.id,
+                    descricao = item.descricao,
+                    nome = item.nome,
+                    ativo = permissoesGrupo.Where(a => a.permissaoId == item.id).Count() == 1 ? true : false
+                });
+            }
+
+            return retorno;
+        }
+
+     
 
         public List<UsuarioPermissao> ListaTodos()
         {

@@ -3,12 +3,12 @@ import Layout from "../Layout/Layout";
 
 import Conexao from "../Conexao/Conexao";
 
-export default class PermissoesGrupoUsuario extends Component {
+export default class UsuarioPermissoes extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            idGrupoUsuario: this.props.match.params.id,
-            ListaPermissoesGrupoUsuario: [],
+            idUsuario: this.props.match.params.id,
+            ListaPermissaoUsuario: [],
             erro: null,
             query: "",
         };
@@ -28,12 +28,12 @@ export default class PermissoesGrupoUsuario extends Component {
     }
 
     getAll(){
-        Conexao.get("/GrupoUsuarioPermissao/" + this.state.idGrupoUsuario).then((resposta) => {
+        Conexao.get("/UsuariosPermissao/" + this.state.idUsuario).then((resposta) => {
             const dados = resposta.data;
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                this.setState({ ListaPermissoesGrupoUsuario: dados });
+                this.setState({ ListaPermissaoUsuario: dados });
             }
         });
     }
@@ -41,21 +41,21 @@ export default class PermissoesGrupoUsuario extends Component {
     pesquisar(e) {
         console.log(this.state.query);
         var data = this.state.query;
-        Conexao.get("/GrupoUsuarioPermissao/PesquisarGrupoUsuarioPermissao/" + this.state.idGrupoUsuario + "/" + data).then(
+        Conexao.get("/UsuariosPermissao/PesquisarUsuariosPermissao/" + this.state.idUsuario + "/" + data).then(
             (resposta) => {
                 const dados = resposta.data;
                 if (dados.erro != null) {
                     this.setState({ erro: dados.erro });
                 } else {
-                    this.setState({ ListaPermissoesGrupoUsuario: dados });
+                    this.setState({ ListaPermissaoUsuario: dados });
                 }
             }
         );
     }
 
-    delete(idGrupoUsuario, idPermissao,item) {
+    delete(idUsuario, idPermissao,item) {
         //Conexao.delete("/GrupoUsuarioPermissao", { params: { id: e.target.dataset.objeto },
-        Conexao.delete("/GrupoUsuarioPermissao/" + idPermissao + "/" + idGrupoUsuario
+        Conexao.delete("/UsuariosPermissao/" +idUsuario  + "/" + idPermissao
         ).then((resposta) => {
             console.log(resposta.data);
             const dados = resposta.data;
@@ -71,10 +71,10 @@ export default class PermissoesGrupoUsuario extends Component {
 
     }
 
-    salvar(idGrupoUsuario, idPermissao, item) {
-        console.log("Salvar "+idGrupoUsuario + "," + idPermissao+"")
-        Conexao.post("/GrupoUsuarioPermissao", {
-            idGrupoUsuario: Number(idGrupoUsuario),
+    salvar(idUsuario, idPermissao, item) {
+        console.log("Salvar "+idUsuario + "," + idPermissao+"")
+        Conexao.post("/UsuariosPermissao", {
+            idUsuario: Number(idUsuario),
             idPermissao: Number(idPermissao)
         })
             .then((resposta) => {
@@ -147,14 +147,14 @@ export default class PermissoesGrupoUsuario extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {this.state.ListaPermissoesGrupoUsuario.map((item, i) => (
+                                        {this.state.ListaPermissaoUsuario.map((item, i) => (
                                             <tr key={i}>
                                                 <td> 
                                                     {item.ativo}
                                                     {item.ativo === true ?
-                                                        <button className="btn btn-danger" onClick={() => this.delete(item.idGrupoUsuario, item.idPermissao)}>Excluir Permissão</button>
+                                                        <button className="btn btn-danger" onClick={() => this.delete(item.idUsuario, item.idPermissao)}>Excluir Permissão</button>
                                                         :
-                                                        <button className="btn btn-success" onClick={() => this.salvar(item.idGrupoUsuario, item.idPermissao)}>Conceder Permissão</button>
+                                                        <button className="btn btn-success" onClick={() => this.salvar(item.idUsuario, item.idPermissao)}>Conceder Permissão</button>
                                                     }
                                                 </td>
                                                 <td>{item.descricao}</td>

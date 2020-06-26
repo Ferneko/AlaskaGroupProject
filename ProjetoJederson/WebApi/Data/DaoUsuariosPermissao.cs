@@ -44,10 +44,20 @@ namespace WebApi.Data
 
         }
 
+        internal UsuarioPermissao PesquisarPermissaoIdUsuarioId(long idUsuario, long idPermissao)
+        {
+            return db.USUARIO_PERMISSAO.Where(a => a.permissaoId == idPermissao && a.usuarioId == idUsuario).FirstOrDefault();
+        }
+
         public List<UsuarioPermissao> Pesquisar(string texto)
         {
             return db.USUARIO_PERMISSAO.Where(a => texto.Contains(a.id.ToString()) || a.usuario.nome.Contains(texto) || a.permissao.nome.Contains(texto)).ToList();
 
+        }
+
+        internal List<UsuarioPermissao> PesquisarIdPorUsuarioId(long usuarioID)
+        {
+            return db.USUARIO_PERMISSAO.Where(a => a.usuarioId == usuarioID).ToList();
         }
 
         public UsuarioPermissao PesquisarId(long id)
