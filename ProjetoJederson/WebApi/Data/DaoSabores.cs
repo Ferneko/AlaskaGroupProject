@@ -55,6 +55,11 @@ namespace WebApi.Data
             return db.SABORES.Where(a => a.Id == id).FirstOrDefault();
         }
 
+        public decimal saldoSabores(long id)
+        {
+            decimal sabores = db.ESTOQUE.Where(a => a.saboresId == id).Sum(c => c.quantidadeSabores);
+            return sabores;
+        }
     }
 
 }

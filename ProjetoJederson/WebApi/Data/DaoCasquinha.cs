@@ -69,7 +69,11 @@ namespace WebApi.Data
 
         }
 
-
+        public decimal saldoCasquinha(long id)
+        {
+            decimal casquinha = db.ESTOQUE.Where(a => a.casquinhaId == id).Sum(c => c.quantidadeCasquinha);
+            return casquinha;
+        }
     }
 
 

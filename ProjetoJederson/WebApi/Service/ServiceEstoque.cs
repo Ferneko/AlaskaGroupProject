@@ -10,18 +10,13 @@ namespace WebApi.Service
     public class ServiceEstoque
     {
         private DaoEstoque dao;
-        private ServiceCasquinha serviceCasquinha;
-        private ServiceAdicional serviceAdicional;
-        private ServiceAcompanhamentos serviceAcompanhamentos;
-        private ServiceSabores serviceSabores;
+        private ServiceProduto serviceProduto;
 
         public ServiceEstoque(Contexto db)
         {
             dao = new DaoEstoque(db);
-            serviceAdicional = new ServiceAdicional(db);
-            serviceAcompanhamentos = new ServiceAcompanhamentos(db);
-            serviceSabores = new ServiceSabores(db);
-            serviceCasquinha = new ServiceCasquinha(db);
+
+            serviceProduto = new ServiceProduto(db);
 
         }
 
@@ -98,17 +93,71 @@ namespace WebApi.Service
         public ModelMovimentacaoEstoque novaEntrada()
         {
             ModelMovimentacaoEstoque retorno = new ModelMovimentacaoEstoque();
-            retorno.todasCasquinhas = serviceCasquinha.ListaTodos();
-            retorno.todosSabores = serviceSabores.ListaTodos();
-            retorno.todosAdicionais = serviceAdicional.ListaTodos();
-            retorno.todosAcompanhamentos = serviceAcompanhamentos.ListaTodos();
+            retorno.todasCasquinhas = serviceProduto.serviceCasquinha.ListaTodos();
+            retorno.todosSabores = serviceProduto.serviceSabores.ListaTodos();
+            retorno.todosAdicionais = serviceProduto.serviceAdicional.ListaTodos();
+            retorno.todosAcompanhamentos = serviceProduto.serviceAcompanhamentos.ListaTodos();
 
             return retorno;
         }
 
+        public void saidaPorVenda(Venda venda)
+        {
+            
+            foreach (var item in venda.listaItens)
+            {
+                Estoque saidaPorVenda = new Estoque();
+                saidaPorVenda.tipoMovimentacao = 0;
+                saidaPorVenda.data = venda.dataVenda;
 
-     
-        
+                if (item.acompanhamentosId > 0)
+                {
+                    saidaPorVenda.acompanhamentoId = item.acompanhamentosId;
+                    saidaPorVenda.quantidadeAcompanhamento = -1;
+                }
+                else
+                {
+                    saidaPorVenda.acompanhamentoId = serviceProduto.serviceAcompanhamentos.ListaTodos().FirstOrDefault().id;
+                    saidaPorVenda.quantidadeAcompanhamento = 0;
+                }
+
+                if (item.adicionalId > 0)
+                {
+                    saidaPorVenda.adicionalId = item.adicionalId;
+                    saidaPorVenda.quantidadeAdicional = -1;
+                }
+                else
+                {
+                    saidaPorVenda.adicionalId = serviceProduto.serviceAdicional.ListaTodos().FirstOrDefault().id;
+                    saidaPorVenda.quantidadeAdicional = 0;
+                }
+
+                if (item.casquinhaId > 0)
+                {
+                    saidaPorVenda.casquinhaId = item.casquinhaId;
+                    saidaPorVenda.quantidadeCasquinha = -1;
+                }
+                else
+                {
+                    saidaPorVenda.casquinhaId = serviceProduto.serviceCasquinha.ListaTodos().FirstOrDefault().Id;
+                    saidaPorVenda.quantidadeCasquinha = 0;
+                }
+
+                if (item.saborId > 0)
+                {
+                    saidaPorVenda.saboresId = item.saborId;
+                    saidaPorVenda.quantidadeSabores = -1;
+                }
+                else
+                {
+                    saidaPorVenda.saboresId = serviceProduto.serviceSabores.ListaTodos().FirstOrDefault().Id;
+                    saidaPorVenda.quantidadeSabores = 0;
+                }
+
+                Gravar(saidaPorVenda);
+            }
+        }
+
         public decimal saldoAcompanhamento(long idAcompanhamento)
         {
             return dao.qtdAcompanhamento(idAcompanhamento);

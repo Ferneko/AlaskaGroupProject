@@ -286,7 +286,7 @@ export default class Estoque extends Component {
         this.setState({
             saboresid: e.target.value,
         })
-        this.setSaboresid(e.target.value)
+        this.getEstoqueSabores(e.target.value)
     }
     setQuantidadeSabores(e) {
 

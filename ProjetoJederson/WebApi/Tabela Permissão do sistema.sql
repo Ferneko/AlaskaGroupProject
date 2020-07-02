@@ -36,7 +36,7 @@ INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('cadastrarNovoEstoque'
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('editarEstoque','Permite editar um estoque já cadastrado' ,'Editar Estoque');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('excluirEstoque','Permite excluir um estoque ja cadastrado' ,'Excluir Estoque');
 
- [Authorize(Roles = "acessarListaAcompanhamentos")]
+ 
 
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('acessarListaGrupoUsuario','Permite acessar a listagem de GrupoUsuario' ,'Acessar Lista GrupoUsuario');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('cadastrarNovoGrupoUsuario','Permite realizar o cadastro de novos grupoUsuario' ,'Cadastrar Novo GrupoUsuario');
@@ -55,6 +55,8 @@ INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('cadastrarNovoItensVen
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('editarItensVenda','Permite editar um itensVenda já cadastrado' ,'Editar ItensVenda');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('excluirItensVenda','Permite excluir um itensVenda ja cadastrado' ,'Excluir ItensVenda');
 
+
+
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('acessarListaLogin','Permite acessar a listagem de login' ,'Acessar Lista Login');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('cadastrarNovoLogin','Permite realizar o cadastro de novos login' ,'Cadastrar Novo Login');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('editarLogin','Permite editar um login já cadastrado' ,'Editar Login');
@@ -65,6 +67,7 @@ INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('acessarListaPermissao
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('cadastrarNovoPermissao','Permite realizar o cadastro de novas permissao' ,'Cadastrar Novo Permissao');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('editarPermissao','Permite editar uma permissao já cadastrada' ,'Editar Permissao');
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('excluirPermissao','Permite excluir uma permissao ja cadastrada' ,'Excluir Permissao');
+
 
 
 INSERT INTO PERMISSAO ([role],[descricao],[nome]) VALUES ('acessarListaSabores','Permite acessar a listagem de sabores' ,'Acessar Lista Sabores');

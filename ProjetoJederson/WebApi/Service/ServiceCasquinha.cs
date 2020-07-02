@@ -11,11 +11,12 @@ namespace WebApi.Service
     public class ServiceCasquinha
     {
         private DaoCasquinha dao;
-
+      
         public ServiceCasquinha(Contexto db)
         {
             //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
             dao = new DaoCasquinha(db);
+           
         }
         public List<Casquinha> Delete(long id)
         {
@@ -60,6 +61,21 @@ namespace WebApi.Service
         public List<Casquinha> Pesquisar(string texto)
         {
             return dao.Pesquisar(texto);
+        }
+
+        public List<Casquinha> ListaTodosAtivosEmEstoque()
+        {
+            List<Casquinha> retorno = new List<Casquinha>();
+            foreach (var item in ListaTodosAtivos())
+            {
+                if (dao.saldoCasquinha(item.Id) > 0)
+                {
+                    retorno.Add(item);
+                }
+
+            }
+
+            return retorno;
         }
     }
 }

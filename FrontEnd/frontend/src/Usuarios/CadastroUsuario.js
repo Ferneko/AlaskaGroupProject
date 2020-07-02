@@ -57,7 +57,7 @@ export default class CadastroUsuario extends Component {
             if (dados.erro != null) {
                 this.setState({ erro: dados.erro });
             } else {
-                //alert("deu");
+                
                 this.props.history.push('/ListaUsuarios')
             }
         }).catch(error => {

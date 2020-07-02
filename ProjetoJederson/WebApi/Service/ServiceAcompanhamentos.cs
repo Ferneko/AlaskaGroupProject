@@ -10,10 +10,9 @@ namespace WebApi.Service
     public class ServiceAcompanhamentos
     {
         private DaoAcompanhamentos dao;
-
+        private ServiceEstoque serviceEstoque;
         public ServiceAcompanhamentos(Contexto db)
         {
-            //Aqui vai a instancia do banco de dados passada por Injeção de Dependência
             dao = new DaoAcompanhamentos(db);
         }
         
@@ -61,5 +60,19 @@ namespace WebApi.Service
             return dao.PesquisarId(id);
         }
 
+        public List<Acompanhamentos> ListaTodosAtivosEmEstoque()
+        {
+            List<Acompanhamentos> retorno = new List<Acompanhamentos>();
+            foreach (var item in ListaTodosAtivos())
+            {
+                if(dao.saldoAcompanhamento(item.id) > 0)
+                {
+                    retorno.Add(item);
+                }
+                
+            }
+
+            return retorno;
+        }
     }
 }

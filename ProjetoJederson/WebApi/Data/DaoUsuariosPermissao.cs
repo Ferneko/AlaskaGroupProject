@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,7 +58,7 @@ namespace WebApi.Data
 
         internal List<UsuarioPermissao> PesquisarIdPorUsuarioId(long usuarioID)
         {
-            return db.USUARIO_PERMISSAO.Where(a => a.usuarioId == usuarioID).ToList();
+            return db.USUARIO_PERMISSAO.Where(a => a.usuarioId == usuarioID).Include(a => a.permissao).ToList();
         }
 
         public UsuarioPermissao PesquisarId(long id)

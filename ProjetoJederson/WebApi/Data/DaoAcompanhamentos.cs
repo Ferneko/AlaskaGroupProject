@@ -22,6 +22,11 @@ namespace WebApi.Data
             return "Acompanhamentos excluído com sucesso";
         }
 
+        public decimal saldoAcompanhamento(long Id)
+        {
+            decimal acompanhamento = db.ESTOQUE.Where(a => a.acompanhamentoId == Id).Sum(c => c.quantidadeAcompanhamento);
+            return acompanhamento;
+        }
         public Acompanhamentos Gravar(Acompanhamentos objeto)
         {
             if (objeto.id == 0)

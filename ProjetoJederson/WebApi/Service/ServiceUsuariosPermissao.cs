@@ -65,7 +65,18 @@ namespace WebApi.Service
             return retorno;
         }
 
-     
+        public List<Permissao> ListarPermissoesUsuario(long usuarioId)
+        {
+            List<Permissao> retorno = new List<Permissao>();
+
+            foreach (var item in dao.PesquisarIdPorUsuarioId(usuarioId))
+            {
+                retorno.Add(item.permissao);
+            }
+            return retorno; 
+        }
+
+
 
         public List<UsuarioPermissao> ListaTodos()
         {

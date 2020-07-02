@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-
+using Microsoft.IdentityModel.Logging;
 namespace WebApi
 {
     public class Startup
@@ -31,6 +31,9 @@ namespace WebApi
         {
             try
             {
+                
+               
+                IdentityModelEventSource.ShowPII = true;
                 services.AddControllers();
                 services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("CONEXAO")));
                 services.AddCors(option =>
@@ -45,7 +48,7 @@ namespace WebApi
                 });
 
                 //add JWT
-                var key = Encoding.ASCII.GetBytes("@sucesso13@");
+                var key = Encoding.UTF8.GetBytes("a2e63ee01401aaeca78be023dfbb8c59");
                 services.AddAuthentication(x =>
                 {
                     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

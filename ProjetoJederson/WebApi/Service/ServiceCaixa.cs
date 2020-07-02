@@ -66,5 +66,16 @@ namespace WebApi.Service
         public decimal CaixaInicial(){
             return dao.CaixaInicial();
         }
+
+        public void entradaPorVenda(Venda venda)
+        {
+            Caixa entrada = new Caixa();
+            entrada.tipoMovimentacao = 1;
+            entrada.data = venda.dataVenda;
+            entrada.valor = venda.valorTotal;
+            entrada.descricao = "Venda Id:" + venda.id;
+
+            Gravar(entrada);
+        }
     }
 }

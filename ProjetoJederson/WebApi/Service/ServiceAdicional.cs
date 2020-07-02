@@ -10,10 +10,11 @@ namespace WebApi.Service
     public class ServiceAdicional
     {
         private DaoAdicional dao;
-
+      
         public ServiceAdicional(Contexto db)
         {
             dao = new DaoAdicional(db);
+           
         }
         public List<Adicional> Delete(long id)
         {
@@ -59,6 +60,20 @@ namespace WebApi.Service
         public Adicional PesquisarPorId(long id)
         {
             return dao.PesquisarPorId(id);
+        }
+
+        public List<Adicional> ListaTodosAtivosEmEstoque()
+        {
+            List<Adicional> retorno = new List<Adicional>();
+            foreach (var item in ListaTodosAtivos())
+            {
+                if (dao.saldoAdicional(item.id) > 0)
+                {
+                    retorno.Add(item);
+                }
+            }
+
+            return retorno;
         }
     }
 }

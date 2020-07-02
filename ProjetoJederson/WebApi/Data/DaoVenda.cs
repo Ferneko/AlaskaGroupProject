@@ -20,7 +20,7 @@ namespace WebApi.Data
             db.SaveChanges();
             return "excluído com sucesso";
         }
-        public Venda Gravar(Venda objeto)
+        public bool Gravar(Venda objeto)
         {
             if (objeto.id == 0)
             {
@@ -33,7 +33,7 @@ namespace WebApi.Data
 
             }
             db.SaveChanges();
-            return objeto;
+            return true;
         }
 
       

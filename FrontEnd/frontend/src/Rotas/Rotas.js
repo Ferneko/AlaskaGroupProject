@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import CadastroCliente from "../Clientes/CadastroCliente";
 import ListaClientes from "../Clientes/ListaClientes";
 import ListaSabores from "../Sabores/ListaSabores";
 import CadastroSabores from "../Sabores/CadastroSabores"
 import NaoEncontrado from '../404/NaoEncontrado';
-import Layout from '../Layout/Layout';
+
 import EditarCasquinha from "../Casquinha/EditarCasquinha";
 import ListaCasquinha from "../Casquinha/ListaCasquinha";
 import CadastroCasquinha from "../Casquinha/CadastroCasquinha";
@@ -39,64 +39,74 @@ import EditarPermissao from "../Permissao/EditarPermissao";
 import CadastroGrupoUsuario from "../GrupoUsuario/CadastroGrupoUsuario";
 import EditarGrupoUsuario from "../GrupoUsuario/EditarGrupoUsuario";
 import PermissoesGrupoUsuario from "../GrupoUsuario/PermissoesGrupoUsuario";
-
+import Login from "../Login/Login";
+import { isAuthenticated, isAutorizado } from '../Conexao/Conexao'
+import NaoAutorizado from "../404/NaoAutorizado";
+import Vendas from "../Vendas/Vendas";
+import ListaVendas from "../Vendas/ListaVendas";
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-               
-                <Route path="/CadastroCliente" component={CadastroCliente} />
-                <Route path="/CadastroSabores"component={CadastroSabores}/>
-          
-                <Route path="/Estoque"component={Estoque}/>
-                <Route path="/ListaRelatorioEstoque" component={ListaRelatorioEstoque}/>
-                
-                <Route path="/CadastroCasquinha" component={CadastroCasquinha} />
-                <Route path="/CadastroUsuario" component={CadastroUsuario} />
-                <Route path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
-                <Route path="/CadastroAdicional" component={CadastroAdicional} />
 
-                <Route path="/EditarCliente/:id" component={EditarCliente}/>
-                <Route path="/EditarAcompanhamento/:id" component={EditarAcompanhamento}/>
-                <Route path="/EditarSabores/:id" component={EditarSabores}/>
-                <Route path="/EditarCasquinha/:id" component={EditarCasquinha} />
-                <Route path="/EditarUsuario/:id" component={EditarUsuario}/>
-                <Route path="/EditarAdicional/:id" component={EditarAdicional} />
-              
-                <Route path="/ListaClientes" component={ListaClientes} />
-                <Route path="/ListaSabores"component={ListaSabores}/>
-                <Route path="/ListaCasquinha" component={ListaCasquinha} />
-                <Route path="/ListaUsuarios" component={ListaUsuario} />
-                <Route path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
-                <Route path="/ListaAdicional" component={ListaAdicional} />
-              
-               
-               
-                <Route path="/ListaCaixa" component={ListaCaixa} />
-                <Route path="/ControleCaixa" component={ControleCaixa} />
-               
-                
-               
-            <Route path="/CadastroPermissao" component={CadastroPermissao}/>
-            <Route path="/EditarPermissao/:id" component={EditarPermissao}/>
-            <Route path="/Permissao" component={ListaPermissao}/>
+            <Route path="/Login" component={Login} />
 
-            
-            <Route path="/CadastroGrupoUsuario" component={CadastroGrupoUsuario}/>
-            <Route path="/EditarGrupoUsuario/:id" component={EditarGrupoUsuario}/>
-            <Route path="/PermissoesGrupoUsuario/:id" component={PermissoesGrupoUsuario}/>
-            <Route path="/PermissoesUsuario/:id" component={UsuarioPermissoes}/>
-            <Route path="/GruposUsuario/:id" component={UsuarioGruposPermissoes}/>
-            <Route path="/GrupoUsuario" component={ListaGrupoUsuario}/>
-
-                <Route exact path="/" component={() => <Layout><h1>Raiz do site</h1></Layout>} />
+                <RotaProtegida role="cadastrarNovoCliente" path="/CadastroCliente" component={CadastroCliente} />
+                <RotaProtegida role="cadastrarNovoSabor" path="/CadastroSabores"component={CadastroSabores}/>
+                <RotaProtegida role="cadastrarNovoEstoque" path="/Estoque"component={Estoque}/>
+                <RotaProtegida role="acessarListaEstoque" path="/ListaRelatorioEstoque" component={ListaRelatorioEstoque}/>
+                <RotaProtegida role="cadastrarNovaCasquinha" path="/CadastroCasquinha" component={CadastroCasquinha} />
+                <RotaProtegida role="cadastrarNovoUsuarios" path="/CadastroUsuario" component={CadastroUsuario} />
+                <RotaProtegida role="cadastrarNovoAcompanhamento" path="/CadastroAcompanhamento" component={CadastroAcompanhamento} />
+                <RotaProtegida role="cadastrarNovoAdicional" path="/CadastroAdicional" component={CadastroAdicional} />
+                <RotaProtegida role="editarCliente" path="/EditarCliente/:id" component={EditarCliente}/>
+                <RotaProtegida role="editarAcompanhamento" path="/EditarAcompanhamento/:id" component={EditarAcompanhamento}/>
+                <RotaProtegida role="editarSabores" path="/EditarSabores/:id" component={EditarSabores}/>
+                <RotaProtegida role="editarCasquinhas" path="/EditarCasquinha/:id" component={EditarCasquinha} />
+                <RotaProtegida role="editarUsuarios" path="/EditarUsuario/:id" component={EditarUsuario}/>
+                <RotaProtegida role="editarAdicional" path="/EditarAdicional/:id" component={EditarAdicional} />
+                <RotaProtegida role="acessarListaCliente" path="/ListaClientes" component={ListaClientes} />
+                <RotaProtegida role="acessarListaSabores" path="/ListaSabores"component={ListaSabores}/>
+                <RotaProtegida role="acessarListaCasquinhas" path="/ListaCasquinha" component={ListaCasquinha} />
+                <RotaProtegida role="acessarListaUsuarios" path="/ListaUsuarios" component={ListaUsuario} />
+                <RotaProtegida role="acessarListaAcompanhamentos" path="/ListaAcompanhamentos" component={ListaAcompanhamentos} />
+                <RotaProtegida role="acessarListaAdicional" path="/ListaAdicional" component={ListaAdicional} />
+                <RotaProtegida role="acessarListaCaixa" path="/ListaCaixa" component={ListaCaixa} />
+                <RotaProtegida role="acessarListaCaixa" path="/ControleCaixa" component={ControleCaixa} />
+                <RotaProtegida role="cadastrarNovoPermissao" path="/CadastroPermissao" component={CadastroPermissao}/>
+                <RotaProtegida role="editarPermissao" path="/EditarPermissao/:id" component={EditarPermissao}/>
+                <RotaProtegida role="acessarListaPermissao" path="/Permissao" component={ListaPermissao}/>
+                <RotaProtegida role="cadastrarNovoGrupoUsuario" path="/CadastroGrupoUsuario" component={CadastroGrupoUsuario}/>
+                <RotaProtegida role="editarGrupoUsuario" path="/EditarGrupoUsuario/:id" component={EditarGrupoUsuario}/>
+                <RotaProtegida path="/GrupoUsuario" component={ListaGrupoUsuario} role="acessarListaGrupoUsuario"></RotaProtegida>
+                <RotaProtegida path="/GruposUsuario/:id" component={UsuarioGruposPermissoes} role="acessarListaUsuarioGrupoUsuarios"></RotaProtegida>
+                <RotaProtegida path="/PermissoesUsuario/:id" component={UsuarioPermissoes} role="acessarListaUsuariosPermissao"></RotaProtegida>
+                <RotaProtegida path="/PermissoesGrupoUsuario/:id" component={PermissoesGrupoUsuario} role="acessarListaGrupoUsuarioPermissao"></RotaProtegida>
+                <Route exact path="/" component={Vendas} />
+                <Route exact path="/Vendas" component={ListaVendas} />
+                <Route path="/Logoff" component={() => <Redirect to="/Login"></Redirect>} />
+                <Route path="/NaoAutorizado" component={NaoAutorizado} />
                 <Route path="*" component={NaoEncontrado} />
                 
+
 
         </Switch>
 
     </BrowserRouter>
 
 );
- 
+
 export default Routes;
+
+export const RotaProtegida = (Props) => (
+    isAuthenticated() ?
+
+        isAutorizado(Props.role) ?
+            <Route path={Props.path} component={Props.component}></Route>
+            :
+            <Redirect to="/NaoAutorizado" />  
+        :
+        <Redirect to="/Login" />
+)
+
+

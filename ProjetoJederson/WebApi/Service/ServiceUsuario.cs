@@ -72,16 +72,16 @@ namespace WebApi.Service
             return dao.PesquisarId(id);
         }
 
-        public bool PesquisarId(string Login, string Senha)
+        public Usuario PesquisarId(string Login, string Senha)
         {
             var resultado = dao.PesquisarPorLoginSenha(Login, Senha);
             if (resultado != null && resultado.login == Login && resultado.senha == Senha)
             {
-                return true;
+                return resultado;
             }
             else
             {
-                return false;
+                return null;
             }
 
         }

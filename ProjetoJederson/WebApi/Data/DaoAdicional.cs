@@ -58,6 +58,11 @@ namespace WebApi.Data
             return db.ADICIONAIS.Where(a => a.id == id).FirstOrDefault();
         }
 
+        internal decimal saldoAdicional(long id)
+        {
+            decimal adicional = db.ESTOQUE.Where(a => a.adicionalId == id).Sum(c => c.quantidadeAdicional);
+            return adicional;
+        }
     }
 }
 

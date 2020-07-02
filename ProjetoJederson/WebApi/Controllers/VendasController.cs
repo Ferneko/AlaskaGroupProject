@@ -36,6 +36,21 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("Modelo", Name ="Modelo")]
+        public JsonResult Modelo()
+        {
+            try
+            {
+                return Json(service.Modelo());
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Erro = ex.Message + " " + ex.InnerException });
+            }
+
+        }
+
+
         // GET: api/Usuarios/5
         [HttpGet("{id}", Name = "getVendas")]
         [Authorize(Roles = "acessarListaVendas")]
@@ -71,7 +86,7 @@ namespace WebApi.Controllers
         // POST: api/Usuarios
         [HttpPost]
         [Authorize(Roles = "cadastrarNovoVendas")]
-        public JsonResult Post([FromBody] Venda objeto)
+        public JsonResult Post([FromBody] VendasModel objeto)
         {
             try
             {
@@ -87,7 +102,7 @@ namespace WebApi.Controllers
         // POST: api/Usuarios
         [HttpPut]
         [Authorize(Roles = "editarVendas")]
-        public JsonResult Put([FromBody] Venda objeto)
+        public JsonResult Put([FromBody] VendasModel objeto)
         {
             try
             {

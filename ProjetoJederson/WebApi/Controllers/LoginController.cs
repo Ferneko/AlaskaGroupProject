@@ -18,47 +18,106 @@ namespace WebApi.Controllers
     public class LoginController : ControllerBase
     {
         private ServiceUsuario servicoUsuario;
+        private ServiceUsuariosPermissao serviceUsuariosPermissao;
         public LoginController(Contexto _db)
         {
             servicoUsuario = new ServiceUsuario(_db);
+            serviceUsuariosPermissao = new ServiceUsuariosPermissao(_db);
         }
 
         [HttpPost]
-        public string Post([FromBody] Usuario usuario)
+        public dynamic Post([FromBody] Usuario usuario)
         {
 
-          
-            if(servicoUsuario.PesquisarId(usuario.login, usuario.senha))
+            Usuario logado = servicoUsuario.PesquisarId(usuario.login, usuario.senha);
+            if (logado != null)
             {
-                // Gera o Token
-                var token = GenerateToken(usuario);
 
-                return token;
+                //return GenerateToken(logado); 
+                return GenerateJSONWebToken(logado); 
             }
             else
             {
                 return Forbid().ToString();
                 //return StatusCode(403).ToString();
             }
-           
+
         }
 
-        private string GenerateToken(Usuario user)
+        private RetornoLogin GenerateToken(Usuario user)
         {
+            RetornoLogin retorno = new RetornoLogin();
+            retorno.roles = new List<string>();
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("@sucesso13@");
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor();
+
+            
+
+            List<Claim> ListaClaims = new List<Claim>();
+            ListaClaims.Add(new Claim(ClaimTypes.PrimarySid, user.id.ToString()));
+            ListaClaims.Add(new Claim(ClaimTypes.Name, user.login.ToString()));
+            
+
+            foreach (var item in serviceUsuariosPermissao.ListarPermissoesUsuario(user.id))
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.login.ToString()),
-                    new Claim(ClaimTypes.Role, user.nome.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddHours(2),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
+                ListaClaims.Add(new Claim(ClaimTypes.Role, item.role  ));
+                retorno.roles.Add(item.role);
+
+            }
+
+            tokenDescriptor.Subject = new ClaimsIdentity(ListaClaims);
+            tokenDescriptor.Expires = DateTime.UtcNow.AddHours(2);
+            tokenDescriptor.SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature);
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+
+           
+            retorno.token = tokenHandler.WriteToken(token);
+           
+            return retorno;
         }
+
+   
+
+        private RetornoLogin GenerateJSONWebToken(Usuario userInfo)
+        {
+            RetornoLogin retorno = new RetornoLogin();
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("a2e63ee01401aaeca78be023dfbb8c59"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            List<Claim> claims = new List<Claim>();
+            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, userInfo.login));
+            claims.Add(new Claim(ClaimTypes.Name, userInfo.nome));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            foreach (var item in serviceUsuariosPermissao.ListarPermissoesUsuario(userInfo.id))
+            {
+                claims.Add(new Claim(ClaimTypes.Role, item.role));
+                retorno.roles.Add(item.role);
+
+            }
+
+            var token = new JwtSecurityToken("Test.com",
+              "Test.com",
+              claims,
+              expires: DateTime.Now.AddMinutes(120),
+              signingCredentials: credentials);
+
+           
+            retorno.token = new JwtSecurityTokenHandler().WriteToken(token); ;
+            return retorno;
+        }
+
+    }
+
+  
+
+    public class RetornoLogin
+    {
+        public RetornoLogin()
+        {
+            roles = new List<string>();
+        }
+        public string token { get; set; }
+        public List<string> roles { get; set; }
     }
 }

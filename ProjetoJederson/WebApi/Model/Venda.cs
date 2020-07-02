@@ -9,9 +9,8 @@ namespace WebApi.Model
     {
         public long  id { get; set; }
         public DateTime dataVenda { get; set; }
-        public long clienteId { get; set; }
-        public Cliente cliente { get; set; }
         public decimal valorTotal { get; set; }
         
+        public virtual List<ItensVenda> listaItens { get; set; }
     }
 }

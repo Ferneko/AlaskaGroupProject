@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi;
 
 namespace WebApi.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20200702021039_vendaAlterado")]
+    partial class vendaAlterado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,6 +282,14 @@ namespace WebApi.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("acompanhamentosId");
+
+                    b.HasIndex("adicionalId");
+
+                    b.HasIndex("casquinhaId");
+
+                    b.HasIndex("saborId");
+
                     b.HasIndex("vendaId");
 
                     b.ToTable("ITENS_VENDA");
@@ -460,6 +470,30 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Model.ItensVenda", b =>
                 {
+                    b.HasOne("WebApi.Model.Acompanhamentos", "acompanhamentos")
+                        .WithMany()
+                        .HasForeignKey("acompanhamentosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApi.Model.Adicional", "adicional")
+                        .WithMany()
+                        .HasForeignKey("adicionalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApi.Model.Casquinha", "casquinha")
+                        .WithMany()
+                        .HasForeignKey("casquinhaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApi.Model.Sabores", "sabor")
+                        .WithMany()
+                        .HasForeignKey("saborId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WebApi.Model.Venda", "venda")
                         .WithMany("listaItens")
                         .HasForeignKey("vendaId")

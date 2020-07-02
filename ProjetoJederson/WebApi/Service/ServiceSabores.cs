@@ -10,10 +10,11 @@ namespace WebApi.Service
     public class ServiceSabores
     {
         private DaoSabores dao;
-
+       
         public ServiceSabores(Contexto db)
         {
             dao = new DaoSabores(db);
+           
         }
 
         public List<Sabores> Delete(long id)
@@ -62,5 +63,19 @@ namespace WebApi.Service
             return dao.SearchId(id);
         }
 
+        public List<Sabores> ListaTodosAtivosEmEstoque()
+        {
+            List<Sabores> retorno = new List<Sabores>();
+            foreach (var item in ListaTodosAtivos())
+            {
+                if (dao.saldoSabores(item.Id) > 0)
+                {
+                    retorno.Add(item);
+                }
+
+            }
+
+            return retorno;
+        }
     }
 }
